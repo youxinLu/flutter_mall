@@ -64,4 +64,8 @@ class Strings {
   static const String GOODS_TOTAL="商品合计";
   static const String FREIGHT="运费";
   static const String PAY="付款";
+  static const String MY_ADDRESS="我的收货地址";
+  static const String ADD_ADDRESS="添加新地址";
+  static const String IS_DEFAULT="默认";
+  static const String ADDRESS_EDIT="编辑";
 }

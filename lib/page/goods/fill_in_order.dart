@@ -7,6 +7,7 @@ import 'package:mall/widgets/item_text.dart';
 import 'package:dio/dio.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:mall/utils/navigator_util.dart';
 
 class FillInOrderView extends StatefulWidget {
   @override
@@ -97,6 +98,10 @@ class _FillInOrderViewState extends State<FillInOrderView> {
               color: Colors.grey[350],
             ),
             _remarkWidget(),
+            Divider(
+              height: ScreenUtil.instance.setHeight(1.0),
+              color: Colors.grey[350],
+            ),
             ItemTextView(
                 Strings.GOODS_TOTAL, "¥${_fillInOrderEntity.goodsTotalPrice}"),
             Divider(
@@ -133,12 +138,14 @@ class _FillInOrderViewState extends State<FillInOrderView> {
                   child: Text("实付：¥${_fillInOrderEntity.orderTotalPrice}")),
               InkWell(
                 child: Container(
-                  width: ScreenUtil.instance.setWidth(150.0),
+                  alignment: Alignment.center,
+                  width: ScreenUtil.instance.setWidth(200.0),
+                  height: double.infinity,
                   color: Colors.deepOrangeAccent,
                   child: Text(
                     Strings.PAY,
                     style: TextStyle(
-                        color: Colors.deepOrangeAccent,
+                        color: Colors.white,
                         fontSize: ScreenUtil.instance.setSp(28.0)),
                   ),
                 ),
@@ -221,11 +228,15 @@ class _FillInOrderViewState extends State<FillInOrderView> {
 
   Widget _remarkWidget() {
     return Container(
+      height: ScreenUtil.instance.setHeight(80),
+      width: double.infinity,
+      alignment: Alignment.center,
       margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
       padding: EdgeInsets.only(
           left: ScreenUtil.instance.setWidth(20.0),
           right: ScreenUtil.instance.setWidth(20.0)),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Text(
             Strings.REMARK,
@@ -235,19 +246,30 @@ class _FillInOrderViewState extends State<FillInOrderView> {
           ),
           Expanded(
               child: Container(
-            padding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(10.0)),
+            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+            height: ScreenUtil.instance.setHeight(80.0),
+            alignment: Alignment.centerLeft,
             child: TextField(
+              maxLines: 1,
               decoration: InputDecoration(
                 hintText: Strings.REMARK,
-                border: OutlineInputBorder(
-                    borderSide: BorderSide.none),
+                //border: OutlineInputBorder(borderSide: BorderSide.none),
                 hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: ScreenUtil.instance.setSp(28.0)),
-                labelStyle: TextStyle(
-                    color: Colors.black54,
-                    fontSize: ScreenUtil.instance.setSp(28.0)),
+                    color: Colors.grey[350],
+                    fontSize: ScreenUtil.instance.setSp(26.0)),
+                hasFloatingPlaceholder: false,
+                enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: ScreenUtil.instance.setHeight(1.0))),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: ScreenUtil.instance.setHeight(1.0))),
               ),
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(26.0)),
               controller: _controller,
             ),
           ))
@@ -313,66 +335,71 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       padding: EdgeInsets.only(
           left: ScreenUtil.instance.setWidth(20.0),
           right: ScreenUtil.instance.setWidth(20.0)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                _fillInOrderEntity.checkedAddress.name,
-                style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: ScreenUtil.instance.setSp(28.0)),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
-              ),
-              Offstage(
-                offstage: !_fillInOrderEntity.checkedAddress.isDefault,
-                child: Text(
-                  Strings.DEFAULT,
-                  style: TextStyle(
-                      color: Colors.deepOrangeAccent,
-                      fontSize: ScreenUtil.instance.setSp(24.0)),
-                ),
-              )
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
-            child: Column(
+      child: InkWell(
+        onTap: () {
+          NavigatorUtils.goAddress(context);
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  _fillInOrderEntity.checkedAddress.addressDetail,
+                  _fillInOrderEntity.checkedAddress.name,
                   style: TextStyle(
                       color: Colors.black54,
-                      fontSize: ScreenUtil.instance.setSp(26.0)),
+                      fontSize: ScreenUtil.instance.setSp(28.0)),
                 ),
                 Padding(
                   padding:
                       EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
                 ),
-                Text(
-                  _fillInOrderEntity.checkedAddress.tel,
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: ScreenUtil.instance.setSp(26.0)),
-                ),
+                Offstage(
+                  offstage: !_fillInOrderEntity.checkedAddress.isDefault,
+                  child: Text(
+                    Strings.DEFAULT,
+                    style: TextStyle(
+                        color: Colors.deepOrangeAccent,
+                        fontSize: ScreenUtil.instance.setSp(24.0)),
+                  ),
+                )
               ],
             ),
-          ),
-          Expanded(
-              child: Container(
-            alignment: Alignment.centerRight,
-            child: Icon(
-              Icons.arrow_forward_ios,
-              color: Colors.grey,
+            Container(
+              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    _fillInOrderEntity.checkedAddress.addressDetail,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.instance.setHeight(10.0)),
+                  ),
+                  Text(
+                    _fillInOrderEntity.checkedAddress.tel,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  ),
+                ],
+              ),
             ),
-          ))
-        ],
+            Expanded(
+                child: Container(
+              alignment: Alignment.centerRight,
+              child: Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey,
+              ),
+            ))
+          ],
+        ),
       ),
     );
   }

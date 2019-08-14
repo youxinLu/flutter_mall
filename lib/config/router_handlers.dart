@@ -8,45 +8,50 @@ import 'package:mall/page/login/login.dart';
 import 'package:mall/utils/string_util.dart';
 import 'package:mall/page/goods/goods_detail.dart';
 import 'package:mall/page/goods/fill_in_order.dart';
+import 'package:mall/page/address/address.dart';
 
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return MallMainView();
-    });
+  return MallMainView();
+});
 
 var splashHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return SplashView();
-    });
+  return SplashView();
+});
 
 var categoryGoodsListHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> parameters) {
-      var cateforyName =
+  var cateforyName =
       StringUtils.decode(parameters["categoryName"].first).toString();
-      print("cateforyName" + cateforyName);
-      print("categoryId" + parameters["categoryId"].first);
-      var categoryId = int.parse(parameters["categoryId"].first);
-      return CategoryListView(
-          categoryName: cateforyName, categoryId: categoryId);
-    });
+  print("cateforyName" + cateforyName);
+  print("categoryId" + parameters["categoryId"].first);
+  var categoryId = int.parse(parameters["categoryId"].first);
+  return CategoryListView(categoryName: cateforyName, categoryId: categoryId);
+});
 
 var registerHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return RegisterView();
-    });
+  return RegisterView();
+});
 
 var loginHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return LoginView();
-    });
+  return LoginView();
+});
 
 var goodsDetailsHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<Object>> parameters) {
-      var goodsId = int.parse(parameters["goodsId"].first);
-      return GoodsDetail(goodsId: goodsId);
-    });
+  var goodsId = int.parse(parameters["goodsId"].first);
+  return GoodsDetail(goodsId: goodsId);
+});
 
 var fillInOrderHandler = Handler(
-    handlerFunc: (BuildContext context,Map<String,List<String>> parameters){
-return FillInOrderView();
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return FillInOrderView();
+});
+
+var addressHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return AddressView();
 });

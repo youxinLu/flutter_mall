@@ -46,4 +46,9 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.fillInOrder,
         transition: TransitionType.inFromRight);
   }
+
+  static goAddress(BuildContext context) {
+    Application.router.navigateTo(context, Routers.address,
+        transition: TransitionType.inFromRight);
+  }
 }

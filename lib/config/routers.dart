@@ -10,7 +10,7 @@ class Routers {
   static String login = "/login";
   static String register = "/register";
   static String fillInOrder = "/fillInOrder";
-
+  static String address="myAddress";
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
         (BuildContext context, Map<String, List<String>> parameters) {
@@ -24,5 +24,6 @@ class Routers {
     router.define(register, handler: registerHandler);
     router.define(goodsDetail, handler: goodsDetailsHandler);
     router.define(fillInOrder, handler: fillInOrderHandler);
+    router.define(address, handler: addressHandler);
   }
 }

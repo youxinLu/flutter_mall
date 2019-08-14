@@ -123,7 +123,7 @@ class _CartViewState extends State<CartView> {
                                       onPressed: () {
                                         _fillInOrder();
                                       },
-                                      color: Colors.red,
+                                      color: Colors.deepOrangeAccent,
                                       child: Text(
                                         Strings.SETTLEMENT,
                                         style: TextStyle(
