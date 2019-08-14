@@ -1,0 +1,30 @@
+class Api {
+  static const String BASE_URL = 'http://192.168.190.84:8080';
+  static const String BANNER_URL = BASE_URL + '/mall/home/banner'; //获取首页banner图
+  static const String CATEGORY_URL = BASE_URL + '/mall/home/categories'; //获取首页分类
+  static const String COUPON_URL=BASE_URL+'/mall/home/couponList';//优惠券
+  static const String GROUP_BY_URL=BASE_URL+'/mall/home/groupBuy';//团购专区
+  static const String HOME_PRODUCT_URL=BASE_URL+ '/mall/home/newProduct';//新品
+  static const String HOME_HOT_PRODUCT_URL=BASE_URL+ '/mall/home/hotProduct';//新品
+  static const String HOME_FIRST_CATEGORY=BASE_URL+'/mall/category/getFirstCategory';//商品分类第一级
+  static const String HOME_SECOND_CATEGORY=BASE_URL+'/mall/category/getSecondCategory';//商品分类第二级
+  static const String GOODS_TOTAL_NUMBER=BASE_URL+'/mall/goods/count';//获取商品总数
+  static const String GOODS_CATEGORY_URL=BASE_URL+'/mall/goods/category/list';//分类下的商品分类
+  static const String GOODS_LIST_URL=BASE_URL+'/mall/goods/list';//分类下的商品列表
+  static const String GOODS_DETAILS_URL=BASE_URL+'/mall/goods/detail';//商品详情
+  static const String REGISTER=BASE_URL+'/mall/auth/register';//注册
+  static const String LOGIN=BASE_URL+'/mall/auth/login';//登录
+  static const String ADD_CART=BASE_URL+'/mall/cart/add';//加入购物车
+  static const String FAST_BUG=BASE_URL+'/mall/cart/fastadd';//立即购买
+  static const String COLLECT_ADD_DELETE=BASE_URL+ '/mall/collect/addordelete'; //添加或取消收藏
+  static const String CART_LIST=BASE_URL+'/mall/cart/index';//购物车数据
+  static const String CART_UPDATE=BASE_URL+'/mall/cart/update';//更新购物车
+  static const String CART_DELETE=BASE_URL+'/mall/cart/delete';//删除购物车数据
+  static const String CART_CHECK=BASE_URL+'/mall/cart/checked';//购物车商品勾选
+  static const String CART_BUY=BASE_URL+'/mall/cart/checkout';//购物车下单
+  static const String COUPON_LIST=BASE_URL+'/mall/coupon/selectlist';//优惠券列表
+  static const String ADDRESS_LIST=BASE_URL+'/mall/address/list';//地址列表
+  static const String ADDRESS_SAVE=BASE_URL+'/mall/address/save';//增加地址
+  static const String ADDRESS_DELETE=BASE_URL+'/mall/address/delete';//删除地址
+  static const String ORDER=BASE_URL+'/mall/order';//生成订单
+}
