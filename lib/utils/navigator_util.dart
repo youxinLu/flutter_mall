@@ -51,4 +51,9 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.address,
         transition: TransitionType.inFromRight);
   }
+
+  static goAddressEdit(BuildContext context,int addressId) {
+    Application.router.navigateTo(context, Routers.addressEdit+"?addressId=$addressId",
+        transition: TransitionType.inFromRight);
+  }
 }

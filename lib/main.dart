@@ -24,7 +24,10 @@ class MallApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: Application.router.generator,
-      theme: ThemeData(primaryColor: Colors.deepOrangeAccent),
+      theme: ThemeData(
+        primaryColor: Colors.deepOrangeAccent,
+
+      ),
     );
   }
 }

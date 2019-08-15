@@ -28,11 +28,11 @@ class AddressService {
     }
   }
 
-  Future addAddress(Options options, OnSuccess onSuccess,
-      {OnFail onFail}) async {
+  Future addAddress(Options options, Map<String, dynamic> parameters,
+      OnSuccess onSuccess, OnFail onFail) async {
     try {
-      var response =
-          await HttpUtil.instance.get(Api.ADDRESS_SAVE, options: options);
+      var response = await HttpUtil.instance
+          .post(Api.ADDRESS_SAVE, options: options, parameters: parameters);
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
       } else {
@@ -44,13 +44,31 @@ class AddressService {
     }
   }
 
-  Future deleteAddress(Options options, OnSuccess onSuccess,
-      {OnFail onFail}) async {
+  Future deleteAddress(Options options,Map<String, dynamic> parameters, OnSuccess onSuccess,
+      OnFail onFail) async {
     try {
       var response =
-      await HttpUtil.instance.get(Api.ADDRESS_DELETE, options: options);
+          await HttpUtil.instance.post(Api.ADDRESS_DELETE, options: options,parameters: parameters);
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future addressDetail(
+      Options options, Map<String, dynamic> parameters, OnSuccess onSuccess,
+      {OnFail onFail}) async {
+    try {
+      var response = await HttpUtil.instance
+          .get(Api.ADDRESS_DETAIL, options: options, parameters: parameters);
+      if (response['errno'] == 0) {
+        ListData addressDetail = ListData.fromJson(response["data"]);
+        onSuccess(addressDetail);
       } else {
         onFail(response['errmsg']);
       }

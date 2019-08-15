@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/service/address_service.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:dio/dio.dart';
+import 'package:mall/utils/navigator_util.dart';
 
 class AddressView extends StatefulWidget {
   @override
@@ -42,11 +43,14 @@ class _AddressViewState extends State<AddressView> {
           actions: <Widget>[
             InkWell(
                 child: Container(
-                    margin: EdgeInsets.only(right: ScreenUtil.instance.setWidth(10.0)),
-                    alignment: Alignment.center,
-                    child: Text(Strings.ADD_ADDRESS), 
-                )
-            )
+              margin:
+                  EdgeInsets.only(right: ScreenUtil.instance.setWidth(10.0)),
+              alignment: Alignment.center,
+              child: InkWell(
+                onTap: () => _goAddressEdit(0),
+                child: Text(Strings.ADD_ADDRESS),
+              ),
+            ))
           ],
         ),
         body: FutureBuilder(
@@ -94,11 +98,12 @@ class _AddressViewState extends State<AddressView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.only(right: ScreenUtil.instance.setWidth(10.0),
+              margin: EdgeInsets.only(
+                  right: ScreenUtil.instance.setWidth(10.0),
                   left: ScreenUtil.instance.setWidth(10.0)),
               child: ClipRRect(
                 borderRadius:
-                BorderRadius.circular(ScreenUtil.instance.setWidth(40)),
+                    BorderRadius.circular(ScreenUtil.instance.setWidth(40)),
                 child: Container(
                   alignment: Alignment.center,
                   color: Colors.grey,
@@ -115,67 +120,73 @@ class _AddressViewState extends State<AddressView> {
             ),
             Expanded(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
                   children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          addressData.name,
-                          style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: ScreenUtil.instance.setSp(26.0)),
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(
-                                left: ScreenUtil.instance.setWidth(10.0))),
-                        Text(
-                          addressData.tel,
-                          style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: ScreenUtil.instance.setSp(26.0)),
-                        ),
-                      ],
+                    Text(
+                      addressData.name,
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: ScreenUtil.instance.setSp(26.0)),
                     ),
                     Padding(
                         padding: EdgeInsets.only(
-                            top: ScreenUtil.instance.setWidth(20.0))),
+                            left: ScreenUtil.instance.setWidth(10.0))),
                     Text(
-                      addressData.province +
-                          addressData.city +
-                          addressData.county +
-                          addressData.addressDetail,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis, // 显示不完，就在后面显示点点
+                      addressData.tel,
                       style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0),
-                      ),
-                    )
+                          color: Colors.grey,
+                          fontSize: ScreenUtil.instance.setSp(26.0)),
+                    ),
                   ],
-                )),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.instance.setWidth(20.0))),
+                Text(
+                  addressData.province +
+                      addressData.city +
+                      addressData.county +
+                      addressData.addressDetail,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis, // 显示不完，就在后面显示点点
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: ScreenUtil.instance.setSp(26.0),
+                  ),
+                )
+              ],
+            )),
             Container(
-              width: ScreenUtil.instance.setWidth(120.0),
-              margin: EdgeInsets.only(
-                  right: ScreenUtil.instance.setWidth(10.0)),
-              alignment: Alignment.center,
-              decoration: ShapeDecoration(
-                  shape: Border(
-                      left: BorderSide(
-                          color: Colors.grey[350],
-                          width: ScreenUtil.instance.setWidth(1.0)))),
-              padding: EdgeInsets.only(
-                  left: ScreenUtil.instance.setWidth(10.0)),
-              child: Text(
-                Strings.ADDRESS_EDIT,
-                style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: ScreenUtil.instance.setSp(26.0)),
-              ),
-            )
+                width: ScreenUtil.instance.setWidth(120.0),
+                margin:
+                    EdgeInsets.only(right: ScreenUtil.instance.setWidth(10.0)),
+                alignment: Alignment.center,
+                decoration: ShapeDecoration(
+                    shape: Border(
+                        left: BorderSide(
+                            color: Colors.grey[350],
+                            width: ScreenUtil.instance.setWidth(1.0)))),
+                padding:
+                    EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                child: InkWell(
+                  onTap: () => _goAddressEdit(addressData.id),
+                  child: Text(
+                    Strings.ADDRESS_EDIT,
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  ),
+                ))
           ],
         ),
       ),
     );
+  }
+
+  _goAddressEdit(var addressId) {
+    NavigatorUtils.goAddressEdit(context, addressId);
   }
 }

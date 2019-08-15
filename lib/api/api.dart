@@ -26,5 +26,6 @@ class Api {
   static const String ADDRESS_LIST=BASE_URL+'/mall/address/list';//地址列表
   static const String ADDRESS_SAVE=BASE_URL+'/mall/address/save';//增加地址
   static const String ADDRESS_DELETE=BASE_URL+'/mall/address/delete';//删除地址
+  static const String ADDRESS_DETAIL=BASE_URL+'/mall/address/detail';//地址详情
   static const String ORDER=BASE_URL+'/mall/order';//生成订单
 }
