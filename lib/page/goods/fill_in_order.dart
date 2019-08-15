@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/utils/fluro_convert_utils.dart';
 
 class FillInOrderView extends StatefulWidget {
   @override
@@ -131,6 +132,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       ),
       bottomNavigationBar: BottomAppBar(
         child: Container(
+          margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
           height: ScreenUtil.instance.setHeight(100.0),
           child: Row(
             children: <Widget>[
@@ -335,72 +337,98 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       padding: EdgeInsets.only(
           left: ScreenUtil.instance.setWidth(20.0),
           right: ScreenUtil.instance.setWidth(20.0)),
-      child: InkWell(
-        onTap: () {
-          NavigatorUtils.goAddress(context);
-        },
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  _fillInOrderEntity.checkedAddress.name,
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: ScreenUtil.instance.setSp(28.0)),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
-                ),
-                Offstage(
-                  offstage: !_fillInOrderEntity.checkedAddress.isDefault,
-                  child: Text(
-                    Strings.DEFAULT,
-                    style: TextStyle(
-                        color: Colors.deepOrangeAccent,
-                        fontSize: ScreenUtil.instance.setSp(24.0)),
+      child: _fillInOrderEntity.checkedAddress.id != 0
+          ? InkWell(
+              onTap: () {
+                NavigatorUtils.goAddress(context).then((value) {
+                  print(value.toString());
+                  Map<String, dynamic> srcJson = new Map();
+                  srcJson = FluroConvertUtil.stringToMap(value);
+                  setState(() {
+                    _fillInOrderEntity.checkedAddress =
+                        CheckedAddress.fromJson(srcJson);
+                  });
+                });
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            _fillInOrderEntity.checkedAddress.name,
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: ScreenUtil.instance.setSp(28.0)),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: ScreenUtil.instance.setHeight(20.0)),
+                          ),
+                          Text(
+                            _fillInOrderEntity.checkedAddress.tel,
+                            style: TextStyle(
+                                color: Colors.black54,
+                                fontSize: ScreenUtil.instance.setSp(26.0)),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: ScreenUtil.instance.setHeight(10.0)),
+                      ),
+                      Text(
+                        _fillInOrderEntity.checkedAddress.province +
+                            _fillInOrderEntity.checkedAddress.city +
+                            _fillInOrderEntity.checkedAddress.county +
+                            _fillInOrderEntity.checkedAddress.addressDetail,
+                        style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: ScreenUtil.instance.setSp(26.0)),
+                      ),
+                    ],
                   ),
-                )
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                  Expanded(
+                      child: Container(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.grey,
+                    ),
+                  ))
+                ],
+              ),
+            )
+          : InkWell(
+              onTap: () {
+                NavigatorUtils.goAddress(context);
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    _fillInOrderEntity.checkedAddress.addressDetail,
+                    Strings.PLEASE_SELECT_ADDRESS,
                     style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                        color: Colors.grey,
+                        fontSize: ScreenUtil.instance.setSp(30.0)),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                        top: ScreenUtil.instance.setHeight(10.0)),
-                  ),
-                  Text(
-                    _fillInOrderEntity.checkedAddress.tel,
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0)),
-                  ),
+                  Expanded(
+                      child: Container(
+                    alignment: Alignment.centerRight,
+                    child: Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.grey,
+                    ),
+                  ))
                 ],
               ),
             ),
-            Expanded(
-                child: Container(
-              alignment: Alignment.centerRight,
-              child: Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey,
-              ),
-            ))
-          ],
-        ),
-      ),
     );
   }
 }

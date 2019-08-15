@@ -47,13 +47,13 @@ class NavigatorUtils {
         transition: TransitionType.inFromRight);
   }
 
-  static goAddress(BuildContext context) {
-    Application.router.navigateTo(context, Routers.address,
+  static Future goAddress(BuildContext context) {
+    return  Application.router.navigateTo(context, Routers.address,
         transition: TransitionType.inFromRight);
   }
 
-  static goAddressEdit(BuildContext context,int addressId) {
-    Application.router.navigateTo(context, Routers.addressEdit+"?addressId=$addressId",
+  static Future goAddressEdit(BuildContext context,int addressId) {
+  return  Application.router.navigateTo(context, Routers.addressEdit+"?addressId=$addressId",
         transition: TransitionType.inFromRight);
   }
 }

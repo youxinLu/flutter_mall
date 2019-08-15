@@ -78,4 +78,5 @@ class Strings {
   static const String SUBMIT = "提交";
   static const String SUBMIT_SUCCESS = "提交成功";
   static const String ADDRESS_DELETE_SUCCESS = "删除成功";
+  static const String PLEASE_SELECT_ADDRESS = "请选择收货地址";
 }

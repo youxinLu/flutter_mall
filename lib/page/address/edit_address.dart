@@ -120,7 +120,7 @@ class _EditAddressViewState extends State<EditAddressView> {
                     color: Colors.black54,
                     fontSize: ScreenUtil.instance.setSp(26.0)),
                 decoration: InputDecoration(
-                    hintText: Strings.ADDRESS_PLEASE_INPUT_NAME,
+                    hintText: Strings.ADDRESS_PLEASE_INPUT_PHONE,
                     hintStyle: TextStyle(
                         color: Colors.grey,
                         fontSize: ScreenUtil.instance.setSp(26.0)),
@@ -345,7 +345,7 @@ class _EditAddressViewState extends State<EditAddressView> {
       };
       _addressService.addAddress(options, parameters, (success) {
         ToastUtil.showToast(Strings.SUBMIT_SUCCESS);
-        Navigator.pop(context);
+        Navigator.of(context).pop(true);
       }, (error) {
         ToastUtil.showToast(error);
       });
