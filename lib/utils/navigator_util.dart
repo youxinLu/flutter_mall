@@ -62,4 +62,9 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.feedback,
         transition: TransitionType.inFromRight);
   }
+
+  static goCoupon(BuildContext context) {
+    Application.router.navigateTo(context, Routers.mineCoupon,
+        transition: TransitionType.inFromRight);
+  }
 }

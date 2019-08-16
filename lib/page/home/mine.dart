@@ -118,7 +118,7 @@ class _MineViewState extends State<MineView> {
             color: Color(0xffd3d3d3),
           ),
           IconTextArrowView(
-              MallIcon.COUPON, Strings.COUPON, Colors.green, () {}),
+              MallIcon.COUPON, Strings.COUPON, Colors.green, mineCoupon),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -160,6 +160,10 @@ class _MineViewState extends State<MineView> {
 
   void feedbackCallback() {
     NavigatorUtils.goFeedback(context);
+  }
+
+  void mineCoupon() {
+    NavigatorUtils.goCoupon(context);
   }
 
   _toLogin() {

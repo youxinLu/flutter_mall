@@ -11,6 +11,7 @@ import 'package:mall/page/goods/fill_in_order.dart';
 import 'package:mall/page/mine/address.dart';
 import 'package:mall/page/mine/edit_address.dart';
 import 'package:mall/page/mine/feedback.dart';
+import 'package:mall/page/mine/coupon.dart';
 
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
@@ -66,4 +67,9 @@ var addressEditHandler = Handler(
 var feedbackHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return FeedBackView();
+});
+
+var mineCouponHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return CouponView();
 });

@@ -87,4 +87,8 @@ class Strings {
   static const String FEEDBACK_PHONE_NUMBER_HINT_TEXT="请输入您的联系电话";
   static const String FEEDBACK_PHONE_NUMBER="联系方式";
   static const String FEEDBACK_SUCCESS="反馈成功";
+  static const String MINE_COUPON="我的优惠券";
+  static const String unit="元";
+  static const String FULL="满";
+  static const String REDUCE="减";
 }

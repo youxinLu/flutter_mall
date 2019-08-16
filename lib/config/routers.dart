@@ -13,6 +13,7 @@ class Routers {
   static String address = "/myAddress";
   static String addressEdit = "/addressEdit";
   static String feedback = "/feedback";
+  static String mineCoupon = "/mineCoupon";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -30,5 +31,6 @@ class Routers {
     router.define(address, handler: addressHandler);
     router.define(addressEdit, handler: addressEditHandler);
     router.define(feedback, handler: feedbackHandler);
+    router.define(mineCoupon, handler: mineCouponHandler);
   }
 }
