@@ -28,4 +28,5 @@ class Api {
   static const String ADDRESS_DELETE=BASE_URL+'/mall/address/delete';//删除地址
   static const String ADDRESS_DETAIL=BASE_URL+'/mall/address/detail';//地址详情
   static const String ORDER=BASE_URL+'/mall/order';//生成订单
+  static const String FEED_BACK=BASE_URL+"/mall/feedback/submit";//意见反馈
 }

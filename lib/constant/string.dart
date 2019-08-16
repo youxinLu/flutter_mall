@@ -79,4 +79,12 @@ class Strings {
   static const String SUBMIT_SUCCESS = "提交成功";
   static const String ADDRESS_DELETE_SUCCESS = "删除成功";
   static const String PLEASE_SELECT_ADDRESS = "请选择收货地址";
+  static const String PLEASE_SELECT_FEEDBACK_TYPE = "请选择反馈类型";
+  static const String FEEDBACK_DYSFUNCTION = "功能异常";
+  static const String FEEDBACK_SUGGESTIONS_OPTIMIZATION = "优化建议";
+  static const String FEEDBACK_OTHER = "其他";
+  static const String FEEDBACK_HINT_TEXT="请输入您的反馈内容";
+  static const String FEEDBACK_PHONE_NUMBER_HINT_TEXT="请输入您的联系电话";
+  static const String FEEDBACK_PHONE_NUMBER="联系方式";
+  static const String FEEDBACK_SUCCESS="反馈成功";
 }

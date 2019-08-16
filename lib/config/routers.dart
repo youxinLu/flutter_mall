@@ -12,6 +12,7 @@ class Routers {
   static String fillInOrder = "/fillInOrder";
   static String address = "/myAddress";
   static String addressEdit = "/addressEdit";
+  static String feedback = "/feedback";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -28,5 +29,6 @@ class Routers {
     router.define(fillInOrder, handler: fillInOrderHandler);
     router.define(address, handler: addressHandler);
     router.define(addressEdit, handler: addressEditHandler);
+    router.define(feedback, handler: feedbackHandler);
   }
 }

@@ -48,12 +48,18 @@ class NavigatorUtils {
   }
 
   static Future goAddress(BuildContext context) {
-    return  Application.router.navigateTo(context, Routers.address,
+    return Application.router.navigateTo(context, Routers.address,
         transition: TransitionType.inFromRight);
   }
 
-  static Future goAddressEdit(BuildContext context,int addressId) {
-  return  Application.router.navigateTo(context, Routers.addressEdit+"?addressId=$addressId",
+  static Future goAddressEdit(BuildContext context, int addressId) {
+    return Application.router.navigateTo(
+        context, Routers.addressEdit + "?addressId=$addressId",
+        transition: TransitionType.inFromRight);
+  }
+
+  static goFeedback(BuildContext context) {
+    Application.router.navigateTo(context, Routers.feedback,
         transition: TransitionType.inFromRight);
   }
 }

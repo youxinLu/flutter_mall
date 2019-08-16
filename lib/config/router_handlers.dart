@@ -8,8 +8,9 @@ import 'package:mall/page/login/login.dart';
 import 'package:mall/utils/string_util.dart';
 import 'package:mall/page/goods/goods_detail.dart';
 import 'package:mall/page/goods/fill_in_order.dart';
-import 'package:mall/page/address/address.dart';
-import 'package:mall/page/address/edit_address.dart';
+import 'package:mall/page/mine/address.dart';
+import 'package:mall/page/mine/edit_address.dart';
+import 'package:mall/page/mine/feedback.dart';
 
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
@@ -61,4 +62,8 @@ var addressEditHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   var addressId = int.parse(parameters["addressId"].first);
   return EditAddressView(addressId);
+});
+var feedbackHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return FeedBackView();
 });

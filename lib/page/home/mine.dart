@@ -61,10 +61,10 @@ class _MineViewState extends State<MineView> {
             child: Consumer<UserInfoModel>(
                 builder: (context, userInfoModel, child) {
               if ((userInfoModel != null && userInfoModel.userEntity != null)) {
-                  isLogin = true;
-                  imageHeadUrl = userInfoModel.userEntity.userInfo.avatarUrl;
-                  nickName = userInfoModel.userEntity.userInfo.nickName;
-                  print("MineView UserInfoModel");
+                isLogin = true;
+                imageHeadUrl = userInfoModel.userEntity.userInfo.avatarUrl;
+                nickName = userInfoModel.userEntity.userInfo.nickName;
+                print("MineView UserInfoModel");
               }
               return isLogin
                   ? Row(
@@ -141,8 +141,8 @@ class _MineViewState extends State<MineView> {
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
           ),
-          IconTextArrowView(
-              MallIcon.FEED_BACK, Strings.FEED_BACK, Colors.blueAccent, () {}),
+          IconTextArrowView(MallIcon.FEED_BACK, Strings.FEED_BACK,
+              Colors.blueAccent, feedbackCallback),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -156,6 +156,10 @@ class _MineViewState extends State<MineView> {
         ],
       ),
     );
+  }
+
+  void feedbackCallback() {
+    NavigatorUtils.goFeedback(context);
   }
 
   _toLogin() {

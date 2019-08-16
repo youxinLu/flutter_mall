@@ -20,7 +20,7 @@ class IconTextArrowView extends StatelessWidget {
         height: ScreenUtil.getInstance().setHeight(100.0),
         width: double.infinity,
         child: InkWell(
-          onTap: () => callback,
+          onTap:callback,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
