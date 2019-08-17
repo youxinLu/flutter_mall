@@ -92,4 +92,5 @@ class Strings {
   static const String FULL="满";
   static const String REDUCE="减";
   static const String MINE_FOOTPRINT="我的足迹";
+  static const String MINE_FOOTPRINT_DELETE="是否确定删除此条浏览记录";
 }

@@ -63,13 +63,13 @@ class _FootprintViewState extends State<FootprintView> {
                     mainAxisSpacing: ScreenUtil.instance.setWidth(10.0),
                     crossAxisSpacing: ScreenUtil.instance.setHeight(10.0)),
                 itemBuilder: (BuildContext context, int index) {
-                  return getGoodsItemView(_footprints[index]);
+                  return getGoodsItemView(_footprints[index], index);
                 }),
       ),
     );
   }
 
-  Widget getGoodsItemView(Footprint footprint) {
+  Widget getGoodsItemView(Footprint footprint, int index) {
     return GestureDetector(
       child: Container(
         alignment: Alignment.center,
@@ -108,7 +108,68 @@ class _FootprintViewState extends State<FootprintView> {
             )),
       ),
       onTap: () => _itemClick(footprint.id),
+      onLongPress: () => _showDeleteDialog(index),
     );
+  }
+
+  _showDeleteDialog(int index) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              Strings.TIPS,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(28.0)),
+            ),
+            content: Text(
+              Strings.MINE_FOOTPRINT_DELETE,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(26.0)),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    Strings.CANCEL,
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  )),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _deleteFootprint(_footprints[index].id, index);
+                  },
+                  child: Text(
+                    Strings.CONFIRM,
+                    style: TextStyle(
+                        color: Colors.deepOrangeAccent,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  )),
+            ],
+          );
+        });
+  }
+
+  _deleteFootprint(int id, int index) {
+    Options options = Options();
+    options.headers["token"] = token;
+    var parameters = {
+      "id": id,
+    };
+    _mineService.deleteFootPrint(parameters, options, (onSuccess) {
+      setState(() {
+        _footprints.removeAt(index);
+      });
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
   }
 
   _itemClick(int id) {

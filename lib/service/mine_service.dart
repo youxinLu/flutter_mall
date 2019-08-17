@@ -63,4 +63,20 @@ class MineService {
       onFail(Strings.SERVER_EXCEPTION);
     }
   }
+
+  Future deleteFootPrint(Map<String, dynamic> parameters, Options options,
+      OnSuccess onSuccess, OnFail onFail) async {
+    try {
+      var response = await HttpUtil.instance
+          .post(Api.MINE_FOOTPRINT_DELETE, parameters: parameters, options: options);
+      if (response['errno'] == 0) {
+        onSuccess(Strings.SUCCESS);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
 }
