@@ -92,8 +92,9 @@ class Strings {
   static const String FULL="满";
   static const String REDUCE="减";
   static const String MINE_FOOTPRINT="我的足迹";
-  static const String MINE_FOOTPRINT_DELETE="是否确定删除此条浏览记录";
+  static const String MINE_FOOTPRINT_DELETE="是否确定删除此条浏览记录?";
   static const String MINE_COLLECT="我的收藏";
+  static const String MINE_CANCEL_COLLECT="是否确定取消收藏此商品?";
   static const String MINE_ABOUT_US="关于我们";
   static const String MINE_ABOUT_US_CONTENT="Mall是一个企业级商城Flutter项目，通过学习Mall项目可以让读者达到具有开发企业项目的实战能力";
   static const String MINE_ABOUT_AUTHOR_TITLE="作者";

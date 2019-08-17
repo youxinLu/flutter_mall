@@ -107,7 +107,66 @@ class _CollectViewState extends State<CollectView> {
             )),
       ),
       onTap: () => _itemClick(collect.valueId),
+      onLongPress: () => _showDeleteDialog(collect, index),
     );
+  }
+
+  _showDeleteDialog(Collect collect, int index) {
+    showDialog(
+        context: context,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              Strings.TIPS,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(28.0)),
+            ),
+            content: Text(
+              Strings.MINE_CANCEL_COLLECT,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(26.0)),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    Strings.CANCEL,
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  )),
+              FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    _cancelCollect(collect.valueId, index);
+                  },
+                  child: Text(
+                    Strings.CONFIRM,
+                    style: TextStyle(
+                        color: Colors.deepOrangeAccent,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  )),
+            ],
+          );
+        });
+  }
+
+  _cancelCollect(int valueId, int index) {
+    Options options = Options();
+    options.headers["token"] = token;
+    var parameters = {"type": 0, "valueId": valueId};
+    _mineService.addOrDeleteCollect(parameters, options, (onSuccess) {
+      setState(() {
+        _collects.removeAt(index);
+      });
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
   }
 
   _itemClick(int id) {
