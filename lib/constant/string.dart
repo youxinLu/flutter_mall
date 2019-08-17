@@ -91,4 +91,5 @@ class Strings {
   static const String unit="元";
   static const String FULL="满";
   static const String REDUCE="减";
+  static const String MINE_FOOTPRINT="我的足迹";
 }

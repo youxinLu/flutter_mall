@@ -67,4 +67,9 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.mineCoupon,
         transition: TransitionType.inFromRight);
   }
+
+  static goFootprint(BuildContext context) {
+    Application.router.navigateTo(context, Routers.mineFootprint,
+        transition: TransitionType.inFromRight);
+  }
 }

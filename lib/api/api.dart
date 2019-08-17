@@ -30,4 +30,5 @@ class Api {
   static const String ORDER=BASE_URL+'/mall/order';//生成订单
   static const String FEED_BACK=BASE_URL+'/mall/feedback/submit';//意见反馈
   static const String MINE_COUPON_LIST=BASE_URL+'/mall/coupon/allcoupon';//所有优惠券
+  static const String MINE_FOOTPRINT=BASE_URL+'/mall/footprint/history';//足迹
 }

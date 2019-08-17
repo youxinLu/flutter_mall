@@ -136,7 +136,7 @@ class _MineViewState extends State<MineView> {
             color: Color(0xffd3d3d3),
           ),
           IconTextArrowView(
-              MallIcon.FOOTPRINT, Strings.FOOTPRINT, Colors.pink, () {}),
+              MallIcon.FOOTPRINT, Strings.FOOTPRINT, Colors.pink, footprint),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -164,6 +164,10 @@ class _MineViewState extends State<MineView> {
 
   void mineCoupon() {
     NavigatorUtils.goCoupon(context);
+  }
+
+  void footprint() {
+    NavigatorUtils.goFootprint(context);
   }
 
   _toLogin() {
