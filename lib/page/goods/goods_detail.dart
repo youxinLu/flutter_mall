@@ -12,6 +12,8 @@ import 'package:dio/dio.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/cart_number.dart';
 import 'package:mall/event/refresh_event.dart';
+import 'package:mall/service/mine_service.dart';
+
 class GoodsDetail extends StatefulWidget {
   int goodsId;
 
@@ -23,7 +25,8 @@ class GoodsDetail extends StatefulWidget {
 
 class _GoodsDetailState extends State<GoodsDetail> {
   int goodsId;
-  GoodsService goodsService = GoodsService();
+  GoodsService _goodsService = GoodsService();
+  MineService _mineService = MineService();
   GoodsDetailEntity _goodsDetail;
   var parameters;
 
@@ -32,6 +35,8 @@ class _GoodsDetailState extends State<GoodsDetail> {
   int _specificationIndex = 0;
   int _number = 1;
   var _goodsDetailFuture;
+  var token;
+  var _isCollection = false;
 
   @override
   void initState() {
@@ -39,7 +44,8 @@ class _GoodsDetailState extends State<GoodsDetail> {
     goodsId = widget.goodsId;
     var params = {"id": goodsId};
     print("GoodsDetail_initState");
-    _goodsDetailFuture = goodsService.getGoodsDetailData(params, (goodsDetail) {
+    _goodsDetailFuture =
+        _goodsService.getGoodsDetailData(params, (goodsDetail) {
       _goodsDetail = goodsDetail;
     });
   }
@@ -90,10 +96,12 @@ class _GoodsDetailState extends State<GoodsDetail> {
                     child: Container(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: () => _collection(1),
+                        onTap: () => _collection(),
                         child: Icon(
                           Icons.star_border,
-                          color: Colors.deepOrangeAccent,
+                          color: _isCollection
+                              ? Colors.deepOrangeAccent
+                              : Colors.grey,
                           size: 30.0,
                         ),
                       ),
@@ -260,22 +268,6 @@ class _GoodsDetailState extends State<GoodsDetail> {
         });
   }
 
-  _reduce() {
-    if (_number > 1) {
-      setState(() {
-        _number = _number - 1;
-      });
-    }
-    print("${_number}");
-  }
-
-  _add() {
-    setState(() {
-      _number = _number + 1;
-    });
-    print("${_number}");
-  }
-
   List<Widget> _specificationsWidget(List<String> specifications) {
     List<Widget> specificationsWidget = List();
     for (int i = 0; i < specifications.length; i++) {
@@ -310,7 +302,7 @@ class _GoodsDetailState extends State<GoodsDetail> {
         };
         Options options = Options();
         options.headers["token"] = value;
-        goodsService.addCart(parameters, (value) {
+        _goodsService.addCart(parameters, (value) {
           ToastUtil.showToast(Strings.ADD_CART_SUCCESS);
           Navigator.of(context).pop(); //隐藏弹出框
           eventBus.fire(RefreshEvent());
@@ -331,24 +323,29 @@ class _GoodsDetailState extends State<GoodsDetail> {
       });
   }
 
-  _collection(int id) {
-    SharedPreferencesUtils.getToken()
-      ..then((value) {
-        if (value) {
-        } else {
-          NavigatorUtils.goLogin(context);
-        }
-      });
+  _collection() {
+    SharedPreferencesUtils.getToken().then((value) {
+      if (value == null) {
+        NavigatorUtils.goLogin(context);
+      } else {
+        token = value;
+        _addOrDeleteCollect();
+      }
+    });
   }
 
-//  _collection() {
-//    Navigator.push(
-//      context,
-//      new MaterialPageRoute(builder: (context) {
-//        return new RegisterView();
-//      }),
-//    );
-//  }
+  _addOrDeleteCollect() {
+    Options options = Options();
+    options.headers["token"] = token;
+    var parameters = {"type": 0, "valueId": _goodsDetail.info.id};
+    _mineService.addOrDeleteCollect(parameters, options, (onSuccess) {
+      setState(() {
+        _isCollection = onSuccess;
+      });
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
+  }
 
   Widget _detailView() {
     return Stack(

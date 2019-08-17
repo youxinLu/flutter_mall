@@ -7,6 +7,7 @@ import 'package:mall/widgets/mall_icon.dart';
 import 'package:mall/utils/navigator_util.dart';
 import 'package:provider/provider.dart';
 import 'package:mall/model/user_info.dart';
+import 'package:mall/page/mine/address.dart';
 
 class MineView extends StatefulWidget {
   @override
@@ -124,13 +125,13 @@ class _MineViewState extends State<MineView> {
             color: Color(0xffd3d3d3),
           ),
           IconTextArrowView(
-              MallIcon.COLLECTION, Strings.COLLECTION, Colors.red, () {}),
+              MallIcon.COLLECTION, Strings.COLLECTION, Colors.red, collect),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
           ),
           IconTextArrowView(
-              MallIcon.ADDRESS, Strings.ADDRESS, Colors.amber, () {}),
+              MallIcon.ADDRESS, Strings.ADDRESS, Colors.amber, address),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -148,7 +149,7 @@ class _MineViewState extends State<MineView> {
             color: Color(0xffd3d3d3),
           ),
           IconTextArrowView(
-              MallIcon.ABOUT_US, Strings.ABOUT_US, Colors.teal, () {}),
+              MallIcon.ABOUT_US, Strings.ABOUT_US, Colors.teal, aboutUs),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -168,6 +169,18 @@ class _MineViewState extends State<MineView> {
 
   void footprint() {
     NavigatorUtils.goFootprint(context);
+  }
+
+  void collect() {
+    NavigatorUtils.goCollect(context);
+  }
+
+  void address() {
+    NavigatorUtils.goAddress(context);
+  }
+
+  void aboutUs() {
+    NavigatorUtils.goAboutUs(context);
   }
 
   _toLogin() {

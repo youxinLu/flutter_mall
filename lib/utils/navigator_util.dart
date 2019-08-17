@@ -2,7 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:mall/config/application.dart';
 import 'package:mall/config/routers.dart';
-import 'dart:convert';
 import 'package:mall/utils/string_util.dart';
 
 class NavigatorUtils {
@@ -70,6 +69,17 @@ class NavigatorUtils {
 
   static goFootprint(BuildContext context) {
     Application.router.navigateTo(context, Routers.mineFootprint,
+        transition: TransitionType.inFromRight);
+  }
+
+
+  static goCollect(BuildContext context) {
+    Application.router.navigateTo(context, Routers.mineCollect,
+        transition: TransitionType.inFromRight);
+  }
+
+  static goAboutUs(BuildContext context) {
+    Application.router.navigateTo(context, Routers.aboutUs,
         transition: TransitionType.inFromRight);
   }
 }

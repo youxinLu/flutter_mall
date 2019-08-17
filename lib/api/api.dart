@@ -32,4 +32,5 @@ class Api {
   static const String MINE_COUPON_LIST=BASE_URL+'/mall/coupon/allcoupon';//所有优惠券
   static const String MINE_FOOTPRINT=BASE_URL+'/mall/footprint/history';//足迹
   static const String MINE_FOOTPRINT_DELETE=BASE_URL+'/mall/footprint/delete';//删除足迹
+  static const String MINE_COLLECT=BASE_URL+ '/mall/collect/data'; //收藏列表
 }

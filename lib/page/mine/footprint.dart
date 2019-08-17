@@ -107,7 +107,7 @@ class _FootprintViewState extends State<FootprintView> {
               ),
             )),
       ),
-      onTap: () => _itemClick(footprint.id),
+      onTap: () => _itemClick(footprint.goodsId),
       onLongPress: () => _showDeleteDialog(index),
     );
   }

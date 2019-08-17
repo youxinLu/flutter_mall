@@ -93,4 +93,15 @@ class Strings {
   static const String REDUCE="减";
   static const String MINE_FOOTPRINT="我的足迹";
   static const String MINE_FOOTPRINT_DELETE="是否确定删除此条浏览记录";
+  static const String MINE_COLLECT="我的收藏";
+  static const String MINE_ABOUT_US="关于我们";
+  static const String MINE_ABOUT_US_CONTENT="Mall是一个企业级商城Flutter项目，通过学习Mall项目可以让读者达到具有开发企业项目的实战能力";
+  static const String MINE_ABOUT_AUTHOR_TITLE="作者";
+  static const String MINE_ABOUT_AUTHOR="路由新";
+  static const String MINE_ABOUT_EMAIL_TITLE="邮箱";
+  static const String MINE_ABOUT_EMAIL="lizhenghuatoec@gmail.com";
+  static const String MINE_ABOUT_QQ_TITLE="QQ";
+  static const String MINE_ABOUT_QQ="443765662";
+  static const String MINE_ABOUT_WX_TITLE="微信";
+  static const String MINE_ABOUT_WX="lizhenghua0126";
 }

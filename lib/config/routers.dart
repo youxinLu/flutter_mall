@@ -15,6 +15,8 @@ class Routers {
   static String feedback = "/feedback";
   static String mineCoupon = "/mineCoupon";
   static String mineFootprint = "/mineFootprint";
+  static String mineCollect = "/mineCollect";
+  static String aboutUs = "/aboutUs";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -34,5 +36,7 @@ class Routers {
     router.define(feedback, handler: feedbackHandler);
     router.define(mineCoupon, handler: mineCouponHandler);
     router.define(mineFootprint, handler: footPrintHandler);
+    router.define(mineCollect, handler: collectHandler);
+    router.define(aboutUs, handler: aboutHandler);
   }
 }

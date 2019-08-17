@@ -13,7 +13,8 @@ import 'package:mall/page/mine/edit_address.dart';
 import 'package:mall/page/mine/feedback.dart';
 import 'package:mall/page/mine/coupon.dart';
 import 'package:mall/page/mine/footprint.dart';
-
+import 'package:mall/page/mine/collect.dart';
+import 'package:mall/page/mine/about.dart';
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return MallMainView();
@@ -78,3 +79,11 @@ var footPrintHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return FootprintView();
 });
+var collectHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return CollectView();
+});
+var aboutHandler=Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+      return AboutUsView();
+    });
