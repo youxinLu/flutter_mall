@@ -6,7 +6,7 @@ import 'package:mall/entity/coupon_list_entity.dart';
 import 'package:mall/entity/footprint_entity.dart';
 import 'package:mall/entity/collect_entity.dart';
 import 'package:mall/entity/order_entity.dart';
-
+import 'package:mall/entity/order_detail_entity.dart';
 typedef OnSuccessList<T>(List<T> banners);
 
 typedef OnSuccess<T>(T banners);
@@ -123,6 +123,23 @@ class MineService {
       if (response['errno'] == 0) {
         OrderEntity orderEntity=OrderEntity.fromJson(response["data"]);
         onSuccess(orderEntity.listData);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future queryOrderDetail(Map<String, dynamic> parameters, Options options,
+      OnSuccess onSuccess, OnFail onFail) async {
+    try {
+      var response = await HttpUtil.instance
+          .get(Api.MINE_ORDER_DETAIL, parameters: parameters, options: options);
+      if (response['errno'] == 0) {
+        OrderDetailEntity orderDetailEntity=OrderDetailEntity.fromJson(response["data"]);
+        onSuccess(orderDetailEntity);
       } else {
         onFail(response['errmsg']);
       }

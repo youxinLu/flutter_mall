@@ -51,7 +51,10 @@ class Order extends Object {
   @JsonKey(name: 'id')
   int id;
 
-  Order(this.orderStatusText,this.isGroupin,this.orderSn,this.actualPrice,this.goodsList,this.id,);
+  @JsonKey(name: 'handleOption')
+  bool handleOption;
+
+  Order(this.orderStatusText,this.isGroupin,this.orderSn,this.actualPrice,this.goodsList,this.id,this.handleOption);
 
   factory Order.fromJson(Map<String, dynamic> srcJson) => _$OrderFromJson(srcJson);
 

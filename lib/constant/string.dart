@@ -113,4 +113,12 @@ class Strings {
   static const String MINE_ORDER_GOODS_TOTAL="件商品，";
   static const String MINE_ORDER_PRICE="合计¥";
   static const String MINE_ORDER_SN="订单编号：";
+  static const String MINE_ORDER_DETAIL="订单详情";
+  static const String MINE_ORDER_TIME="订单时间";
+  static const String ORDER_INFORMATION="商品信息";
+  static const String DOLLAR="¥";
+  static const String MINE_ORDER_DETAIL_TOTAL="商品合计";
+  static const String  MINE_ORDER_DETAIL_PREFERENCES="优惠";
+  static const String  MINE_ORDER_DETAIL_PAYMENTS="实付";
+
 }

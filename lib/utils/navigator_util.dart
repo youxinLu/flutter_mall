@@ -89,4 +89,8 @@ class NavigatorUtils {
   static goOrder(BuildContext context){
     Application.router.navigateTo(context, Routers.mineOrder,transition: TransitionType.inFromRight);
   }
+
+  static goOrderDetail(BuildContext context,int orderId){
+    Application.router.navigateTo(context, Routers.mineOrderDetail+"?orderId=$orderId",transition: TransitionType.inFromRight);
+  }
 }

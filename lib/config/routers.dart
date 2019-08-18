@@ -18,6 +18,7 @@ class Routers {
   static String mineCollect = "/mineCollect";
   static String aboutUs = "/aboutUs";
   static String mineOrder="/mineOrder";
+  static String mineOrderDetail="/mineOrderDetail";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -40,5 +41,6 @@ class Routers {
     router.define(mineCollect, handler: collectHandler);
     router.define(aboutUs, handler: aboutHandler);
     router.define(mineOrder, handler: orderHandler);
+    router.define(mineOrderDetail, handler: orderDetailHandler);
   }
 }

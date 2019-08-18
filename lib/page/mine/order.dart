@@ -51,96 +51,108 @@ class _OrderViewState extends State<OrderView> {
         centerTitle: true,
       ),
       body: Container(
+        height: double.infinity,
         margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
         child: _orders.length == 0
             ? EmptyView()
             : ListView.builder(
-                itemCount: _orders.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _orderItemView(_orders[index]);
-                 // return Text("data");
-                }),
-        ),
+            itemCount: _orders.length,
+            itemBuilder: (BuildContext context, int index) {
+              return _orderItemView(_orders[index]);
+              // return Text("data");
+            }),
+      ),
     );
   }
 
   Widget _orderItemView(Order order) {
-  return Card(
-     child:Container(
-       margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
-
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              height: ScreenUtil.instance.setHeight(80.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+    return Card(
+        child: InkWell(
+            onTap:()=>_goOrderDetail(order.id),
+            child: Container(
+              margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Icon(
-                    Icons.shop,
-                    size: ScreenUtil.instance.setWidth(60),
-                    color: Colors.deepOrangeAccent,
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(
-                          left: ScreenUtil.instance.setWidth(10.0))),
-                  Text(
-                    Strings.MALL,
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0)),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(
-                          left: ScreenUtil.instance.setWidth(10.0))),
-                  Expanded(
-                      child: Container(
-                    alignment: Alignment.centerRight,
+                  Container(
+                    height: ScreenUtil.instance.setHeight(80.0),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text(Strings.MINE_ORDER_SN+"${order.orderSn}"),
                         Icon(
-                          Icons.arrow_forward_ios,
-                          size: ScreenUtil.instance.setWidth(40),
-                          color: Colors.grey[350],
+                          Icons.shop,
+                          size: ScreenUtil.instance.setWidth(60),
+                          color: Colors.deepOrangeAccent,
                         ),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: ScreenUtil.instance.setWidth(10.0))),
+                        Text(
+                          Strings.MALL,
+                          style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: ScreenUtil.instance.setSp(26.0)),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                left: ScreenUtil.instance.setWidth(10.0))),
+                        Expanded(
+                            child: Container(
+                                alignment: Alignment.centerRight,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Text(Strings.MINE_ORDER_SN +
+                                        "${order.orderSn}"),
+                                    Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: ScreenUtil.instance.setWidth(40),
+                                      color: Colors.grey[350],
+                                    ),
+                                  ],
+                                )
+                            ))
                       ],
-                    )
-                  ))
+                    ),
+                  ),
+                  ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: order.goodsList.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (BuildContext context, int index) {
+                        return _goodItemView(order.goodsList[index]);
+//                  return Text("data");
+                      }),
+
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: ScreenUtil.instance.setHeight(10.0)),
+                    alignment: Alignment.centerRight,
+                    child: Text(Strings.MINE_ORDER_TOTAL_GOODS +
+                        "${goodNumber(order)}" +
+                        Strings.MINE_ORDER_GOODS_TOTAL +
+                        Strings.MINE_ORDER_PRICE + "${order.actualPrice}"),
+                  )
                 ],
               ),
-            ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: order.goodsList.length,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (BuildContext context, int index) {
-                   return  _goodItemView(order.goodsList[index]);
-//                  return Text("data");
-                }),
-
-            Container(
-              margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
-              alignment: Alignment.centerRight,
-              child: Text(Strings.MINE_ORDER_TOTAL_GOODS+"${goodNumber(order)}"+Strings.MINE_ORDER_GOODS_TOTAL+Strings.MINE_ORDER_PRICE+"${order.actualPrice}"),
             )
-          ],
-        ),
-     )
-    );
+        ));
   }
-  int goodNumber(Order order)
-  {
-    int number=0;
-    order.goodsList.forEach((good){
-      number+=good.number;
+
+  _goOrderDetail(int orderId) {
+    NavigatorUtils.goOrderDetail(context, orderId);
+  }
+
+  int goodNumber(Order order) {
+    int number = 0;
+    order.goodsList.forEach((good) {
+      number += good.number;
     });
-  
+
     return number;
   }
+
   Widget _goodItemView(Goods good) {
     return Container(
       child: Row(
@@ -181,7 +193,7 @@ class _OrderViewState extends State<OrderView> {
                   children: <Widget>[
                     Container(
                       padding:
-                          EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
+                      EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: new Border.all(
@@ -199,9 +211,10 @@ class _OrderViewState extends State<OrderView> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                      margin: EdgeInsets.only(
+                          left: ScreenUtil.instance.setWidth(10.0)),
                       padding:
-                          EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
+                      EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: new Border.all(
@@ -225,12 +238,16 @@ class _OrderViewState extends State<OrderView> {
           ),
           Expanded(child: Container(
             alignment: Alignment.centerRight,
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0),right: ScreenUtil.instance.setWidth(20.0),),
+            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0),
+              right: ScreenUtil.instance.setWidth(20.0),),
             child: Column(
               children: <Widget>[
-                Text("¥${good.price}",style: TextStyle(color: Colors.black54,fontSize: ScreenUtil.instance.setSp(24.0)),),
-                Padding(padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(20.0))),
-                Text("X${good.number}",style: TextStyle(color: Colors.black54,fontSize: ScreenUtil.instance.setSp(24.0)),),
+                Text("¥${good.price}", style: TextStyle(color: Colors.black54,
+                    fontSize: ScreenUtil.instance.setSp(24.0)),),
+                Padding(padding: EdgeInsets.only(
+                    top: ScreenUtil.instance.setHeight(20.0))),
+                Text("X${good.number}", style: TextStyle(color: Colors.black54,
+                    fontSize: ScreenUtil.instance.setSp(24.0)),),
               ],
             ),
           ))
