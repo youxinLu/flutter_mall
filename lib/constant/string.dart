@@ -105,4 +105,12 @@ class Strings {
   static const String MINE_ABOUT_QQ="443765662";
   static const String MINE_ABOUT_WX_TITLE="微信";
   static const String MINE_ABOUT_WX="lizhenghua0126";
+  static const String MINE_ORDER="我的订单";
+  static const String MALL="Mall";
+  static const String MINE_ORDER_TAG_ONE="无忧购";
+  static const String MINE_ORDER_TAG_TWO="七天无理由退换";
+  static const String MINE_ORDER_TOTAL_GOODS="共计";
+  static const String MINE_ORDER_GOODS_TOTAL="件商品，";
+  static const String MINE_ORDER_PRICE="合计¥";
+  static const String MINE_ORDER_SN="订单编号：";
 }

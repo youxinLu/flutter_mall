@@ -113,7 +113,7 @@ class _MineViewState extends State<MineView> {
                 EdgeInsets.only(top: ScreenUtil.getInstance().setHeight(20.0)),
           ),
           IconTextArrowView(
-              MallIcon.ORDER, Strings.ORDER, Colors.deepPurpleAccent, () {}),
+              MallIcon.ORDER, Strings.ORDER, Colors.deepPurpleAccent, order),
           Divider(
             height: ScreenUtil.getInstance().setHeight(1.0),
             color: Color(0xffd3d3d3),
@@ -181,6 +181,10 @@ class _MineViewState extends State<MineView> {
 
   void aboutUs() {
     NavigatorUtils.goAboutUs(context);
+  }
+
+  void order() {
+    NavigatorUtils.goOrder(context);
   }
 
   _toLogin() {

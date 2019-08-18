@@ -82,4 +82,11 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.aboutUs,
         transition: TransitionType.inFromRight);
   }
+  static submitOrderSuccessPop(BuildContext context){
+    Application.router.navigateTo(context, Routers.home,clearStack: true,transition: TransitionType.inFromRight);
+  }
+
+  static goOrder(BuildContext context){
+    Application.router.navigateTo(context, Routers.mineOrder,transition: TransitionType.inFromRight);
+  }
 }

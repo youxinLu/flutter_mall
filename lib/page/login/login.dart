@@ -35,7 +35,7 @@ class _LoginViewState extends State<LoginView> {
               child: Container(
                 margin: EdgeInsets.fromLTRB(ScreenUtil().setWidth(30.0), 0,
                     ScreenUtil().setWidth(30.0), 0),
-                height: ScreenUtil.instance.setHeight(720.0),
+                height: ScreenUtil.instance.setHeight(800.0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0)),

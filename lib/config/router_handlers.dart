@@ -15,6 +15,7 @@ import 'package:mall/page/mine/coupon.dart';
 import 'package:mall/page/mine/footprint.dart';
 import 'package:mall/page/mine/collect.dart';
 import 'package:mall/page/mine/about.dart';
+import 'package:mall/page/mine/order.dart';
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return MallMainView();
@@ -86,4 +87,9 @@ var collectHandler = Handler(
 var aboutHandler=Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
       return AboutUsView();
+    });
+
+var orderHandler=Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+      return OrderView();
     });

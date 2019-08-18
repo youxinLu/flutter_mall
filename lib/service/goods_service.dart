@@ -181,4 +181,19 @@ class GoodsService {
       onFail(Strings.SERVER_EXCEPTION);
     }
   }
+  Future submitOrder( Options options,
+      Map<String, dynamic> parameters,OnSuccess onSuccess, OnFail onFail,) async {
+    try {
+      var response = await HttpUtil.instance
+          .post(Api.SUBMIT_ORDER, parameters: parameters, options: options);
+      if (response['errno'] == 0) {
+        onSuccess(Strings.SUCCESS);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
 }

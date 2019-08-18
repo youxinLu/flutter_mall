@@ -9,6 +9,7 @@ import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/utils/fluro_convert_utils.dart';
+import 'package:mall/utils/toast_util.dart';
 
 class FillInOrderView extends StatefulWidget {
   @override
@@ -21,6 +22,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   TextEditingController _controller = TextEditingController();
   var token;
   Future future;
+  Options options = Options();
 
   @override
   void initState() {
@@ -32,7 +34,6 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   }
 
   _getFillInOrder() {
-    Options options = Options();
     options.headers["token"] = token;
     var parameters = {
       "cartId": 0,
@@ -139,6 +140,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
               Expanded(
                   child: Text("实付：¥${_fillInOrderEntity.orderTotalPrice}")),
               InkWell(
+                onTap: () => _submitOrder(),
                 child: Container(
                   alignment: Alignment.center,
                   width: ScreenUtil.instance.setWidth(200.0),
@@ -430,5 +432,20 @@ class _FillInOrderViewState extends State<FillInOrderView> {
               ),
             ),
     );
+  }
+
+  _submitOrder() {
+    var parameters = {
+      "cartId": 0,
+      "addressId": _fillInOrderEntity.checkedAddress.id,
+      "message": _controller.text,
+      "couponId": 0
+    };
+    _goodsService.submitOrder(options, parameters, (success) {
+      print(success);
+      NavigatorUtils.submitOrderSuccessPop(context);
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
   }
 }
