@@ -86,17 +86,18 @@ var collectHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return CollectView();
 });
-var aboutHandler=Handler(
+var aboutHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return AboutUsView();
-    });
+  return AboutUsView();
+});
 
-var orderHandler=Handler(
+var orderHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      return OrderView();
-    });
-var orderDetailHandler=Handler(
+  return OrderView();
+});
+var orderDetailHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-      int orderId=int.parse(parameters["orderId"].first);
-      return OrderDetail(orderId);
-    });
+  int orderId = int.parse(parameters["orderId"].first);
+  String token = parameters["token"].first;
+  return OrderDetail(orderId,token);
+});

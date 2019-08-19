@@ -118,7 +118,11 @@ class Strings {
   static const String ORDER_INFORMATION="商品信息";
   static const String DOLLAR="¥";
   static const String MINE_ORDER_DETAIL_TOTAL="商品合计";
-  static const String  MINE_ORDER_DETAIL_PREFERENCES="优惠";
-  static const String  MINE_ORDER_DETAIL_PAYMENTS="实付";
-
+  static const String MINE_ORDER_DETAIL_PREFERENCES="优惠";
+  static const String MINE_ORDER_DETAIL_PAYMENTS="实付";
+  static const String MINE_ORDER_DELETE_SUCCESS="删除成功";
+  static const String MINE_ORDER_CANCEL_SUCCESS="取消成功";
+  static const String MINE_ORDER_DELETE_TIPS="是否确认删除此订单";
+  static const String MINE_ORDER_CANCEL_TIPS="是否确认取消此订单";
+  static const String MINE_ORDER_ALREADY_CANCEL="已取消";
 }

@@ -37,4 +37,5 @@ class Api {
   static const String MINE_ORDERS=BASE_URL+'/mall/order/mineOrder';//我的订单
   static const String MINE_ORDER_DETAIL=BASE_URL+"/mall/order/detail";//订单详情
   static const String MINE_ORDER_CANCEL=BASE_URL+"/mall/order/cancel";//取消订单
+  static const String MINE_ORDER_DELETE=BASE_URL+"/mall/order/delete";//取消订单
 }

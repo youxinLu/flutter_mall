@@ -72,7 +72,6 @@ class NavigatorUtils {
         transition: TransitionType.inFromRight);
   }
 
-
   static goCollect(BuildContext context) {
     Application.router.navigateTo(context, Routers.mineCollect,
         transition: TransitionType.inFromRight);
@@ -82,15 +81,20 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.aboutUs,
         transition: TransitionType.inFromRight);
   }
-  static submitOrderSuccessPop(BuildContext context){
-    Application.router.navigateTo(context, Routers.home,clearStack: true,transition: TransitionType.inFromRight);
+
+  static submitOrderSuccessPop(BuildContext context) {
+    Application.router.navigateTo(context, Routers.home,
+        clearStack: true, transition: TransitionType.inFromRight);
   }
 
-  static goOrder(BuildContext context){
-    Application.router.navigateTo(context, Routers.mineOrder,transition: TransitionType.inFromRight);
+  static goOrder(BuildContext context) {
+    Application.router.navigateTo(context, Routers.mineOrder,
+        transition: TransitionType.inFromRight);
   }
 
-  static goOrderDetail(BuildContext context,int orderId){
-    Application.router.navigateTo(context, Routers.mineOrderDetail+"?orderId=$orderId",transition: TransitionType.inFromRight);
+  static Future goOrderDetail(BuildContext context, int orderId, String token) {
+    return Application.router.navigateTo(
+        context, Routers.mineOrderDetail + "?orderId=$orderId&token=$token",
+        transition: TransitionType.inFromRight);
   }
 }

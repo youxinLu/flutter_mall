@@ -36,8 +36,7 @@ OrderInfo _$OrderInfoFromJson(Map<String, dynamic> json) {
       (json['couponPrice'] as num)?.toDouble(),
       json['id'] as int,
       (json['freightPrice'] as num)?.toDouble(),
-      json['handleOption'] as bool,
-      json['isDelete'] as bool);
+      json['handleOption'] as bool);
 }
 
 Map<String, dynamic> _$OrderInfoToJson(OrderInfo instance) => <String, dynamic>{
@@ -52,23 +51,22 @@ Map<String, dynamic> _$OrderInfoToJson(OrderInfo instance) => <String, dynamic>{
       'couponPrice': instance.couponPrice,
       'id': instance.id,
       'freightPrice': instance.freightPrice,
-      'handleOption': instance.handleOption,
-      'isDelete': instance.isDelete
+      'handleOption': instance.handleOption
     };
 
 OrderGoods _$OrderGoodsFromJson(Map<String, dynamic> json) {
   return OrderGoods(
       json['id'] as int,
-      json['orderId'] as String,
-      json['goodsId'] as String,
+      json['orderId'] as int,
+      json['goodsId'] as int,
       json['goodsName'] as String,
       json['goodsSn'] as String,
-      json['productId'] as String,
+      json['productId'] as int,
       json['number'] as int,
       (json['price'] as num)?.toDouble(),
-      json['specifications'] as String,
+      (json['specifications'] as List)?.map((e) => e as String)?.toList(),
       json['picUrl'] as String,
-      json['comment'] as String,
+      json['comment'] as int,
       json['addTime'] as String,
       json['updateTime'] as String,
       json['deleted'] as bool);

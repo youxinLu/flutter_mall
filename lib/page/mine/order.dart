@@ -56,11 +56,11 @@ class _OrderViewState extends State<OrderView> {
         child: _orders.length == 0
             ? EmptyView()
             : ListView.builder(
-            itemCount: _orders.length,
-            itemBuilder: (BuildContext context, int index) {
-              return _orderItemView(_orders[index]);
-              // return Text("data");
-            }),
+                itemCount: _orders.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _orderItemView(_orders[index]);
+                  // return Text("data");
+                }),
       ),
     );
   }
@@ -68,7 +68,7 @@ class _OrderViewState extends State<OrderView> {
   Widget _orderItemView(Order order) {
     return Card(
         child: InkWell(
-            onTap:()=>_goOrderDetail(order.id),
+            onTap: () => _goOrderDetail(order.id),
             child: Container(
               margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
               child: Column(
@@ -111,8 +111,7 @@ class _OrderViewState extends State<OrderView> {
                                       color: Colors.grey[350],
                                     ),
                                   ],
-                                )
-                            ))
+                                )))
                       ],
                     ),
                   ),
@@ -124,7 +123,6 @@ class _OrderViewState extends State<OrderView> {
                         return _goodItemView(order.goodsList[index]);
 //                  return Text("data");
                       }),
-
                   Container(
                     margin: EdgeInsets.only(
                         top: ScreenUtil.instance.setHeight(10.0)),
@@ -132,16 +130,20 @@ class _OrderViewState extends State<OrderView> {
                     child: Text(Strings.MINE_ORDER_TOTAL_GOODS +
                         "${goodNumber(order)}" +
                         Strings.MINE_ORDER_GOODS_TOTAL +
-                        Strings.MINE_ORDER_PRICE + "${order.actualPrice}"),
+                        Strings.MINE_ORDER_PRICE +
+                        "${order.actualPrice}"),
                   )
                 ],
               ),
-            )
-        ));
+            )));
   }
 
   _goOrderDetail(int orderId) {
-    NavigatorUtils.goOrderDetail(context, orderId);
+    NavigatorUtils.goOrderDetail(context, orderId, _token).then((bool) {
+      if (bool) {
+        _orderData();
+      }
+    });
   }
 
   int goodNumber(Order order) {
@@ -193,7 +195,7 @@ class _OrderViewState extends State<OrderView> {
                   children: <Widget>[
                     Container(
                       padding:
-                      EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
+                          EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: new Border.all(
@@ -214,7 +216,7 @@ class _OrderViewState extends State<OrderView> {
                       margin: EdgeInsets.only(
                           left: ScreenUtil.instance.setWidth(10.0)),
                       padding:
-                      EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
+                          EdgeInsets.all(ScreenUtil.instance.setWidth(6.0)),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: new Border.all(
@@ -236,18 +238,30 @@ class _OrderViewState extends State<OrderView> {
               ],
             ),
           ),
-          Expanded(child: Container(
+          Expanded(
+              child: Container(
             alignment: Alignment.centerRight,
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0),
-              right: ScreenUtil.instance.setWidth(20.0),),
+            margin: EdgeInsets.only(
+              left: ScreenUtil.instance.setWidth(20.0),
+              right: ScreenUtil.instance.setWidth(20.0),
+            ),
             child: Column(
               children: <Widget>[
-                Text("¥${good.price}", style: TextStyle(color: Colors.black54,
-                    fontSize: ScreenUtil.instance.setSp(24.0)),),
-                Padding(padding: EdgeInsets.only(
-                    top: ScreenUtil.instance.setHeight(20.0))),
-                Text("X${good.number}", style: TextStyle(color: Colors.black54,
-                    fontSize: ScreenUtil.instance.setSp(24.0)),),
+                Text(
+                  "¥${good.price}",
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: ScreenUtil.instance.setSp(24.0)),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.instance.setHeight(20.0))),
+                Text(
+                  "X${good.number}",
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: ScreenUtil.instance.setSp(24.0)),
+                ),
               ],
             ),
           ))

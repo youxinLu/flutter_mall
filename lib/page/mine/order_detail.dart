@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mall/service/mine_service.dart';
-import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:dio/dio.dart';
 import 'package:mall/constant/string.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,11 +8,13 @@ import 'package:mall/entity/order_detail_entity.dart';
 import 'package:mall/widgets/divider_line.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/widgets/empty_view.dart';
+import 'package:mall/utils/toast_util.dart';
 
 class OrderDetail extends StatefulWidget {
   var orderId;
+  var token;
 
-  OrderDetail(this.orderId);
+  OrderDetail(this.orderId, this.token);
 
   @override
   _OrderDetailState createState() => _OrderDetailState();
@@ -21,27 +22,24 @@ class OrderDetail extends StatefulWidget {
 
 class _OrderDetailState extends State<OrderDetail> {
   MineService _mineService = MineService();
-  var _token;
-  var _orderId;
   OrderDetailEntity _orderDetailEntity;
-  var _orderDetailFuture;
+  Future _orderDetailFuture;
+  Options options = Options();
+  var action;
+  var parameters;
+
   @override
   void initState() {
     super.initState();
-    _orderId = widget.orderId;
-    SharedPreferencesUtils.getToken().then((value) {
-      _token = value;
-      _queryOrderDetail();
-    });
+    options.headers["token"] = widget.token;
+    parameters = {"orderId": widget.orderId};
+    _queryOrderDetail();
   }
 
   _queryOrderDetail() {
-    Options options = Options();
-    options.headers["token"] = _token;
-    var parameters = {"orderId": _orderId};
-    _orderDetailFuture=  _mineService.queryOrderDetail(
-        parameters, options, (success) {
-            _orderDetailEntity=success;
+    _orderDetailFuture =
+        _mineService.queryOrderDetail(parameters, options, (success) {
+      _orderDetailEntity = success;
     }, (error) {});
   }
 
@@ -53,30 +51,30 @@ class _OrderDetailState extends State<OrderDetail> {
         centerTitle: true,
       ),
       body: FutureBuilder(
-        future: _orderDetailFuture,
+          future: _orderDetailFuture,
           builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
-        switch (asyncSnapshot.connectionState) {
-          case ConnectionState.none:
-          case ConnectionState.waiting:
-            return Container(
-              child: Center(
-                child: SpinKitFoldingCube(
-                  size: 40.0,
-                  color: Colors.deepOrangeAccent,
-                ),
-              ),
-            );
-          default:
-            if (asyncSnapshot.hasError) {
-              return Container(
-                height: double.infinity,
-                child: EmptyView(),
-              );
-            } else {
-              return _contentView();
+            switch (asyncSnapshot.connectionState) {
+              case ConnectionState.none:
+              case ConnectionState.waiting:
+                return Container(
+                  child: Center(
+                    child: SpinKitFoldingCube(
+                      size: 40.0,
+                      color: Colors.deepOrangeAccent,
+                    ),
+                  ),
+                );
+              default:
+                if (asyncSnapshot.hasError) {
+                  return Container(
+                    height: double.infinity,
+                    child: EmptyView(),
+                  );
+                } else {
+                  return _contentView();
+                }
             }
-        }
-      }),
+          }),
     );
   }
 
@@ -85,7 +83,6 @@ class _OrderDetailState extends State<OrderDetail> {
       margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           ItemTextView(
               Strings.MINE_ORDER_SN, _orderDetailEntity.orderInfo.orderSn),
@@ -94,14 +91,32 @@ class _OrderDetailState extends State<OrderDetail> {
               Strings.MINE_ORDER_TIME, _orderDetailEntity.orderInfo.addTime),
           DividerLineView(),
           Container(
-            height: ScreenUtil.instance.setHeight(80.0),
-            child: Text(
-              Strings.ORDER_INFORMATION,
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: ScreenUtil.instance.setSp(26)),
-            ),
-          ),
+              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
+              height: ScreenUtil.instance.setHeight(80.0),
+              alignment: Alignment.centerLeft,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    Strings.ORDER_INFORMATION,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(26)),
+                  ),
+                  Expanded(
+                      child: Container(
+                          alignment: Alignment.centerRight,
+                          child: Offstage(
+                            offstage: _orderDetailEntity.orderInfo.handleOption,
+                            child: Text(
+                              Strings.MINE_ORDER_ALREADY_CANCEL,
+                              style: TextStyle(
+                                  color: Colors.deepOrangeAccent,
+                                  fontSize: ScreenUtil.instance.setSp(26.0)),
+                            ),
+                          )))
+                ],
+              )),
           DividerLineView(),
           ListView.builder(
               shrinkWrap: true,
@@ -113,10 +128,12 @@ class _OrderDetailState extends State<OrderDetail> {
           DividerLineView(),
           Container(
             margin: EdgeInsets.only(
+                left: ScreenUtil.instance.setWidth(20.0),
                 top: ScreenUtil.instance.setHeight(20.0),
                 bottom: ScreenUtil.instance.setHeight(20.0)),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -151,6 +168,7 @@ class _OrderDetailState extends State<OrderDetail> {
               ],
             ),
           ),
+          DividerLineView(),
           ItemTextView(Strings.MINE_ORDER_DETAIL_TOTAL,
               Strings.DOLLAR + "${_orderDetailEntity.orderInfo.goodsPrice}"),
           DividerLineView(),
@@ -170,7 +188,10 @@ class _OrderDetailState extends State<OrderDetail> {
                 Expanded(
                     child: MaterialButton(
                   color: Colors.deepOrangeAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    action = 1;
+                    _showDialog();
+                  },
                   child: Text(
                     Strings.CANCEL,
                     style: TextStyle(
@@ -185,7 +206,10 @@ class _OrderDetailState extends State<OrderDetail> {
                 Expanded(
                     child: MaterialButton(
                   color: Colors.deepOrangeAccent,
-                  onPressed: () {},
+                  onPressed: () {
+                    action = 2;
+                    _showDialog();
+                  },
                   child: Text(
                     Strings.DELETE,
                     style: TextStyle(
@@ -314,5 +338,79 @@ class _OrderDetailState extends State<OrderDetail> {
         ],
       ),
     );
+  }
+
+  _showDialog() {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              Strings.TIPS,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(28.0)),
+            ),
+            content: Text(
+              action == 1
+                  ? Strings.MINE_ORDER_CANCEL_TIPS
+                  : Strings.MINE_ORDER_DELETE_TIPS,
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: ScreenUtil.instance.setSp(28.0)),
+            ),
+            actions: <Widget>[
+              FlatButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    Strings.CANCEL,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(24.0)),
+                  )),
+              FlatButton(
+                  color: Colors.white,
+                  onPressed: () {
+                    Navigator.pop(context);
+                    if (action == 1) {
+                      _cancelOrder();
+                    } else {
+                      _deleteOrder();
+                    }
+                  },
+                  child: Text(
+                    Strings.CONFIRM,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(24.0)),
+                  )),
+            ],
+          );
+        });
+  }
+
+  _deleteOrder() {
+    var parameters = {"orderId": widget.orderId};
+    _mineService.deleteOrder(parameters, options, (success) {
+      Navigator.of(context).pop(true);
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
+  }
+
+  _cancelOrder() {
+    var parameters = {"orderId": widget.orderId};
+    _mineService.cancelOrder(parameters, options, (success) {
+      ToastUtil.showToast(Strings.MINE_ORDER_CANCEL_SUCCESS);
+      setState(() {
+        _orderDetailEntity.orderInfo.handleOption = false;
+      });
+    }, (error) {
+      ToastUtil.showToast(error);
+    });
   }
 }

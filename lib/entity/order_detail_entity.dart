@@ -59,9 +59,8 @@ class OrderInfo extends Object {
 
   @JsonKey(name: 'handleOption')
   bool handleOption;
-  @JsonKey(name: 'isDelete')
-  bool isDelete;
-  OrderInfo(this.consignee,this.address,this.addTime,this.orderSn,this.actualPrice,this.mobile,this.orderStatusText,this.goodsPrice,this.couponPrice,this.id,this.freightPrice,this.handleOption,this.isDelete);
+
+  OrderInfo(this.consignee,this.address,this.addTime,this.orderSn,this.actualPrice,this.mobile,this.orderStatusText,this.goodsPrice,this.couponPrice,this.id,this.freightPrice,this.handleOption,);
 
   factory OrderInfo.fromJson(Map<String, dynamic> srcJson) => _$OrderInfoFromJson(srcJson);
 
@@ -77,10 +76,10 @@ class OrderGoods extends Object {
   int id;
 
   @JsonKey(name: 'orderId')
-  String orderId;
+  int orderId;
 
   @JsonKey(name: 'goodsId')
-  String goodsId;
+  int goodsId;
 
   @JsonKey(name: 'goodsName')
   String goodsName;
@@ -89,7 +88,7 @@ class OrderGoods extends Object {
   String goodsSn;
 
   @JsonKey(name: 'productId')
-  String productId;
+  int productId;
 
   @JsonKey(name: 'number')
   int number;
@@ -98,13 +97,13 @@ class OrderGoods extends Object {
   double price;
 
   @JsonKey(name: 'specifications')
-  String specifications;
+  List<String> specifications;
 
   @JsonKey(name: 'picUrl')
   String picUrl;
 
   @JsonKey(name: 'comment')
-  String comment;
+  int comment;
 
   @JsonKey(name: 'addTime')
   String addTime;
