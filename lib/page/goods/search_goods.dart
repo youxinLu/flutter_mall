@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/constant/string.dart';
-import 'package:mall/widgets/divider_line.dart';
 import 'package:mall/service/goods_service.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/empty_view.dart';
+import 'package:mall/entity/goods_entity.dart';
+import 'package:mall/utils/navigator_util.dart';
 
 class SearchGoodsView extends StatefulWidget {
   @override
@@ -15,7 +16,12 @@ class SearchGoodsView extends StatefulWidget {
 class _SearchGoodsViewState extends State<SearchGoodsView> {
   TextEditingController _editingController = TextEditingController();
   List<String> _keywords;
+  List<GoodsEntity> _goods;
   GoodsService _goodsService = GoodsService();
+  var _page = 1;
+  var _limit = 10;
+  var _sortName = Strings.SORT_NAME;
+  var _orderType = Strings.ASC;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +51,7 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
                         ScreenUtil.instance.setWidth(40.0)),
                   ),
                   child: TextField(
-                    onEditingComplete: _searchKeyWords,
+                    onEditingComplete: _sort,
                     controller: _editingController,
                     textInputAction: TextInputAction.search,
                     style: TextStyle(
@@ -70,29 +76,138 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
                     ),
                   )),
             ),
-            Expanded(
-                child: Container(
-              height: double.infinity,
-              margin:
-                  EdgeInsets.only(top: ScreenUtil.instance.setHeight(110.0)),
-              child: _keywords == null || _keywords.length == 0
-                  ? Container(
-                      alignment: Alignment.center,
-                      child: EmptyView(),
-                    )
-                  : ListView.separated(
-                      itemCount: _keywords.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return DividerLineView();
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        return _keyWordView(_keywords[index]);
-                      }),
-            ))
+            _sortView(),
+            Container(
+                height: double.infinity,
+                margin:
+                    EdgeInsets.only(top: ScreenUtil.instance.setHeight(210.0)),
+                child: _goods == null || _goods.length == 0
+                    ? EmptyView()
+                    : GridView.builder(
+                        itemCount: _goods.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 1.1,
+                            crossAxisSpacing:
+                                ScreenUtil.instance.setWidth(10.0),
+                            mainAxisSpacing:
+                                ScreenUtil.instance.setHeight(10.0),
+                            crossAxisCount: 2),
+                        itemBuilder: (BuildContext context, int index) {
+                          return getGoodsItemView(_goods[index]);
+                        }))
           ],
         ),
       ),
     );
+  }
+
+  Widget _sortView() {
+    return Container(
+      margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(100.0)),
+      height: ScreenUtil.instance.setHeight(100.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+              flex: 1,
+              child: InkWell(
+                onTap: () => _comprehensive(),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border(
+                          right: BorderSide(
+                              color: Colors.deepOrangeAccent,
+                              width: ScreenUtil.instance.setWidth(1.0)))),
+                  alignment: Alignment.center,
+                  child: Text(
+                    Strings.COMPREHENSIVE,
+                    style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                  ),
+                ),
+              )),
+          Expanded(
+              flex: 1,
+              child: Container(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      Strings.SEARCH_GOODS_PRICE,
+                      style: TextStyle(
+                          fontSize: ScreenUtil.instance.setSp(26.0),
+                          color: Colors.black54),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            left: ScreenUtil.instance.setWidth(10.0))),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        InkWell(
+                          onTap: () => _priveSort(1),
+                          child: Container(
+                            height: ScreenUtil.instance.setHeight(50.0),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.keyboard_arrow_up,
+                              size: ScreenUtil.instance.setHeight(30.0),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () => _priveSort(2),
+                          child: Container(
+                            height: ScreenUtil.instance.setHeight(50.0),
+                            alignment: Alignment.center,
+                            child: Icon(
+                              Icons.keyboard_arrow_down,
+                              size: ScreenUtil.instance.setHeight(30.0),
+                            ),
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ))
+        ],
+      ),
+    );
+  }
+
+  //点击综合
+  _comprehensive() {
+    _sortName = Strings.SORT_NAME;
+    _orderType = Strings.DESC;
+    _sort();
+  }
+
+  _priveSort(int type) {
+    _sortName = Strings.SORT_RETAIL_PRICE;
+    _orderType = type == 1 ? Strings.ASC : Strings.DESC;
+    _sort();
+  }
+
+  _sort() {
+    FocusScope.of(context).requestFocus(FocusNode()); //隐藏键盘
+    var parameters = {
+      "keyword": _editingController.text,
+      "page": _page,
+      "limit": _limit,
+      "sort": _sortName,
+      "order": _orderType
+    };
+    _goodsService.getCategoryGoodsListData(parameters, (onSuccessList) {
+      setState(() {
+        _goods = onSuccessList;
+      });
+    }, onFail: (error) {
+      ToastUtil.showToast(error);
+    });
   }
 
   _searchKeyWords() {
@@ -109,14 +224,64 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
     });
   }
 
+  _goGooodsDetail(int goodsId) {
+    NavigatorUtils.goGoodsDetails(context, goodsId);
+  }
+
+  Widget getGoodsItemView(GoodsEntity goodsEntity) {
+    return InkWell(
+      onTap: () => _goGooodsDetail(goodsEntity.id),
+      child: Container(
+        alignment: Alignment.center,
+        child: SizedBox(
+            width: 320,
+            height: 460,
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  Image.network(
+                    goodsEntity.picUrl,
+                    fit: BoxFit.fill,
+                    height: 100,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                  ),
+                  Text(
+                    goodsEntity.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                  ),
+                  Text(
+                    "¥${goodsEntity.retailPrice}",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        fontSize: 14.0, color: Colors.deepOrangeAccent),
+                  ),
+                ],
+              ),
+            )),
+      ),
+    );
+  }
+
   Widget _keyWordView(String keyword) {
     return Container(
+      width: double.infinity,
       alignment: Alignment.centerLeft,
+      padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
       height: ScreenUtil.instance.setHeight(80.0),
-      child: Text(
-        keyword,
-        style: TextStyle(
-            color: Colors.black54, fontSize: ScreenUtil.instance.setSp(26.0)),
+      child: InkWell(
+        child: Text(
+          keyword,
+          style: TextStyle(
+              color: Colors.black54, fontSize: ScreenUtil.instance.setSp(26.0)),
+        ),
       ),
     );
   }

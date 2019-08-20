@@ -42,7 +42,7 @@ class GoodsService {
       var response = await HttpUtil.instance
           .get(Api.GOODS_LIST_URL, parameters: parameters);
       if (response['errno'] == 0) {
-        responseList = response['data']['list'];
+        responseList = response['data']['goods'];
         GoodsListEntity goodsListEntitys =
             GoodsListEntity.fromJson(responseList);
         onSuccessList(goodsListEntitys.goodsEntitys);

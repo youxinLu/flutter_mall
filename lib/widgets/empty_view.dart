@@ -5,8 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class EmptyView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return  Center(
+    return Container(
+      width: double.maxFinite,
+      height: double.maxFinite,
+      alignment: Alignment.center,
+      child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Image.asset(
@@ -15,8 +20,8 @@ class EmptyView extends StatelessWidget {
                 width: ScreenUtil.instance.setWidth(120.0),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(top: ScreenUtil.instance.setHeight(20.0)),
+                padding: EdgeInsets.only(
+                    top: ScreenUtil.instance.setHeight(20.0)),
               ),
               Text(
                 Strings.NO_DATA_TEXT,
@@ -26,6 +31,7 @@ class EmptyView extends StatelessWidget {
               )
             ],
           ),
-        );
+      ),
+    );
   }
 }
