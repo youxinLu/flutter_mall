@@ -97,4 +97,9 @@ class NavigatorUtils {
         context, Routers.mineOrderDetail + "?orderId=$orderId&token=$token",
         transition: TransitionType.inFromRight);
   }
+
+  static goSearchGoods(BuildContext context) {
+    Application.router.navigateTo(context, Routers.searchGoods,
+        transition: TransitionType.inFromRight);
+  }
 }

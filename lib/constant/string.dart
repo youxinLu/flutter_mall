@@ -125,4 +125,6 @@ class Strings {
   static const String MINE_ORDER_DELETE_TIPS="是否确认删除此订单";
   static const String MINE_ORDER_CANCEL_TIPS="是否确认取消此订单";
   static const String MINE_ORDER_ALREADY_CANCEL="已取消";
+  static const String GOODS_SEARCH_HINT="请输入关键词";
+
 }

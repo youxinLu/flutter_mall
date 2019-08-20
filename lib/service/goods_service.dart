@@ -7,7 +7,7 @@ import 'package:mall/constant/string.dart';
 import 'package:dio/dio.dart';
 import 'package:mall/entity/cart_list_entity.dart';
 import 'package:mall/entity/fill_in_order_entity.dart';
-
+import 'package:mall/entity/search_key_entity.dart';
 typedef OnSuccessList<T>(List<T> banners);
 typedef OnFail(String message);
 typedef OnSuccess<T>(T onSuccess);
@@ -188,6 +188,22 @@ class GoodsService {
           .post(Api.SUBMIT_ORDER, parameters: parameters, options: options);
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future searchGoods(
+      Map<String, dynamic> parameters,OnSuccessList onSuccessList, OnFail onFail,) async {
+    try {
+      var response = await HttpUtil.instance
+          .get(Api.SEARCH_GOODS, parameters: parameters);
+      if (response['errno'] == 0) {
+        onSuccessList(SearchKeyEntity.fromJson(response["data"]).keyword);
       } else {
         onFail(response['errmsg']);
       }

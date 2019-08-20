@@ -14,7 +14,7 @@ import 'package:mall/page/home/new_product.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:mall/utils/navigator_util.dart';
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
     _getBannerData();
     _getCategory();
     _getCoupon();
-    _getGroupBuy();
+    //_getGroupBuy();
     _getNewProduct();
     _getHotProduct();
     print("homePage_initState");
@@ -103,7 +103,10 @@ class _HomePageState extends State<HomePage> {
       });
     });
   }
-
+  _goSearchGoods()
+  {
+    NavigatorUtils.goSearchGoods(context);
+  }
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
@@ -118,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                 Icons.search,
                 color: Colors.white,
               ),
-              onPressed: null)
+              onPressed: ()=>_goSearchGoods())
         ],
       ),
       body: bannerEntitys == null || bannerEntitys.length == 0
@@ -149,12 +152,12 @@ class _HomePageState extends State<HomePage> {
                     child: Text(Strings.COUPON_AREA),
                   ),
                   CouponView(couponEntityList),
-                  Container(
-                    height: 40.0,
-                    alignment: Alignment.center,
-                    child: Text(Strings.GROUP_BUG),
-                  ),
-                  GroupBuyView(groupBuyList),
+//                  Container(
+//                    height: 40.0,
+//                    alignment: Alignment.center,
+//                    child: Text(Strings.GROUP_BUG),
+//                  ),
+//                  GroupBuyView(groupBuyList),
                   Container(
                     height: 40.0,
                     alignment: Alignment.center,

@@ -17,7 +17,7 @@ import 'package:mall/page/mine/collect.dart';
 import 'package:mall/page/mine/about.dart';
 import 'package:mall/page/mine/order.dart';
 import 'package:mall/page/mine/order_detail.dart';
-
+import 'package:mall/page/goods/search_goods.dart';
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return MallMainView();
@@ -101,3 +101,9 @@ var orderDetailHandler = Handler(
   String token = parameters["token"].first;
   return OrderDetail(orderId,token);
 });
+
+var searchGoodsHandler= Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+
+      return SearchGoodsView();
+    });
