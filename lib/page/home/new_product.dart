@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mall/entity/product_entity.dart';
+import 'package:mall/entity/home_entity.dart';
 
 class ProductView extends StatelessWidget {
-  List<ProductEntity> productList;
+  List<Goods> productList;
 
   ProductView(this.productList);
 
@@ -22,7 +22,7 @@ class ProductView extends StatelessWidget {
     );
   }
 
-  Widget _getGridViewItem(ProductEntity productEntity) {
+  Widget _getGridViewItem(Goods productEntity) {
     return Container(
       child: Card(
         elevation: 2.0,

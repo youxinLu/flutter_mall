@@ -6,10 +6,13 @@ import 'package:mall/entity/coupon_entity.dart';
 import 'package:mall/entity/group_buy_entity.dart';
 import 'package:mall/entity/product_entity.dart';
 import 'package:mall/constant/string.dart';
+import 'package:mall/entity/home_entity.dart';
 
 typedef OnSuccessList<T>(List<T> banners);
 
 typedef OnFail(String message);
+
+typedef OnSuccess<T>(T successData);
 
 class HomeService {
   Future getBannerData(OnSuccessList onSuccessList, {OnFail onFail}) async {
@@ -112,6 +115,21 @@ class HomeService {
         ProductListEntity productListEntity =
             ProductListEntity.fromJson(responseList);
         onSuccessList(productListEntity.productEntitys);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future queryHomeData(OnSuccess onSuccess, OnFail onFail) async {
+    try {
+      var response = await HttpUtil.instance.get(Api.HOME_URL);
+      if (response['errno'] == 0) {
+        HomeEntity homeEntity = HomeEntity.fromJson(response['data']);
+        onSuccess(homeEntity);
       } else {
         onFail(response['errmsg']);
       }

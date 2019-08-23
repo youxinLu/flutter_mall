@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mall/entity/group_buy_entity.dart';
-
+import 'package:mall/entity/home_entity.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class GroupBuyView extends StatelessWidget {
-  List<GroupBuyEntity> groupEntitys;
+  List<Groupon> groupEntitys;
 
   GroupBuyView(this.groupEntitys);
 
@@ -17,20 +17,20 @@ class GroupBuyView extends StatelessWidget {
         });
   }
 
-  Widget _getGroupBuyItem(GroupBuyEntity groupBuyEntity) {
+  Widget _getGroupBuyItem(Groupon groupBuyEntity) {
     return Container(
-      height: 100.0,
+      height: ScreenUtil.instance.setHeight(200.0),
       child: Card(
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image.network(
               groupBuyEntity.picUrl,
-              width: 60.0,
-              height: 60.0,
+              width: ScreenUtil.instance.setWidth(120.0),
+              height: ScreenUtil.instance.setWidth(120.0),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 10.0),
+              padding: EdgeInsets.only(left:  ScreenUtil.instance.setWidth(20.0),),
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,36 +38,36 @@ class GroupBuyView extends StatelessWidget {
               children: <Widget>[
                 Text(
                   groupBuyEntity.name,
-                  style: TextStyle(fontSize: 16.0, color: Colors.black87),
+                  style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0), color: Colors.black87),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top:  ScreenUtil.instance.setWidth(10.0)),
                 ),
                 Text(
                   groupBuyEntity.brief,
-                  style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                  style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0), color: Colors.black54),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top: ScreenUtil.instance.setWidth(10.0)),
                 ),
                 Row(
                   children: <Widget>[
                     Text(
                       "原价${groupBuyEntity.retailPrice}",
                       style: TextStyle(
-                          fontSize: 12.0,
+                          fontSize:ScreenUtil.instance.setSp(24.0),
                           color: Colors.grey[850],
                           decoration: TextDecoration.lineThrough,
                           decorationStyle: TextDecorationStyle.dashed),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 20.0),
+                      padding: EdgeInsets.only(left:  ScreenUtil.instance.setWidth(10.0)),
                     ),
                     Text(
                       "现价${groupBuyEntity.retailPrice}",
                       style: TextStyle(
                           color: Colors.red,
-                          fontSize: 12.0,
+                          fontSize:ScreenUtil.instance.setSp(24.0),
                           fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -80,8 +80,8 @@ class GroupBuyView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all(4.0),
-                  height: 24.0,
+                  padding: EdgeInsets.all(ScreenUtil.instance.setWidth(10.0)),
+                  height: ScreenUtil.instance.setHeight(48.0),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       border: new Border.all(
@@ -91,13 +91,13 @@ class GroupBuyView extends StatelessWidget {
                       color: Colors.white),
                   child: Text(
                     "${groupBuyEntity.grouponMember}成团",
-                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    style: TextStyle(color: Colors.red, fontSize: ScreenUtil.instance.setSp(26.0)),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(right: 10.0)),
+                Padding(padding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(20.0))),
                 Container(
-                  padding: EdgeInsets.all(4.0),
-                  height: 24.0,
+                  padding: EdgeInsets.all(ScreenUtil.instance.setWidth(10.0)),
+                  height: ScreenUtil.instance.setHeight(48.0),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       border: new Border.all(color: Colors.red, width: 0.5),
@@ -106,10 +106,10 @@ class GroupBuyView extends StatelessWidget {
                       color: Colors.white),
                   child: Text(
                     "立减${groupBuyEntity.grouponMember}",
-                    style: TextStyle(color: Colors.red, fontSize: 14.0),
+                    style: TextStyle(color: Colors.red, fontSize: ScreenUtil.instance.setSp(26.0)),
                   ),
                 ),
-                Padding(padding: EdgeInsets.only(right: 10.0))
+                Padding(padding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(20.0)))
               ],
             )),
           ],

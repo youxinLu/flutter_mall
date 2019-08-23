@@ -1,32 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:mall/entity/coupon_entity.dart';
-import 'package:mall/constant/string.dart';
+import 'package:mall/entity/home_entity.dart';
+import "package:flutter_screenutil/flutter_screenutil.dart";
 
 class CouponView extends StatelessWidget {
-  List<CouponEntity> couponList;
+  List<Coupon> couponList;
 
   CouponView(this.couponList);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child:
-//      Column(
-//        children: <Widget>[
-//          Container(
-//            height: 40.0,
-//            child: Text(Strings.COUPON_AREA),
-//          ),
-//            couponList == null || couponList.length == 0
-//                ? Text("no data")
-//                : ListView.builder(
-//                    physics: NeverScrollableScrollPhysics(),
-//                    shrinkWrap: true,
-//                    itemCount: couponList.length,
-//                    itemBuilder: (BuildContext context, int index) {
-//                      return _getCouponView(couponList[index]);
-//                    })
-        ListView.builder(
+        child: ListView.builder(
             physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: couponList.length,
@@ -38,25 +22,26 @@ class CouponView extends StatelessWidget {
         );
   }
 
-  Widget _getCouponView(CouponEntity couponEntity) {
+  Widget _getCouponView(Coupon couponEntity) {
     return Container(
-      height: 100.0,
+      height: ScreenUtil.instance.setHeight(200.0),
       child: Card(
-        elevation: 2.0,
-        margin: EdgeInsets.all(6.0),
+        margin: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
         child: Row(
           children: <Widget>[
             Container(
               alignment: Alignment.center,
-              width: 100.0,
+              width: ScreenUtil.instance.setWidth(200.0),
               child: Text(
                 "${couponEntity.discount}元",
-                style: TextStyle(fontSize: 14.0, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: ScreenUtil.instance.setSp(26.0),
+                    color: Colors.grey),
               ),
             ),
             Divider(
               color: Colors.grey,
-              height: 100.0,
+              height: ScreenUtil.instance.setHeight(200.0),
             ),
             Expanded(
               child: Container(
@@ -65,11 +50,13 @@ class CouponView extends StatelessWidget {
                   children: <Widget>[
                     Text(couponEntity.name),
                     Padding(
-                      padding: EdgeInsets.only(top: 5.0),
+                      padding: EdgeInsets.only(
+                          top: ScreenUtil.instance.setWidth(10.0)),
                     ),
                     Text("满${couponEntity.min}使用"),
                     Padding(
-                      padding: EdgeInsets.only(top: 5.0),
+                      padding: EdgeInsets.only(
+                          top: ScreenUtil.instance.setWidth(10.0)),
                     ),
                     Text("有效期${couponEntity.days}天"),
                   ],

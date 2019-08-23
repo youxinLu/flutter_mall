@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mall/entity/category_entity.dart';
-
+import 'package:mall/entity/home_entity.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CategoryMenu extends StatelessWidget {
-  List<CategoryEntity> categoryList;
+  List<Categorie> categoryList;
 
   CategoryMenu(this.categoryList);
 
@@ -10,18 +10,6 @@ class CategoryMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         child:
-//        categoryList == null || categoryList.length == 0
-//            ? Container(
-//                color: Colors.grey,
-//                alignment: Alignment.center,
-//                child: Text(
-//                  Strings.NO_DATA_TEXT,
-//                  style: TextStyle(
-//                    color: Colors.white,
-//                    fontSize: 16.0,
-//                  ),
-//                ),
-//              ):
              GridView.builder(
               physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -34,27 +22,27 @@ class CategoryMenu extends StatelessWidget {
                     //单个子Widget的水平最大宽度
                     crossAxisCount: 5,
                     //水平单个子Widget之间间距
-                    mainAxisSpacing: 20.0,
+                    mainAxisSpacing: ScreenUtil.instance.setWidth(20.0),
                     //垂直单个子Widget之间间距
-                    crossAxisSpacing: 20.0),
+                    crossAxisSpacing:ScreenUtil.instance.setWidth(20.0),),
               ));
   }
-  Widget _getGridViewItem(CategoryEntity categoryEntity) {
+  Widget _getGridViewItem(Categorie categoryEntity) {
     return Center(
       child: Column(
         children: <Widget>[
           Image.network(
             categoryEntity.iconUrl,
-            width: 30,
-            height: 30,
+            width: ScreenUtil.instance.setWidth(60.0),
+            height: ScreenUtil.instance.setWidth(60.0),
             fit: BoxFit.fill,
           ),
           Padding(
-            padding: EdgeInsets.only(top: 5.0),
+            padding: EdgeInsets.only(top: ScreenUtil.instance.setWidth(10.0)),
           ),
           Text(
             categoryEntity.name,
-            style: TextStyle(fontSize: 14.0, color: Colors.black87),
+            style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0), color: Colors.black87),
           )
         ],
       ),

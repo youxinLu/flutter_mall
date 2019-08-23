@@ -1,10 +1,9 @@
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:mall/entity/banner_entity.dart';
 import 'package:mall/constant/string.dart';
-
+import 'package:mall/entity/home_entity.dart';
 class SwiperView extends StatelessWidget {
-  List<BannerEntity> bannerData = new List();
+  List<MallBanner> bannerData = new List();
   int size;
   double viewHeight;
 
@@ -14,6 +13,7 @@ class SwiperView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: viewHeight,
+      width: double.infinity,
       child: bannerData == null || bannerData.length == 0
           ? Container(
               height: 200,
@@ -32,7 +32,7 @@ class SwiperView extends StatelessWidget {
               autoplay: true,
               itemBuilder: (BuildContext buildContext, int index) {
                 print(bannerData[index].url);
-                return Image.network(bannerData[index].url);
+                return Image.network(bannerData[index].url,fit: BoxFit.cover,);
               },
               duration: 10000,
               pagination: SwiperPagination(

@@ -1,5 +1,6 @@
 class Api {
   static const String BASE_URL = 'http://192.168.190.84:8080';
+  static const String HOME_URL=BASE_URL+'/mall/home/index';//首页数据
   static const String BANNER_URL = BASE_URL + '/mall/home/banner'; //获取首页banner图
   static const String CATEGORY_URL = BASE_URL + '/mall/home/categories'; //获取首页分类
   static const String COUPON_URL=BASE_URL+'/mall/home/couponList';//优惠券

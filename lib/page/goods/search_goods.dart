@@ -211,6 +211,7 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
   }
 
   _searchKeyWords() {
+
     var parameters = {"keyword": _editingController.text};
     _goodsService.searchGoods(parameters, (success) {
       setState(() {
