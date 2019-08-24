@@ -18,6 +18,8 @@ import 'package:mall/page/mine/about.dart';
 import 'package:mall/page/mine/order.dart';
 import 'package:mall/page/mine/order_detail.dart';
 import 'package:mall/page/goods/search_goods.dart';
+import 'package:mall/page/goods/project_selection_detail.dart';
+
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   return MallMainView();
@@ -99,11 +101,16 @@ var orderDetailHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   int orderId = int.parse(parameters["orderId"].first);
   String token = parameters["token"].first;
-  return OrderDetail(orderId,token);
+  return OrderDetail(orderId, token);
 });
 
-var searchGoodsHandler= Handler(
+var searchGoodsHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  return SearchGoodsView();
+});
 
-      return SearchGoodsView();
-    });
+var projectSelectionDetailHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+  var id = int.parse(parameters["id"].first);
+  return ProjectSelectionDetailView(id);
+});

@@ -21,15 +21,15 @@ class _FutureBuilderWidgetState extends State<FutureBuilderWidget> {
       builder: (BuildContext context, AsyncSnapshot asyncSnapshot) {
         switch (asyncSnapshot.connectionState) {
           case ConnectionState.none:
-            break;
           case ConnectionState.waiting:
           case ConnectionState.active:
             return widget.loadingWidget;
           case ConnectionState.done:
             if (asyncSnapshot.hasError) {
               return widget.errorWidget;
+            }else {
+              return widget.resultWidget;
             }
-            return widget.resultWidget;
         }
       },
     );

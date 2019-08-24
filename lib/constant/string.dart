@@ -4,7 +4,8 @@ class Strings {
   static const String GROUP_BUG = "团购专区";
   static const String NEW_PRODUCT = "新品";
   static const String HOT_PRODUCT = "热卖产品";
-  static const String PROJECT_SELECTIONS="专题精选";
+  static const String PROJECT_SELECTIONS = "专题精选";
+  static const String BRAND = "品牌制造商直供";
   static const String HOME = "首页";
   static const String CATEGORY = "分类";
   static const String SHOP_CAR = "购物车";
@@ -133,6 +134,8 @@ class Strings {
   static const String SORT = "sort";
   static const String SORT_RETAIL_PRICE = "retail_price";
   static const String SORT_NAME = "name";
-  static const String ASC="asc";
-  static const String DESC="desc";
+  static const String ASC = "asc";
+  static const String DESC = "desc";
+  static const String PROJECT_SELECTION_DETAIL = "专题详情";
+  static const String RECOMMEND_PROJECT_SELECTION = "推荐专题";
 }

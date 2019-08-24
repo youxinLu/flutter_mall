@@ -102,4 +102,10 @@ class NavigatorUtils {
     Application.router.navigateTo(context, Routers.searchGoods,
         transition: TransitionType.inFromRight);
   }
+
+  static goProjectSelectionDetail(BuildContext context, int id,bool replace) {
+    Application.router.navigateTo(
+        context, Routers.projectSelectionDetail + "?id=$id",replace: replace,
+        transition: TransitionType.inFromRight);
+  }
 }

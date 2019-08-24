@@ -17,8 +17,6 @@ class CouponView extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return _getCouponView(couponList[index]);
             })
-        //],
-        //),
         );
   }
 

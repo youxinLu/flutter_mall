@@ -8,6 +8,9 @@ import 'package:dio/dio.dart';
 import 'package:mall/entity/cart_list_entity.dart';
 import 'package:mall/entity/fill_in_order_entity.dart';
 import 'package:mall/entity/search_key_entity.dart';
+import 'package:mall/entity/project_selection_detail_entity.dart';
+import 'package:mall/entity/project_selection_recommed_entity.dart';
+
 typedef OnSuccessList<T>(List<T> banners);
 typedef OnFail(String message);
 typedef OnSuccess<T>(T onSuccess);
@@ -171,7 +174,7 @@ class GoodsService {
           .get(Api.CART_BUY, parameters: parameters, options: options);
       if (response['errno'] == 0) {
         FillInOrderEntity fillInOrderEntity =
-        FillInOrderEntity.fromJson(response['data']);
+            FillInOrderEntity.fromJson(response['data']);
         onSuccess(fillInOrderEntity);
       } else {
         onFail(response['errmsg']);
@@ -181,8 +184,13 @@ class GoodsService {
       onFail(Strings.SERVER_EXCEPTION);
     }
   }
-  Future submitOrder( Options options,
-      Map<String, dynamic> parameters,OnSuccess onSuccess, OnFail onFail,) async {
+
+  Future submitOrder(
+    Options options,
+    Map<String, dynamic> parameters,
+    OnSuccess onSuccess,
+    OnFail onFail,
+  ) async {
     try {
       var response = await HttpUtil.instance
           .post(Api.SUBMIT_ORDER, parameters: parameters, options: options);
@@ -198,12 +206,53 @@ class GoodsService {
   }
 
   Future searchGoods(
-      Map<String, dynamic> parameters,OnSuccessList onSuccessList, OnFail onFail,) async {
+    Map<String, dynamic> parameters,
+    OnSuccessList onSuccessList,
+    OnFail onFail,
+  ) async {
     try {
-      var response = await HttpUtil.instance
-          .get(Api.SEARCH_GOODS, parameters: parameters);
+      var response =
+          await HttpUtil.instance.get(Api.SEARCH_GOODS, parameters: parameters);
       if (response['errno'] == 0) {
         onSuccessList(SearchKeyEntity.fromJson(response["data"]).keyword);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future projectSelectionDetail(
+    Map<String, dynamic> parameters,
+    OnSuccess onSuccess,
+    OnFail onFail,
+  ) async {
+    try {
+      var response = await HttpUtil.instance
+          .get(Api.PROJECT_SELECTION_DETAIL, parameters: parameters);
+      if (response['errno'] == 0) {
+        onSuccess(ProjectSelectionDetailEntity.fromJson(response["data"]));
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
+
+  Future projectSelectionRecommend(
+    Map<String, dynamic> parameters,
+    OnSuccess onSuccess,
+    OnFail onFail,
+  ) async {
+    try {
+      var response = await HttpUtil.instance
+          .get(Api.PROJECT_SELECTION_RECOMMEND, parameters: parameters);
+      if (response['errno'] == 0) {
+        onSuccess(ProjectSelectionRecommedEntity.fromJson(response["data"]));
       } else {
         onFail(response['errmsg']);
       }

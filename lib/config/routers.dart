@@ -17,9 +17,10 @@ class Routers {
   static String mineFootprint = "/mineFootprint";
   static String mineCollect = "/mineCollect";
   static String aboutUs = "/aboutUs";
-  static String mineOrder="/mineOrder";
-  static String mineOrderDetail="/mineOrderDetail";
-  static String searchGoods="searchGoods";
+  static String mineOrder = "/mineOrder";
+  static String mineOrderDetail = "/mineOrderDetail";
+  static String searchGoods = "/searchGoods";
+  static String projectSelectionDetail = "/projectSelectionDetail";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = Handler(handlerFunc:
@@ -44,5 +45,7 @@ class Routers {
     router.define(mineOrder, handler: orderHandler);
     router.define(mineOrderDetail, handler: orderDetailHandler);
     router.define(searchGoods, handler: searchGoodsHandler);
+    router.define(projectSelectionDetail,
+        handler: projectSelectionDetailHandler);
   }
 }

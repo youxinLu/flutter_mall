@@ -40,4 +40,7 @@ class Api {
   static const String MINE_ORDER_CANCEL=BASE_URL+"/mall/order/cancel";//取消订单
   static const String MINE_ORDER_DELETE=BASE_URL+"/mall/order/delete";//取消订单
   static const String SEARCH_GOODS=BASE_URL+'/mall/search/helper';//商品搜索
+  static const String PROJECT_SELECTION_DETAIL=BASE_URL+'/mall/topic/detail';//专题精选详情
+  static const String PROJECT_SELECTION_RECOMMEND=BASE_URL+'/mall/topic/related';//推荐
+
 }

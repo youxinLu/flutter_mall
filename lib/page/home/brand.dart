@@ -2,45 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/constant/string.dart';
-import 'package:mall/utils/navigator_util.dart';
 
-class ProjectSelectionView extends StatefulWidget {
-  List<ProjectSelection> projectSelections;
+class BrandView extends StatefulWidget {
+  List<Brand> brands;
 
-  ProjectSelectionView(this.projectSelections);
+  BrandView(this.brands);
 
   @override
-  _ProjectSelectionViewState createState() => _ProjectSelectionViewState();
+  _BrandViewState createState() => _BrandViewState();
 }
 
-class _ProjectSelectionViewState extends State<ProjectSelectionView> {
+class _BrandViewState extends State<BrandView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil.instance.setHeight(400.0),
       child: ListView.builder(
-          itemCount: widget.projectSelections.length,
-          scrollDirection: Axis.horizontal,
+          itemCount: widget.brands.length,
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
-            return _itemView(widget.projectSelections[index]);
+            return _itemView(widget.brands[index]);
           }),
     );
   }
 
-  Widget _itemView(ProjectSelection projectSelections) {
-    return Container(
-      width: ScreenUtil.instance.setWidth(600.0),
-      child: Card(
+  Widget _itemView(Brand brand) {
+    return Card(
+      child: Container(
+      
         child: InkWell(
-          onTap: () => _goDetail(projectSelections.id),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
+                width: double.infinity,
                 child: Image.network(
-                  projectSelections.picUrl,
+                  brand.picUrl,
                   fit: BoxFit.cover,
-                  width: ScreenUtil.instance.setWidth(600.0),
                   height: ScreenUtil.instance.setHeight(260.0),
                 ),
               ),
@@ -49,13 +47,27 @@ class _ProjectSelectionViewState extends State<ProjectSelectionView> {
                       top: ScreenUtil.instance.setHeight(10.0))),
               Container(
                   padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
                   child: Text(
-                    projectSelections.title,
+                    brand.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                         color: Colors.black54,
+                        fontSize: ScreenUtil.instance.setSp(28.0)),
+                  )),
+              Padding(
+                  padding:
+                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
+              Container(
+                  padding:
+                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0)),
+                  child: Text(
+                    brand.desc,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                        color: Colors.grey,
                         fontSize: ScreenUtil.instance.setSp(26.0)),
                   )),
               Padding(
@@ -63,23 +75,9 @@ class _ProjectSelectionViewState extends State<ProjectSelectionView> {
                       EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
               Container(
                   padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0),bottom: ScreenUtil.instance.setHeight(20.0)),
                   child: Text(
-                    projectSelections.subtitle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0)),
-                  )),
-              Padding(
-                  padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
-              Container(
-                  padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
-                  child: Text(
-                    Strings.DOLLAR + "${projectSelections.price}",
+                    Strings.DOLLAR + "${brand.floorPrice}",
                     style: TextStyle(
                         color: Colors.deepOrangeAccent,
                         fontSize: ScreenUtil.instance.setSp(26.0)),
@@ -89,9 +87,5 @@ class _ProjectSelectionViewState extends State<ProjectSelectionView> {
         ),
       ),
     );
-  }
-
-  _goDetail(int id) {
-    NavigatorUtils.goProjectSelectionDetail(context, id, false);
   }
 }
