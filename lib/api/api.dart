@@ -1,5 +1,7 @@
 class Api {
-  static const String BASE_URL = 'http://192.168.190.84:8080';
+  //static const String BASE_URL = 'http://192.168.190.84:8080/mall-app';
+  //static const String BASE_URL = 'http://192.168.190.84:8080';
+  static const String BASE_URL = 'http://luyouxin.xyz:8080/mall-app';
   static const String HOME_URL=BASE_URL+'/mall/home/index';//首页数据
   static const String BANNER_URL = BASE_URL + '/mall/home/banner'; //获取首页banner图
   static const String CATEGORY_URL = BASE_URL + '/mall/home/categories'; //获取首页分类
@@ -42,5 +44,6 @@ class Api {
   static const String SEARCH_GOODS=BASE_URL+'/mall/search/helper';//商品搜索
   static const String PROJECT_SELECTION_DETAIL=BASE_URL+'/mall/topic/detail';//专题精选详情
   static const String PROJECT_SELECTION_RECOMMEND=BASE_URL+'/mall/topic/related';//推荐
+  static const String CATEGORY_LIST="/mall/goods/category";//获取分类下的子类
 
 }

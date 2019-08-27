@@ -19,6 +19,8 @@ import 'package:mall/page/mine/order.dart';
 import 'package:mall/page/mine/order_detail.dart';
 import 'package:mall/page/goods/search_goods.dart';
 import 'package:mall/page/goods/project_selection_detail.dart';
+import 'package:mall/widgets/webview.dart';
+import 'package:mall/utils/fluro_convert_utils.dart';
 
 var homeHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
@@ -113,4 +115,13 @@ var projectSelectionDetailHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
   var id = int.parse(parameters["id"].first);
   return ProjectSelectionDetailView(id);
+});
+
+var webViewHandler = Handler(
+    handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
+//  var title = parameters["title"].first;
+//  var url = parameters["url"].first;
+  var title = FluroConvertUtil.fluroCnParamsDecode(parameters["title"].first);
+  var url = FluroConvertUtil.fluroCnParamsDecode(parameters["url"].first);
+  return WebViewPage(url, title);
 });

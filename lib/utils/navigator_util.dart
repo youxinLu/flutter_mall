@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mall/config/application.dart';
 import 'package:mall/config/routers.dart';
 import 'package:mall/utils/string_util.dart';
+import 'package:mall/utils/fluro_convert_utils.dart';
 
 class NavigatorUtils {
   static goMallMainPage(BuildContext context) {
@@ -103,9 +104,20 @@ class NavigatorUtils {
         transition: TransitionType.inFromRight);
   }
 
-  static goProjectSelectionDetail(BuildContext context, int id,bool replace) {
+  static goProjectSelectionDetail(BuildContext context, int id, bool replace) {
     Application.router.navigateTo(
-        context, Routers.projectSelectionDetail + "?id=$id",replace: replace,
+        context, Routers.projectSelectionDetail + "?id=$id",
+        replace: replace, transition: TransitionType.inFromRight);
+  }
+
+  static goWebView(BuildContext context, String title, String url) {
+    var titleName = FluroConvertUtil.fluroCnParamsEncode(title);
+    var urlEncode = FluroConvertUtil.fluroCnParamsEncode(url);
+    // Application.router.navigateTo(
+    //        context, Routers.webView + "?title=${Uri.encodeComponent(title)}&url=${Uri.encodeComponent(url)}",
+    //        transition: TransitionType.inFromRight);
+    Application.router.navigateTo(
+        context, Routers.webView + "?title=$titleName&&url=$urlEncode",
         transition: TransitionType.inFromRight);
   }
 }

@@ -39,9 +39,7 @@ class _GoodsListState extends State<GoodsList> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
-    print("销毁GoodsList");
   }
 
   @override

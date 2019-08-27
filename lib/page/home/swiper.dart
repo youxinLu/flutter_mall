@@ -2,6 +2,8 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/entity/home_entity.dart';
+import 'package:mall/utils/navigator_util.dart';
+
 class SwiperView extends StatelessWidget {
   List<MallBanner> bannerData = new List();
   int size;
@@ -22,6 +24,10 @@ class SwiperView extends StatelessWidget {
               child: Text(Strings.NO_DATA_TEXT),
             )
           : Swiper(
+              onTap: (index) {
+                NavigatorUtils.goWebView(
+                    context, bannerData[index].name, bannerData[index].link);
+              },
               itemCount: bannerData.length,
               scrollDirection: Axis.horizontal,
               //滚动方向，设置为Axis.vertical如果需要垂直滚动
@@ -32,7 +38,10 @@ class SwiperView extends StatelessWidget {
               autoplay: true,
               itemBuilder: (BuildContext buildContext, int index) {
                 print(bannerData[index].url);
-                return Image.network(bannerData[index].url,fit: BoxFit.cover,);
+                return Image.network(
+                  bannerData[index].url,
+                  fit: BoxFit.cover,
+                );
               },
               duration: 10000,
               pagination: SwiperPagination(
