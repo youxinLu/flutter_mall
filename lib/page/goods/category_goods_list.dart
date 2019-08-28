@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mall/entity/sub_category_entity.dart';
 import 'package:mall/service/goods_service.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/page/goods/goods_list.dart';
+import 'package:mall/service/category_service.dart';
+import 'package:mall/entity/category_title_entity.dart';
 
 class CategoryListView extends StatefulWidget {
   String categoryName;
@@ -22,18 +23,29 @@ class _CategoryListViewState extends State<CategoryListView>
   ScrollController _scrollController;
   TabController _tabController;
   GoodsService goodsService = GoodsService();
-  List<SubCategoryEntity> topCategoryEntitys = List();
+  CategoryService _categoryService = CategoryService();
+  CategoryTitleEntity _categoryTitleEntity;
+  List<BrotherCategory> brotherCategory = List();
   var categoryFuture;
+  var currentIndex = 0;
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    print("CategoryListView_initState");
-    categoryFuture = goodsService.getCategoryData({"id": widget.categoryId},
-        (subCategoryEntityList) {
-      topCategoryEntitys = subCategoryEntityList;
-    });
+    categoryFuture = _categoryService
+        .getCategoryTitle({"id": widget.categoryId}, (categoryTitles) {
+      _categoryTitleEntity = categoryTitles;
+      brotherCategory = _categoryTitleEntity.brotherCategory;
+      currentIndex = getCurrentIndex();
+    }, (error) {});
+  }
+
+  getCurrentIndex() {
+    for (int i = 0; i < brotherCategory.length; i++) {
+      if (brotherCategory[i].id == _categoryTitleEntity.currentCategory.id) {
+        return i;
+      }
+    }
   }
 
   @override
@@ -62,8 +74,8 @@ class _CategoryListViewState extends State<CategoryListView>
                 else
                   _scrollController = ScrollController();
                 _tabController = TabController(
-                    initialIndex: 0,
-                    length: topCategoryEntitys.length,
+                    initialIndex: currentIndex,
+                    length: brotherCategory.length,
                     vsync: this)
                   ..addListener(() {});
                 return getCategoryView();
@@ -92,7 +104,7 @@ class _CategoryListViewState extends State<CategoryListView>
 
   List<Widget> getTabBars() {
     List<Widget> tabBar = List();
-    for (var category in topCategoryEntitys) {
+    for (var category in brotherCategory) {
       tabBar.add(getTabBar(category));
     }
     return tabBar;
@@ -100,13 +112,13 @@ class _CategoryListViewState extends State<CategoryListView>
 
   List<Widget> getTabBarViews() {
     List<Widget> tabBarView = List();
-    for (var i = 0; i < topCategoryEntitys.length; i++) {
-      tabBarView.add(GoodsList(topCategoryEntitys[i].id));
+    for (var i = 0; i < brotherCategory.length; i++) {
+      tabBarView.add(GoodsList(brotherCategory[i].id));
     }
     return tabBarView;
   }
 
-  Widget getTabBar(SubCategoryEntity category) {
+  Widget getTabBar(BrotherCategory category) {
     return Tab(
       text: category.name,
     );

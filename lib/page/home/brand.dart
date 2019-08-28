@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/constant/string.dart';
+import 'package:mall/utils/navigator_util.dart';
 
 class BrandView extends StatefulWidget {
   List<Brand> brands;
@@ -26,11 +27,15 @@ class _BrandViewState extends State<BrandView> {
     );
   }
 
+  _goBrandDetail(Brand brand) {
+    NavigatorUtils.goBrandDetail(context, brand.name, brand.id);
+  }
+
   Widget _itemView(Brand brand) {
     return Card(
       child: Container(
-      
         child: InkWell(
+          onTap: () => _goBrandDetail(brand),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -74,8 +79,9 @@ class _BrandViewState extends State<BrandView> {
                   padding:
                       EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
               Container(
-                  padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(20.0),bottom: ScreenUtil.instance.setHeight(20.0)),
+                  padding: EdgeInsets.only(
+                      left: ScreenUtil.instance.setWidth(20.0),
+                      bottom: ScreenUtil.instance.setHeight(20.0)),
                   child: Text(
                     Strings.DOLLAR + "${brand.floorPrice}",
                     style: TextStyle(

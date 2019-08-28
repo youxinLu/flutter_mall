@@ -44,6 +44,8 @@ class Api {
   static const String SEARCH_GOODS=BASE_URL+'/mall/search/helper';//商品搜索
   static const String PROJECT_SELECTION_DETAIL=BASE_URL+'/mall/topic/detail';//专题精选详情
   static const String PROJECT_SELECTION_RECOMMEND=BASE_URL+'/mall/topic/related';//推荐
-  static const String CATEGORY_LIST="/mall/goods/category";//获取分类下的子类
+  static const String CATEGORY_LIST=BASE_URL+"/mall/goods/category";//获取分类下的子类
+  static const String BRAND_DETAIL=BASE_URL+"/mall/brand/detail";//品牌制造商详情
+  static const String RECEIVE_COUPON=BASE_URL+"/mall/coupon/receive";//领取优惠券
 
 }

@@ -120,4 +120,11 @@ class NavigatorUtils {
         context, Routers.webView + "?title=$titleName&&url=$urlEncode",
         transition: TransitionType.inFromRight);
   }
+
+  static goBrandDetail(BuildContext context, String titleName, int id) {
+    var title = FluroConvertUtil.fluroCnParamsEncode(titleName);
+    Application.router.navigateTo(
+        context, Routers.brandDetail + "?titleName=$title&id=$id",
+        transition: TransitionType.inFromRight);
+  }
 }
