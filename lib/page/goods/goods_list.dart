@@ -45,11 +45,21 @@ class _GoodsListState extends State<GoodsList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: ObjectKey("${categoryId}"),
+//        key: ObjectKey("${categoryId}"),
         body: Container(
           child: Center(
-            child: goodsEntitys == null || goodsEntitys.length == 0
-                ? Center(
+            child: goodsEntitys != null && goodsEntitys.length!= 0
+                ? GridView.builder(
+                    itemCount: goodsEntitys == null ? 0 : goodsEntitys.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 6.0,
+                        crossAxisSpacing: 6.0,
+                        childAspectRatio: 1.1),
+                    itemBuilder: (BuildContext context, int index) {
+                      return getGoodsItemView(goodsEntitys[index]);
+                    })
+                : Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -68,17 +78,7 @@ class _GoodsListState extends State<GoodsList> {
                         )
                       ],
                     ),
-                  )
-                : GridView.builder(
-                    itemCount: goodsEntitys == null ? 0 : goodsEntitys.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 6.0,
-                        crossAxisSpacing: 6.0,
-                        childAspectRatio: 1.1),
-                    itemBuilder: (BuildContext context, int index) {
-                      return getGoodsItemView(goodsEntitys[index]);
-                    }),
+                  ),
           ),
         ));
   }

@@ -198,11 +198,15 @@ class _GoodsDetailState extends State<GoodsDetail> {
                           ],
                         ),
                         Expanded(
-                          child: Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(Icons.delete),
+                            child: Container(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            icon: Icon(Icons.delete),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
                           ),
-                        ),
+                        )),
                       ],
                     ),
                   ),
@@ -235,7 +239,7 @@ class _GoodsDetailState extends State<GoodsDetail> {
                       margin:
                           EdgeInsets.all(ScreenUtil.instance.setWidth(10.0)),
                       height: ScreenUtil.instance.setHeight(80),
-                      alignment: Alignment.center,
+                      alignment: Alignment.centerLeft,
                       child: CartNumberView(1, (number) {
                         print("${number}");
                       })),
@@ -316,7 +320,17 @@ class _GoodsDetailState extends State<GoodsDetail> {
   _buy() {
     SharedPreferencesUtils.getToken()
       ..then((value) {
-        if (value) {
+        if (value != null) {
+          Options options = Options();
+          options.headers["token"] = value;
+          parameters = {
+            "goodsId": _goodsDetail.info.id,
+            "productId": _goodsDetail.specificationList[0].valueList[0].id,
+            "number": _number
+          };
+          _goodsService.buy(parameters, options, (success) {
+            NavigatorUtils.goFillInOrder(context,success);
+          }, (error) {});
         } else {
           NavigatorUtils.goLogin(context);
         }

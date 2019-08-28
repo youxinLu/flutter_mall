@@ -12,6 +12,10 @@ import 'package:mall/utils/fluro_convert_utils.dart';
 import 'package:mall/utils/toast_util.dart';
 
 class FillInOrderView extends StatefulWidget {
+  var cartId;
+
+  FillInOrderView(this.cartId);
+
   @override
   _FillInOrderViewState createState() => _FillInOrderViewState();
 }
@@ -36,7 +40,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   _getFillInOrder() {
     options.headers["token"] = token;
     var parameters = {
-      "cartId": 0,
+      "cartId": widget.cartId == 0 ? 0 :widget.cartId,
       "addressId": 0,
       "couponId": 0,
       "grouponRulesId": 0,
@@ -202,7 +206,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
               ),
               Padding(
                   padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
+                  EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
               Text(
                 checkedGoods.specifications[0],
                 style: TextStyle(
@@ -222,9 +226,9 @@ class _FillInOrderViewState extends State<FillInOrderView> {
           ),
           Expanded(
               child: Container(
-            alignment: Alignment.centerRight,
-            child: Text("X${checkedGoods.number}"),
-          ))
+                alignment: Alignment.centerRight,
+                child: Text("X${checkedGoods.number}"),
+              ))
         ],
       ),
     );
@@ -250,33 +254,34 @@ class _FillInOrderViewState extends State<FillInOrderView> {
           ),
           Expanded(
               child: Container(
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
-            height: ScreenUtil.instance.setHeight(80.0),
-            alignment: Alignment.centerLeft,
-            child: TextField(
-              maxLines: 1,
-              decoration: InputDecoration(
-                hintText: Strings.REMARK,
-                //border: OutlineInputBorder(borderSide: BorderSide.none),
-                hintStyle: TextStyle(
-                    color: Colors.grey[350],
-                    fontSize: ScreenUtil.instance.setSp(26.0)),
-                hasFloatingPlaceholder: false,
-                enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: ScreenUtil.instance.setHeight(1.0))),
-                focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: ScreenUtil.instance.setHeight(1.0))),
-              ),
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: ScreenUtil.instance.setSp(26.0)),
-              controller: _controller,
-            ),
-          ))
+                margin: EdgeInsets.only(
+                    left: ScreenUtil.instance.setWidth(10.0)),
+                height: ScreenUtil.instance.setHeight(80.0),
+                alignment: Alignment.centerLeft,
+                child: TextField(
+                  maxLines: 1,
+                  decoration: InputDecoration(
+                    hintText: Strings.REMARK,
+                    //border: OutlineInputBorder(borderSide: BorderSide.none),
+                    hintStyle: TextStyle(
+                        color: Colors.grey[350],
+                        fontSize: ScreenUtil.instance.setSp(26.0)),
+                    hasFloatingPlaceholder: false,
+                    enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: ScreenUtil.instance.setHeight(1.0))),
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: ScreenUtil.instance.setHeight(1.0))),
+                  ),
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: ScreenUtil.instance.setSp(26.0)),
+                  controller: _controller,
+                ),
+              ))
         ],
       ),
     );
@@ -294,39 +299,39 @@ class _FillInOrderViewState extends State<FillInOrderView> {
         children: <Widget>[
           _fillInOrderEntity.availableCouponLength == 0
               ? Text(
-                  Strings.NOT_AVAILABLE_COUPON,
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: ScreenUtil.instance.setSp(26.0)),
-                )
+            Strings.NOT_AVAILABLE_COUPON,
+            style: TextStyle(
+                color: Colors.black54,
+                fontSize: ScreenUtil.instance.setSp(26.0)),
+          )
               : Text(
-                  Strings.COUPON,
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: ScreenUtil.instance.setSp(26.0)),
-                ),
+            Strings.COUPON,
+            style: TextStyle(
+                color: Colors.black54,
+                fontSize: ScreenUtil.instance.setSp(26.0)),
+          ),
           Expanded(
               child: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  "${_fillInOrderEntity.couponPrice}元",
-                  style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: ScreenUtil.instance.setSp(24.0)),
-                ),
-                Padding(
-                  padding:
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: <Widget>[
+                    Text(
+                      "${_fillInOrderEntity.couponPrice}元",
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: ScreenUtil.instance.setSp(24.0)),
+                    ),
+                    Padding(
+                      padding:
                       EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      color: Colors.grey,
+                    )
+                  ],
                 ),
-                Icon(
-                  Icons.arrow_forward_ios,
-                  color: Colors.grey,
-                )
-              ],
-            ),
-          ))
+              ))
         ],
       ),
     );
@@ -341,96 +346,96 @@ class _FillInOrderViewState extends State<FillInOrderView> {
           right: ScreenUtil.instance.setWidth(20.0)),
       child: _fillInOrderEntity.checkedAddress.id != 0
           ? InkWell(
-              onTap: () {
-                NavigatorUtils.goAddress(context).then((value) {
-                  print(value.toString());
-                  Map<String, dynamic> srcJson = new Map();
-                  srcJson = FluroConvertUtil.stringToMap(value);
-                  setState(() {
-                    _fillInOrderEntity.checkedAddress =
-                        CheckedAddress.fromJson(srcJson);
-                  });
-                });
-              },
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            _fillInOrderEntity.checkedAddress.name,
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontSize: ScreenUtil.instance.setSp(28.0)),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: ScreenUtil.instance.setHeight(20.0)),
-                          ),
-                          Text(
-                            _fillInOrderEntity.checkedAddress.tel,
-                            style: TextStyle(
-                                color: Colors.black54,
-                                fontSize: ScreenUtil.instance.setSp(26.0)),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                            top: ScreenUtil.instance.setHeight(10.0)),
-                      ),
-                      Text(
-                        _fillInOrderEntity.checkedAddress.province +
-                            _fillInOrderEntity.checkedAddress.city +
-                            _fillInOrderEntity.checkedAddress.county +
-                            _fillInOrderEntity.checkedAddress.addressDetail,
-                        style: TextStyle(
-                            color: Colors.black54,
-                            fontSize: ScreenUtil.instance.setSp(26.0)),
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                      child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.grey,
+        onTap: () {
+          NavigatorUtils.goAddress(context).then((value) {
+            print(value.toString());
+            Map<String, dynamic> srcJson = new Map();
+            srcJson = FluroConvertUtil.stringToMap(value);
+            setState(() {
+              _fillInOrderEntity.checkedAddress =
+                  CheckedAddress.fromJson(srcJson);
+            });
+          });
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      _fillInOrderEntity.checkedAddress.name,
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: ScreenUtil.instance.setSp(28.0)),
                     ),
-                  ))
-                ],
-              ),
-            )
-          : InkWell(
-              onTap: () {
-                NavigatorUtils.goAddress(context);
-              },
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    Strings.PLEASE_SELECT_ADDRESS,
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: ScreenUtil.instance.setSp(30.0)),
-                  ),
-                  Expanded(
-                      child: Container(
-                    alignment: Alignment.centerRight,
-                    child: Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.grey,
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: ScreenUtil.instance.setHeight(20.0)),
                     ),
-                  ))
-                ],
-              ),
+                    Text(
+                      _fillInOrderEntity.checkedAddress.tel,
+                      style: TextStyle(
+                          color: Colors.black54,
+                          fontSize: ScreenUtil.instance.setSp(26.0)),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: ScreenUtil.instance.setHeight(10.0)),
+                ),
+                Text(
+                  _fillInOrderEntity.checkedAddress.province +
+                      _fillInOrderEntity.checkedAddress.city +
+                      _fillInOrderEntity.checkedAddress.county +
+                      _fillInOrderEntity.checkedAddress.addressDetail,
+                  style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: ScreenUtil.instance.setSp(26.0)),
+                ),
+              ],
             ),
+            Expanded(
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey,
+                  ),
+                ))
+          ],
+        ),
+      )
+          : InkWell(
+        onTap: () {
+          NavigatorUtils.goAddress(context);
+        },
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              Strings.PLEASE_SELECT_ADDRESS,
+              style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: ScreenUtil.instance.setSp(30.0)),
+            ),
+            Expanded(
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey,
+                  ),
+                ))
+          ],
+        ),
+      ),
     );
   }
 

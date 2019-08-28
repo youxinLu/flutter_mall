@@ -261,4 +261,22 @@ class GoodsService {
       onFail(Strings.SERVER_EXCEPTION);
     }
   }
+  Future buy(
+      Map<String, dynamic> parameters,Options options,
+      OnSuccess onSuccess,
+      OnFail onFail,
+      ) async {
+    try {
+      var response = await HttpUtil.instance
+          .post(Api.FAST_BUY, parameters: parameters,options: options);
+      if (response['errno'] == 0) {
+        onSuccess(response["data"]);
+      } else {
+        onFail(response['errmsg']);
+      }
+    } catch (e) {
+      print(e);
+      onFail(Strings.SERVER_EXCEPTION);
+    }
+  }
 }

@@ -42,8 +42,8 @@ class NavigatorUtils {
     Application.router.pop(context);
   }
 
-  static goFillInOrder(BuildContext context) {
-    Application.router.navigateTo(context, Routers.fillInOrder,
+  static goFillInOrder(BuildContext context,int cartId) {
+    Application.router.navigateTo(context, Routers.fillInOrder+"?cartId=$cartId",
         transition: TransitionType.inFromRight);
   }
 

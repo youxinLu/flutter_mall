@@ -180,7 +180,7 @@ class _CartViewState extends State<CartView> {
   }
 
   _fillInOrder() {
-    NavigatorUtils.goFillInOrder(context);
+    NavigatorUtils.goFillInOrder(context,0);
   }
 
   Widget _getCartItemView(int index) {

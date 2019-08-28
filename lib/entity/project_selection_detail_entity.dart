@@ -10,7 +10,7 @@ class ProjectSelectionDetailEntity extends Object {
   Topic topic;
 
   @JsonKey(name: 'goods')
-  List<dynamic> goods;
+  List<Goods> goods;
 
   ProjectSelectionDetailEntity(this.topic,this.goods,);
 
@@ -46,7 +46,7 @@ class Topic extends Object {
   int sortOrder;
 
   @JsonKey(name: 'goods')
-  List<dynamic> goods;
+  List<int> goods;
 
   @JsonKey(name: 'addTime')
   String addTime;
@@ -65,6 +65,42 @@ class Topic extends Object {
   factory Topic.fromJson(Map<String, dynamic> srcJson) => _$TopicFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$TopicToJson(this);
+
+}
+
+
+@JsonSerializable()
+class Goods extends Object {
+
+  @JsonKey(name: 'id')
+  int id;
+
+  @JsonKey(name: 'name')
+  String name;
+
+  @JsonKey(name: 'brief')
+  String brief;
+
+  @JsonKey(name: 'picUrl')
+  String picUrl;
+
+  @JsonKey(name: 'isNew')
+  bool isNew;
+
+  @JsonKey(name: 'isHot')
+  bool isHot;
+
+  @JsonKey(name: 'counterPrice')
+  double counterPrice;
+
+  @JsonKey(name: 'retailPrice')
+  double retailPrice;
+
+  Goods(this.id,this.name,this.brief,this.picUrl,this.isNew,this.isHot,this.counterPrice,this.retailPrice,);
+
+  factory Goods.fromJson(Map<String, dynamic> srcJson) => _$GoodsFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$GoodsToJson(this);
 
 }
 

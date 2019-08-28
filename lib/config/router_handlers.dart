@@ -60,7 +60,8 @@ var goodsDetailsHandler = Handler(
 
 var fillInOrderHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
-  return FillInOrderView();
+      var cartId=int.parse(parameters["cartId"].first);
+  return FillInOrderView(cartId);
 });
 
 var addressHandler = Handler(

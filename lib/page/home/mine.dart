@@ -160,31 +160,59 @@ class _MineViewState extends State<MineView> {
   }
 
   void feedbackCallback() {
-    NavigatorUtils.goFeedback(context);
+    if (isLogin) {
+      NavigatorUtils.goFeedback(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void mineCoupon() {
-    NavigatorUtils.goCoupon(context);
+    if (isLogin) {
+      NavigatorUtils.goCoupon(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void footprint() {
-    NavigatorUtils.goFootprint(context);
+    if (isLogin) {
+      NavigatorUtils.goFootprint(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void collect() {
-    NavigatorUtils.goCollect(context);
+    if (isLogin) {
+      NavigatorUtils.goCollect(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void address() {
-    NavigatorUtils.goAddress(context);
+    if (isLogin) {
+      NavigatorUtils.goAddress(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void aboutUs() {
-    NavigatorUtils.goAboutUs(context);
+    if (isLogin) {
+      NavigatorUtils.goAboutUs(context);
+    } else {
+      _toLogin();
+    }
   }
 
   void order() {
-    NavigatorUtils.goOrder(context);
+    if (isLogin) {
+      NavigatorUtils.goOrder(context);
+    } else {
+      _toLogin();
+    }
   }
 
   _toLogin() {

@@ -18,7 +18,7 @@ class Api {
   static const String REGISTER=BASE_URL+'/mall/auth/register';//注册
   static const String LOGIN=BASE_URL+'/mall/auth/login';//登录
   static const String ADD_CART=BASE_URL+'/mall/cart/add';//加入购物车
-  static const String FAST_BUG=BASE_URL+'/mall/cart/fastadd';//立即购买
+  static const String FAST_BUY=BASE_URL+'/mall/cart/buy';//立即购买
   static const String COLLECT_ADD_DELETE=BASE_URL+ '/mall/collect/addordelete'; //添加或取消收藏
   static const String CART_LIST=BASE_URL+'/mall/cart/index';//购物车数据
   static const String CART_UPDATE=BASE_URL+'/mall/cart/update';//更新购物车
