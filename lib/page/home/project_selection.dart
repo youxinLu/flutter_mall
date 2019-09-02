@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class ProjectSelectionView extends StatefulWidget {
   List<ProjectSelection> projectSelections;
@@ -37,12 +38,10 @@ class _ProjectSelectionViewState extends State<ProjectSelectionView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                child: Image.network(
-                  projectSelections.picUrl,
-                  fit: BoxFit.cover,
-                  width: ScreenUtil.instance.setWidth(600.0),
-                  height: ScreenUtil.instance.setHeight(260.0),
-                ),
+                child: CachedImageView(
+                    ScreenUtil.instance.setWidth(600.0),
+                    ScreenUtil.instance.setHeight(260.0),
+                    projectSelections.picUrl),
               ),
               Padding(
                   padding: EdgeInsets.only(

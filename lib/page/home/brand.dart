@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class BrandView extends StatefulWidget {
   List<Brand> brands;
@@ -41,11 +42,8 @@ class _BrandViewState extends State<BrandView> {
             children: <Widget>[
               Container(
                 width: double.infinity,
-                child: Image.network(
-                  brand.picUrl,
-                  fit: BoxFit.cover,
-                  height: ScreenUtil.instance.setHeight(260.0),
-                ),
+                child: CachedImageView(double.infinity,
+                    ScreenUtil.instance.setWidth(260.0), brand.picUrl),
               ),
               Padding(
                   padding: EdgeInsets.only(

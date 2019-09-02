@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/widgets/cached_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductView extends StatelessWidget {
   List<Goods> productList;
@@ -39,12 +41,10 @@ class ProductView extends StatelessWidget {
             children: <Widget>[
               Container(
                   margin: EdgeInsets.all(5.0),
-                  child: Image.network(
-                    productEntity.picUrl,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 100.0,
-                  )),
+                  child: CachedImageView(
+                      ScreenUtil.instance.setHeight(200.0),
+                      ScreenUtil.instance.setHeight(200.0),
+                      productEntity.picUrl)),
               Padding(
                 padding: EdgeInsets.only(top: 4.0),
               ),

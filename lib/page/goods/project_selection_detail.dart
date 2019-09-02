@@ -10,6 +10,7 @@ import 'package:mall/widgets/network_error.dart';
 import 'package:mall/entity/project_selection_recommed_entity.dart';
 import "package:mall/utils/navigator_util.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class ProjectSelectionDetailView extends StatefulWidget {
   int id;
@@ -131,13 +132,12 @@ class _ProjectSelectionDetailViewState
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                  margin: EdgeInsets.all(5.0),
-                  child: Image.network(
-                    productEntity.picUrl,
-                    fit: BoxFit.cover,
-                    width: double.infinity,
-                    height: 100.0,
-                  )),
+                margin: EdgeInsets.all(5.0),
+                child: CachedImageView(
+                    ScreenUtil.getInstance().setHeight(200.0),
+                    ScreenUtil.getInstance().setHeight(200.0),
+                    productEntity.picUrl),
+              ),
               Padding(
                 padding: EdgeInsets.only(top: 4.0),
               ),
@@ -179,14 +179,9 @@ class _ProjectSelectionDetailViewState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                width: double.infinity,
-                child: Image.network(
-                  recommend.picUrl,
-                  fit: BoxFit.cover,
-                  width: ScreenUtil.instance.setWidth(600.0),
-                  height: ScreenUtil.instance.setHeight(260.0),
-                ),
-              ),
+                  width: double.infinity,
+                  child: CachedImageView(double.infinity,
+                      ScreenUtil.instance.setHeight(260.0), recommend.picUrl)),
               Padding(
                   padding: EdgeInsets.only(
                       top: ScreenUtil.instance.setHeight(10.0))),

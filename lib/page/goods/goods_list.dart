@@ -3,6 +3,8 @@ import 'package:mall/service/goods_service.dart';
 import 'package:mall/entity/goods_entity.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/widgets/cached_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GoodsList extends StatefulWidget {
   int categoryId;
@@ -47,40 +49,40 @@ class _GoodsListState extends State<GoodsList> {
     return Scaffold(
 //        key: ObjectKey("${categoryId}"),
         body: Container(
-          child: Center(
-            child: goodsEntitys != null && goodsEntitys.length!= 0
-                ? GridView.builder(
-                    itemCount: goodsEntitys == null ? 0 : goodsEntitys.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 6.0,
-                        crossAxisSpacing: 6.0,
-                        childAspectRatio: 1.1),
-                    itemBuilder: (BuildContext context, int index) {
-                      return getGoodsItemView(goodsEntitys[index]);
-                    })
-                : Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset(
-                          "images/no_data.png",
-                          height: 80,
-                          width: 80,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 10.0),
-                        ),
-                        Text(
-                          Strings.NO_DATA_TEXT,
-                          style: TextStyle(
-                              fontSize: 16.0, color: Colors.deepOrangeAccent),
-                        )
-                      ],
+      child: Center(
+        child: goodsEntitys != null && goodsEntitys.length != 0
+            ? GridView.builder(
+                itemCount: goodsEntitys == null ? 0 : goodsEntitys.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 6.0,
+                    crossAxisSpacing: 6.0,
+                    childAspectRatio: 1.1),
+                itemBuilder: (BuildContext context, int index) {
+                  return getGoodsItemView(goodsEntitys[index]);
+                })
+            : Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Image.asset(
+                      "images/no_data.png",
+                      height: 80,
+                      width: 80,
                     ),
-                  ),
-          ),
-        ));
+                    Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                    ),
+                    Text(
+                      Strings.NO_DATA_TEXT,
+                      style: TextStyle(
+                          fontSize: 16.0, color: Colors.deepOrangeAccent),
+                    )
+                  ],
+                ),
+              ),
+      ),
+    ));
   }
 
   Widget getGoodsItemView(GoodsEntity goodsEntity) {
@@ -93,10 +95,10 @@ class _GoodsListState extends State<GoodsList> {
             child: Card(
               child: Column(
                 children: <Widget>[
-                  Image.network(
+                  CachedImageView(
+                    double.infinity,
+                    ScreenUtil.getInstance().setHeight(200.0),
                     goodsEntity.picUrl,
-                    fit: BoxFit.fill,
-                    height: 100,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),

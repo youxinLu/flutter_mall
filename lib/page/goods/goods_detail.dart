@@ -13,6 +13,7 @@ import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/cart_number.dart';
 import 'package:mall/event/refresh_event.dart';
 import 'package:mall/service/mine_service.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class GoodsDetail extends StatefulWidget {
   int goodsId;
@@ -172,12 +173,10 @@ class _GoodsDetailState extends State<GoodsDetail> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Image.network(
-                          productList.url,
-                          width: ScreenUtil.instance.setWidth(120.0),
-                          height: ScreenUtil.instance.setHeight(120.0),
-                          fit: BoxFit.fill,
-                        ),
+                        CachedImageView(
+                            ScreenUtil.instance.setWidth(120.0),
+                            ScreenUtil.instance.setWidth(120.0),
+                            productList.url),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -329,7 +328,7 @@ class _GoodsDetailState extends State<GoodsDetail> {
             "number": _number
           };
           _goodsService.buy(parameters, options, (success) {
-            NavigatorUtils.goFillInOrder(context,success);
+            NavigatorUtils.goFillInOrder(context, success);
           }, (error) {});
         } else {
           NavigatorUtils.goLogin(context);

@@ -4,6 +4,7 @@ import 'package:mall/entity/brand_detail_entity.dart';
 import 'package:mall/service/home_service.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/empty_view.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class BrandDetailView extends StatefulWidget {
   var titleName;
@@ -50,11 +51,10 @@ class _BrandDetailViewState extends State<BrandDetailView> {
                   children: <Widget>[
                     Container(
                       width: double.infinity,
-                      child: Image.network(
-                        _brandDetailEntity.picUrl,
-                        height: ScreenUtil.instance.setHeight(300.0),
-                        fit: BoxFit.cover,
-                      ),
+                      child: CachedImageView(
+                          double.infinity,
+                          ScreenUtil.instance.setWidth(300.0),
+                          _brandDetailEntity.picUrl),
                     ),
                     Container(
                       margin:

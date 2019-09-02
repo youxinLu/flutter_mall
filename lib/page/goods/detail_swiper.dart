@@ -1,21 +1,23 @@
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:mall/constant/string.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class DetailSwiperView extends StatelessWidget {
   List<String> bannerData = new List();
   int size;
   double viewHeight;
+
   DetailSwiperView(this.bannerData, this.size, this.viewHeight);
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: viewHeight,
       child: bannerData == null || bannerData.length == 0
           ? Container(
-              height: 200,
+              height: ScreenUtil.instance.setHeight(200.0),
               color: Colors.grey,
               alignment: Alignment.center,
               child: Text(Strings.NO_DATA_TEXT),
@@ -31,7 +33,8 @@ class DetailSwiperView extends StatelessWidget {
               autoplay: false,
               itemBuilder: (BuildContext buildContext, int index) {
                 print(bannerData[index]);
-                return Image.network(bannerData[index],fit: BoxFit.fill,);
+                return CachedImageView(
+                    double.infinity, double.infinity, bannerData[index]);
               },
               duration: 10000,
               pagination: SwiperPagination(

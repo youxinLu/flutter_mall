@@ -5,6 +5,9 @@ import 'package:mall/service/category_service.dart';
 import 'package:mall/page/goods/category_goods_list.dart';
 import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/page/goods/goods_list.dart';
+import 'package:mall/widgets/cached_image.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class SubCategoryView extends StatefulWidget {
   @override
@@ -76,8 +79,8 @@ class _SubCategoryViewState extends State<SubCategoryView> {
         shrinkWrap: true,
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(10.0),
-            height: 100.0,
+            padding: EdgeInsets.all(ScreenUtil.instance.setWidth(20.0)),
+            height: ScreenUtil.instance.setHeight(200.0),
             child: Image.network(
               categoryImage ?? "",
               fit: BoxFit.fill,

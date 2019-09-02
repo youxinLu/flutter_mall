@@ -7,6 +7,7 @@ import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/empty_view.dart';
 import 'package:mall/entity/goods_entity.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class SearchGoodsView extends StatefulWidget {
   @override
@@ -211,7 +212,6 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
   }
 
   _searchKeyWords() {
-
     var parameters = {"keyword": _editingController.text};
     _goodsService.searchGoods(parameters, (success) {
       setState(() {
@@ -235,34 +235,34 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
       child: Container(
         alignment: Alignment.center,
         child: SizedBox(
-            width: 320,
-            height: 460,
+            width: ScreenUtil.getInstance().setWidth(640),
+            height: ScreenUtil.getInstance().setHeight(920),
             child: Card(
               child: Column(
                 children: <Widget>[
-                  Image.network(
-                    goodsEntity.picUrl,
-                    fit: BoxFit.fill,
-                    height: 100,
-                  ),
+                  CachedImageView(
+                      double.infinity,
+                      ScreenUtil.getInstance().setHeight(200),
+                      goodsEntity.picUrl),
                   Padding(
-                    padding: EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.getInstance().setHeight(10.0)),
                   ),
                   Text(
                     goodsEntity.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 14.0, color: Colors.black54),
+                    style: TextStyle(fontSize: ScreenUtil.getInstance().setSp(26.0), color: Colors.black54),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 5.0),
+                    padding: EdgeInsets.only(top:ScreenUtil.getInstance().setHeight(10.0)),
                   ),
                   Text(
                     "¥${goodsEntity.retailPrice}",
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                        fontSize: 14.0, color: Colors.deepOrangeAccent),
+                        fontSize: ScreenUtil.getInstance().setSp(26.0), color: Colors.deepOrangeAccent),
                   ),
                 ],
               ),

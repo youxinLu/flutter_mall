@@ -10,6 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/utils/fluro_convert_utils.dart';
 import 'package:mall/utils/toast_util.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class FillInOrderView extends StatefulWidget {
   var cartId;
@@ -74,7 +75,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
                   child: Center(
                     child: Text(
                       Strings.SERVER_EXCEPTION,
-                      style: TextStyle(fontSize: 16.0),
+                      style: TextStyle(fontSize: ScreenUtil.instance.setSp(26.0)),
                     ),
                   ),
                 );
@@ -186,11 +187,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Image.network(
-            checkedGoods.picUrl,
-            width: ScreenUtil.instance.setWidth(140),
-            height: ScreenUtil.instance.setWidth(140.0),
-          ),
+          CachedImageView(ScreenUtil.instance.setWidth(140),ScreenUtil.instance.setWidth(140),checkedGoods.picUrl),
           Padding(
             padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
           ),

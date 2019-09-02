@@ -138,6 +138,7 @@ class Strings {
   static const String DESC = "desc";
   static const String PROJECT_SELECTION_DETAIL = "专题详情";
   static const String RECOMMEND_PROJECT_SELECTION = "推荐专题";
-  static const String RECEIVE_COUPON_SUCCESS="领取优惠券成功";
-  static const String PLEASE_LOGIN="请先登录";
+  static const String RECEIVE_COUPON_SUCCESS = "领取优惠券成功";
+  static const String PLEASE_LOGIN = "请先登录";
+  static const String LOADING = "正在加载中...";
 }

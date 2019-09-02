@@ -12,6 +12,7 @@ import 'package:mall/model/user_info.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/event/refresh_event.dart';
 import 'package:mall/event/cart_number_event.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class CartView extends StatefulWidget {
   @override
@@ -180,7 +181,7 @@ class _CartViewState extends State<CartView> {
   }
 
   _fillInOrder() {
-    NavigatorUtils.goFillInOrder(context,0);
+    NavigatorUtils.goFillInOrder(context, 0);
   }
 
   Widget _getCartItemView(int index) {
@@ -201,12 +202,10 @@ class _CartViewState extends State<CartView> {
                   onChanged: (bool) {
                     _checkCart(index, bool);
                   }),
-              Image.network(
-                _cartList[index].picUrl,
-                width: ScreenUtil.getInstance().setWidth(140.0),
-                height: ScreenUtil.getInstance().setHeight(140.0),
-                fit: BoxFit.fill,
-              ),
+              CachedImageView(
+                  ScreenUtil.getInstance().setWidth(140.0),
+                  ScreenUtil.getInstance().setWidth(140.0),
+                  _cartList[index].picUrl),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

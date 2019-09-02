@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/utils/navigator_util.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:mall/constant/string.dart';
+import 'package:mall/widgets/cached_image.dart';
 
 class CategoryMenu extends StatelessWidget {
   List<Categorie> categoryList;
 
   CategoryMenu(this.categoryList);
 
- _goCategoryView (BuildContext context, Categorie categoryEntity) {
+  _goCategoryView(BuildContext context, Categorie categoryEntity) {
     NavigatorUtils.goCategoryGoodsListPage(
         context, categoryEntity.name, categoryEntity.id);
   }
@@ -22,7 +25,7 @@ class CategoryMenu extends StatelessWidget {
       itemCount: categoryList.length,
       itemBuilder: (BuildContext context, int index) {
         //  return _getGridViewItem(categoryList[index]);
-        return _getGridViewItem(context,categoryList[index]);
+        return _getGridViewItem(context, categoryList[index]);
       },
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         //单个子Widget的水平最大宽度
@@ -35,18 +38,14 @@ class CategoryMenu extends StatelessWidget {
     ));
   }
 
-  Widget _getGridViewItem(BuildContext context,Categorie categoryEntity) {
+  Widget _getGridViewItem(BuildContext context, Categorie categoryEntity) {
     return Center(
       child: InkWell(
-        onTap: ()=>_goCategoryView(context,categoryEntity),
+        onTap: () => _goCategoryView(context, categoryEntity),
         child: Column(
           children: <Widget>[
-            Image.network(
-              categoryEntity.iconUrl,
-              width: ScreenUtil.instance.setWidth(60.0),
-              height: ScreenUtil.instance.setWidth(60.0),
-              fit: BoxFit.fill,
-            ),
+            CachedImageView(ScreenUtil.instance.setWidth(60.0),
+                ScreenUtil.instance.setWidth(60.0), categoryEntity.iconUrl),
             Padding(
               padding: EdgeInsets.only(top: ScreenUtil.instance.setWidth(10.0)),
             ),
