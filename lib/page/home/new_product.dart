@@ -18,7 +18,7 @@ class ProductView extends StatelessWidget {
           itemCount: productList.length,
           physics: NeverScrollableScrollPhysics(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 1.0),
+              crossAxisCount: 2, childAspectRatio: 0.90),
           itemBuilder: (BuildContext context, int index) {
             return _getGridViewItem(context, productList[index]);
           }),

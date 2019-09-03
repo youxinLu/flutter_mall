@@ -87,7 +87,7 @@ class _SearchGoodsViewState extends State<SearchGoodsView> {
                     : GridView.builder(
                         itemCount: _goods.length,
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 1.1,
+                            childAspectRatio: 1.0,
                             crossAxisSpacing:
                                 ScreenUtil.instance.setWidth(10.0),
                             mainAxisSpacing:

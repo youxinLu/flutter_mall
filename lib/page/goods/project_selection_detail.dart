@@ -85,7 +85,7 @@ class _ProjectSelectionDetailViewState
                         crossAxisCount: 2,
                         mainAxisSpacing: ScreenUtil.instance.setHeight(10.0),
                         crossAxisSpacing: ScreenUtil.instance.setWidth(10.0),
-                        childAspectRatio: 1.0),
+                        childAspectRatio: 0.9),
                     shrinkWrap: true,
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: _projectSelectionDetailEntity.goods.length,

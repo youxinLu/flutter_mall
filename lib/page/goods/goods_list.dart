@@ -57,7 +57,7 @@ class _GoodsListState extends State<GoodsList> {
                     crossAxisCount: 2,
                     mainAxisSpacing: 6.0,
                     crossAxisSpacing: 6.0,
-                    childAspectRatio: 1.1),
+                    childAspectRatio: 1.0),
                 itemBuilder: (BuildContext context, int index) {
                   return getGoodsItemView(goodsEntitys[index]);
                 })
