@@ -4,7 +4,7 @@ import 'package:mall/entity/first_level_category.dart';
 import 'package:mall/service/category_service.dart';
 import 'package:mall/page/category/sub_category.dart';
 import 'package:mall/entity/sub_category_entity.dart';
-
+import 'package:mall/constant/string.dart';
 
 class CategoryView extends StatefulWidget {
   @override
@@ -22,7 +22,7 @@ class _CategoryViewState extends State<CategoryView> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Mall"),
+          title: Text(Strings.MALL),
           centerTitle: true,
           actions: <Widget>[
             IconButton(

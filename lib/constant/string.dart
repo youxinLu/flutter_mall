@@ -99,7 +99,7 @@ class Strings {
   static const String MINE_CANCEL_COLLECT = "是否确定取消收藏此商品?";
   static const String MINE_ABOUT_US = "关于我们";
   static const String MINE_ABOUT_US_CONTENT =
-      "Mall是一个企业级商城Flutter项目，通过学习Mall项目可以让读者达到具有开发企业项目的实战能力";
+      "Tong Shop是一个企业级商城Flutter项目，通过学习Tong Shop项目可以让读者达到具有开发企业项目的实战能力";
   static const String MINE_ABOUT_AUTHOR_TITLE = "作者";
   static const String MINE_ABOUT_AUTHOR = "路由新";
   static const String MINE_ABOUT_EMAIL_TITLE = "邮箱";
@@ -109,7 +109,7 @@ class Strings {
   static const String MINE_ABOUT_WX_TITLE = "微信";
   static const String MINE_ABOUT_WX = "lizhenghua0126";
   static const String MINE_ORDER = "我的订单";
-  static const String MALL = "Mall";
+  static const String MALL = "Tong Shop";
   static const String MINE_ORDER_TAG_ONE = "无忧购";
   static const String MINE_ORDER_TAG_TWO = "七天无理由退换";
   static const String MINE_ORDER_TOTAL_GOODS = "共计";

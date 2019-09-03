@@ -56,7 +56,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         //key: ObjectKey("home"),
         appBar: AppBar(
-          title: Text("Mall"),
+          title: Text(Strings.MALL),
           centerTitle: true,
           actions: <Widget>[
             IconButton(
