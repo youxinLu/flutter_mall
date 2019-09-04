@@ -1,4 +1,3 @@
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092259_com.example.mall.jpg)
 
 Shop是一款Flutter开源在线商城应用程序，包含了商城首页、商品分类、购物车、搜索商品、商品详情、优惠券、我的订单、我的足迹、我的收藏、反馈等功能。
 
@@ -19,3 +18,7 @@ flutter_easyrefresh 上拉加载和下拉刷新
 flutter_webview_plugin webview
 cached_network_image   图片缓存
 
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092259_com.example.mall.jpg)
+![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)
+![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)
+![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)
