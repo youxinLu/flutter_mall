@@ -4,7 +4,7 @@ Shop是一款Flutter开源在线商城应用程序，包含了商城首页、商
 
 第三方框架
 
-flutter_swiper      轮播图\n
+flutter_swiper      轮播图
 dio                 网络框架
 flutter_spinkit     旋转组件
 event_bus           事件通知
@@ -18,4 +18,4 @@ city_pickers        城市选择
 flutter_easyrefresh 上拉加载和下拉刷新
 flutter_webview_plugin webview
 cached_network_image   图片缓存
- 
+
