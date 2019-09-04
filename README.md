@@ -3,26 +3,26 @@ Shop是一款Flutter开源在线商城应用程序，包含了商城首页、商
 
 第三方框架
 
-flutter_swiper      轮播图
-dio                 网络框架
-flutter_spinkit     旋转组件
-event_bus           事件通知
-flutter_html        html框架
-flutter_screenutil  屏幕适配
-fluttertoast        Toast
-shared_preferences  本地数据缓存 
-fluro               路由
-provider            状态管理
-city_pickers        城市选择
-flutter_easyrefresh 上拉加载和下拉刷新
-flutter_webview_plugin webview
-cached_network_image   图片缓存
+flutter_swiper      轮播图<br> 
+dio                 网络框架<br> 
+flutter_spinkit     旋转组件<br> 
+event_bus           事件通知<br> 
+flutter_html        html框架<br> 
+flutter_screenutil  屏幕适配<br> 
+fluttertoast        Toast<br> 
+shared_preferences  本地数据缓存 <br> 
+fluro               路由<br> 
+provider            状态管理<br> 
+city_pickers        城市选择<br> 
+flutter_easyrefresh 上拉加载和下拉刷新<br> 
+flutter_webview_plugin webview<br> 
+cached_network_image   图片缓存<br> 
 
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092259_com.example.mall.jpg)
-![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)
-![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)
-![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092259_com.example.mall.jpg)<br> 
+![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)<br> 
+![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)<br> 
+![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)<br> 
 
-下载地址
+下载地址<br> 
 ![下载地址](https://www.pgyer.com/app/qrcode/mESx)
 
