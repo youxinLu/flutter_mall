@@ -22,3 +22,7 @@ cached_network_image   图片缓存
 ![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)
 ![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)
 ![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)
+
+下载地址
+![下载地址](https://www.pgyer.com/app/qrcode/mESx)
+
