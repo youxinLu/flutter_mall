@@ -25,4 +25,9 @@ cached_network_image   图片缓存<br>
 
 下载地址<br> 
 ![下载地址](https://www.pgyer.com/app/qrcode/mESx)
-
+<br>
+因服务器是由个人维护，项目中的接口地址会不定时更换，赞赏的老铁加我微信备注，接口地址改了以后会及时通知大家<br>
+![微信](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142112.jpg)<br> 
+![支付宝](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142121.jpg)
+微信<br>
+![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
