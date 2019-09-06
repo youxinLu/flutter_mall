@@ -22,7 +22,13 @@ cached_network_image   图片缓存<br>
 ![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)<br> 
 ![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)<br> 
 ![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)<br> 
-
+![详情](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092628_com.example.mall.jpg)<br> 
+![订单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094532_com.example.mall.jpg)<br> 
 下载地址<br> 
 ![下载地址](https://www.pgyer.com/app/qrcode/mESx)
-
+<br>
+因服务器是由个人维护，项目中的接口地址会不定时更换，赞赏的老铁加我微信备注，接口地址改了以后会及时通知大家<br>
+![微信](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142112.jpg)
+![支付宝](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142121.jpg)<br> 
+微信<br>
+![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
