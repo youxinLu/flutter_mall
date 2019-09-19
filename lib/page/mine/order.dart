@@ -16,7 +16,7 @@ class OrderView extends StatefulWidget {
 
 class _OrderViewState extends State<OrderView> {
   MineService _mineService = MineService();
-  List<Order> _orders = List();
+  List<ListData> _orders = List();
   var _token;
   var _page = 1;
   var _limit = 10;
@@ -31,10 +31,9 @@ class _OrderViewState extends State<OrderView> {
   }
 
   _orderData() {
-    Options options = Options();
-    options.headers["token"] = _token;
+
     var parameters = {"page": _page, "limit": _limit};
-    _mineService.queryOrder(parameters, options, (success) {
+    _mineService.queryOrder(parameters,(success) {
       setState(() {
         _orders = success;
       });
@@ -65,7 +64,7 @@ class _OrderViewState extends State<OrderView> {
     );
   }
 
-  Widget _orderItemView(Order order) {
+  Widget _orderItemView(ListData order) {
     return Card(
         child: InkWell(
             onTap: () => _goOrderDetail(order.id),
@@ -146,7 +145,7 @@ class _OrderViewState extends State<OrderView> {
     });
   }
 
-  int goodNumber(Order order) {
+  int goodNumber(ListData order) {
     int number = 0;
     order.goodsList.forEach((good) {
       number += good.number;
@@ -155,7 +154,7 @@ class _OrderViewState extends State<OrderView> {
     return number;
   }
 
-  Widget _goodItemView(Goods good) {
+  Widget _goodItemView(GoodsList good) {
     return Container(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -17,18 +17,7 @@ class _FeedBackViewState extends State<FeedBackView> {
   TextEditingController _contentController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   MineService _mineService = MineService();
-  Options _options = Options();
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    SharedPreferencesUtils.getToken().then((value) {
-      if (value != null) {
-        _options.headers["token"] = value;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -195,7 +184,7 @@ class _FeedBackViewState extends State<FeedBackView> {
       "hasPicture": "false",
       "mobile": _phoneController.text,
     };
-    _mineService.feedback(parameters, _options, (success) {
+    _mineService.feedback(parameters,  (success) {
       ToastUtil.showToast(Strings.FEEDBACK_SUCCESS);
       Navigator.pop(context);
     }, (error) {

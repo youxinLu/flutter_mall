@@ -12,9 +12,9 @@ FootprintEntity _$FootprintEntityFromJson(Map<String, dynamic> json) {
       json['pages'] as int,
       json['limit'] as int,
       json['page'] as int,
-      (json['listData'] as List)
+      (json['list'] as List)
           ?.map((e) =>
-              e == null ? null : Footprint.fromJson(e as Map<String, dynamic>))
+              e == null ? null : ListData.fromJson(e as Map<String, dynamic>))
           ?.toList());
 }
 
@@ -24,11 +24,11 @@ Map<String, dynamic> _$FootprintEntityToJson(FootprintEntity instance) =>
       'pages': instance.pages,
       'limit': instance.limit,
       'page': instance.page,
-      'listData': instance.listData
+      'list': instance.list
     };
 
-Footprint _$FootprintFromJson(Map<String, dynamic> json) {
-  return Footprint(
+ListData _$ListDataFromJson(Map<String, dynamic> json) {
+  return ListData(
       json['brief'] as String,
       json['picUrl'] as String,
       json['addTime'] as String,
@@ -38,7 +38,7 @@ Footprint _$FootprintFromJson(Map<String, dynamic> json) {
       (json['retailPrice'] as num)?.toDouble());
 }
 
-Map<String, dynamic> _$FootprintToJson(Footprint instance) => <String, dynamic>{
+Map<String, dynamic> _$ListDataToJson(ListData instance) => <String, dynamic>{
       'brief': instance.brief,
       'picUrl': instance.picUrl,
       'addTime': instance.addTime,

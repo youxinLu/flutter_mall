@@ -7,8 +7,6 @@ import 'package:mall/constant/string.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/widgets/cart_number.dart';
 import 'package:mall/utils/navigator_util.dart';
-import 'package:provider/provider.dart';
-import 'package:mall/model/user_info.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/event/refresh_event.dart';
 import 'package:mall/event/cart_number_event.dart';
@@ -45,7 +43,7 @@ class _CartViewState extends State<CartView> {
 
   _getCartData(token) {
     Options options = Options();
-    options.headers["token"] = token;
+ //   options.headers[Strings.TOKEN] = token;
     _goodsService.queryCart((cartList) {
       setState(() {
         _isLogin = true;
@@ -71,14 +69,7 @@ class _CartViewState extends State<CartView> {
           title: Text(Strings.CART),
           centerTitle: true,
         ),
-        body: Consumer<UserInfoModel>(builder: (context, userInfoModel, child) {
-          if ((userInfoModel != null && userInfoModel.userEntity != null)) {
-            _isLogin = true;
-            token = userInfoModel.userEntity.token;
-            _getCartData(token);
-            print("UserInfoModel UserInfoModel");
-          }
-          return _isLogin && _cartList != null
+        body: _isLogin && _cartList != null
               ? Container(
                   child: _cartList.length != 0
                       ? Stack(
@@ -176,8 +167,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ),
                   ),
-                );
-        }));
+                ));
   }
 
   _fillInOrder() {
@@ -254,7 +244,7 @@ class _CartViewState extends State<CartView> {
 
   _updateCart(int index, int number) {
     Options options = Options();
-    options.headers["token"] = token;
+  //  options.headers[Strings.TOKEN] = token;
     var parameters = {
       "productId": _cartList[index].productId,
       "goodsId": _cartList[index].goodsId,
@@ -272,8 +262,6 @@ class _CartViewState extends State<CartView> {
   }
 
   _checkCart(int index, bool isCheck) {
-    Options options = Options();
-    options.headers["token"] = token;
     var parameters = {
       "productIds": [_cartList[index].productId],
       "isChecked": isCheck ? 1 : 0,
@@ -287,7 +275,7 @@ class _CartViewState extends State<CartView> {
       _totalMoney = cartListEntity.cartTotal.goodsAmount;
     }, (error) {
       ToastUtil.showToast(error);
-    }, options, parameters);
+    },  parameters);
   }
 
   _deleteDialog(int index) {
@@ -323,8 +311,6 @@ class _CartViewState extends State<CartView> {
   }
 
   _deleteGoods(int index) {
-    Options options = Options();
-    options.headers["token"] = token;
     var parameters = {
       "productIds": [_cartList[index].productId]
     };
@@ -336,7 +322,7 @@ class _CartViewState extends State<CartView> {
       Navigator.pop(context);
     }, (error) {
       ToastUtil.showToast(error);
-    }, options, parameters);
+    },parameters);
   }
 
   bool _checkedAll() {

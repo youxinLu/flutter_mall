@@ -42,11 +42,11 @@ class _ProjectSelectionDetailViewState
         _projectSelectionDetailEntity = success;
       });
     }, (error) {}).then((_) {
-      _queryRecommed();
+      _queryRecommend();
     });
   }
 
-  _queryRecommed() {
+  _queryRecommend() {
     var parameters = {"id": widget.id};
     _goodsService.projectSelectionRecommend(parameters, (success) {
       setState(() {
@@ -68,52 +68,54 @@ class _ProjectSelectionDetailViewState
 
   Widget _contentView() {
     return _projectSelectionDetailEntity != null &&
-            _projectSelectionRecommedEntity != null
+        _projectSelectionRecommedEntity != null
         ? Container(
-            child: SingleChildScrollView(
+        child: SingleChildScrollView(
             child: Column(
-              children: <Widget>[
-                Html(
-                    data: _projectSelectionDetailEntity.topic.content
-                        .replaceAll("//", "http://")),
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
-                ),
-                GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: ScreenUtil.instance.setHeight(10.0),
-                        crossAxisSpacing: ScreenUtil.instance.setWidth(10.0),
-                        childAspectRatio: 0.9),
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: _projectSelectionDetailEntity.goods.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _getGridViewItem(
-                          _projectSelectionDetailEntity.goods[index]);
-                    }),
-                Container(
-                  height: 40.0,
-                  alignment: Alignment.center,
-                  child: Text(
-                    Strings.RECOMMEND_PROJECT_SELECTION,
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.instance.setSp(26.0)),
-                  ),
-                ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: _projectSelectionRecommedEntity.recommed.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _itemView(
-                          _projectSelectionRecommedEntity.recommed[index]);
-                    })
-              ],
-            ),
-          ))
+                children: <Widget>[
+            Html(
+            data: _projectSelectionDetailEntity.topic.content
+                .replaceAll("//", "http://")),
+        Padding(
+          padding:
+          EdgeInsets.only(top: ScreenUtil.instance.setHeight(10.0)),
+        ),
+        GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: ScreenUtil.instance.setHeight(10.0),
+                crossAxisSpacing: ScreenUtil.instance.setWidth(10.0),
+                childAspectRatio: 0.9),
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+              itemCount: _projectSelectionDetailEntity.goods!=null?_projectSelectionDetailEntity.goods.length:0,
+            itemBuilder: (BuildContext context, int index) {
+              return _getGridViewItem(
+                  _projectSelectionDetailEntity.goods[index]);
+            }),
+        Container(
+          height: 40.0,
+          alignment: Alignment.center,
+          child: Text(
+            Strings.RECOMMEND_PROJECT_SELECTION,
+            style: TextStyle(
+                color: Colors.black54,
+                fontSize: ScreenUtil.instance.setSp(26.0)),
+          ),
+        ),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: _projectSelectionRecommedEntity.recommed != null
+                ? _projectSelectionRecommedEntity.recommed.length
+                : 0,
+        itemBuilder: (BuildContext context, int index) {
+          return _itemView(
+              _projectSelectionRecommedEntity.recommed[index]);
+        })
+    ],
+    ),
+    ))
         : LoadingDialog();
   }
 
@@ -187,7 +189,7 @@ class _ProjectSelectionDetailViewState
                       top: ScreenUtil.instance.setHeight(10.0))),
               Container(
                   padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                  EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
                   child: Text(
                     recommend.title,
                     maxLines: 1,
@@ -198,10 +200,10 @@ class _ProjectSelectionDetailViewState
                   )),
               Padding(
                   padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
+                  EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
               Container(
                   padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                  EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
                   child: Text(
                     recommend.subtitle,
                     maxLines: 1,
@@ -212,10 +214,10 @@ class _ProjectSelectionDetailViewState
                   )),
               Padding(
                   padding:
-                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
+                  EdgeInsets.only(top: ScreenUtil.instance.setHeight(6.0))),
               Container(
                   padding:
-                      EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
+                  EdgeInsets.only(left: ScreenUtil.instance.setWidth(10.0)),
                   child: Text(
                     Strings.DOLLAR + "${recommend.price}",
                     style: TextStyle(

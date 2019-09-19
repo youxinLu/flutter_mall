@@ -45,7 +45,7 @@ class GoodsService {
       var response = await HttpUtil.instance
           .get(Api.GOODS_LIST_URL, parameters: parameters);
       if (response['errno'] == 0) {
-        responseList = response['data']['goods'];
+        responseList = response['data']['list'];
         GoodsListEntity goodsListEntitys =
             GoodsListEntity.fromJson(responseList);
         onSuccessList(goodsListEntitys.goodsEntitys);
@@ -116,12 +116,12 @@ class GoodsService {
     }
   }
 
-  Future deleteCart(OnSuccess onSuccess, OnFail onFail, Options options,
+  Future deleteCart(OnSuccess onSuccess, OnFail onFail,
       Map<String, dynamic> parameters) async {
     try {
       var response;
       response = await HttpUtil.instance
-          .post(Api.CART_DELETE, options: options, parameters: parameters);
+          .post(Api.CART_DELETE,  parameters: parameters);
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
       } else {
@@ -150,11 +150,11 @@ class GoodsService {
     }
   }
 
-  Future cartCheck(OnSuccess onSuccess, OnFail onFail, Options options,
+  Future cartCheck(OnSuccess onSuccess, OnFail onFail,
       Map<String, dynamic> parameters) async {
     try {
       var response = await HttpUtil.instance
-          .post(Api.CART_CHECK, options: options, parameters: parameters);
+          .post(Api.CART_CHECK,parameters: parameters);
       if (response['errno'] == 0) {
         CartListEntity cartList = CartListEntity.fromJson(response['data']);
         onSuccess(cartList);
@@ -167,11 +167,11 @@ class GoodsService {
     }
   }
 
-  Future cartCheckOut(OnSuccess onSuccess, OnFail onFail, Options options,
+  Future cartCheckOut(OnSuccess onSuccess, OnFail onFail,
       Map<String, dynamic> parameters) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.CART_BUY, parameters: parameters, options: options);
+          .get(Api.CART_BUY, parameters: parameters);
       if (response['errno'] == 0) {
         FillInOrderEntity fillInOrderEntity =
             FillInOrderEntity.fromJson(response['data']);
@@ -262,13 +262,13 @@ class GoodsService {
     }
   }
   Future buy(
-      Map<String, dynamic> parameters,Options options,
+      Map<String, dynamic> parameters,
       OnSuccess onSuccess,
       OnFail onFail,
       ) async {
     try {
       var response = await HttpUtil.instance
-          .post(Api.FAST_BUY, parameters: parameters,options: options);
+          .post(Api.FAST_BUY, parameters: parameters,);
       if (response['errno'] == 0) {
         onSuccess(response["data"]);
       } else {

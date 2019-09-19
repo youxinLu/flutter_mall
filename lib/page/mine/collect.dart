@@ -20,7 +20,7 @@ class _CollectViewState extends State<CollectView> {
   var _page = 1;
   var _limit = 10;
   var _type = 0;
-  List<Collect> _collects = List();
+  List<ListData> _collects = List();
 
   @override
   void initState() {
@@ -32,10 +32,9 @@ class _CollectViewState extends State<CollectView> {
   }
 
   _queryCollect() {
-    Options options = Options();
-    options.headers["token"] = token;
+
     var parameters = {"type": _type, "page": _page, "limit": _limit};
-    _mineService.queryCollect(parameters, options, (successList) {
+    _mineService.queryCollect(parameters,(successList) {
       setState(() {
         _collects = successList;
       });
@@ -68,7 +67,7 @@ class _CollectViewState extends State<CollectView> {
     );
   }
 
-  Widget getGoodsItemView(Collect collect, int index) {
+  Widget getGoodsItemView(ListData collect, int index) {
     return GestureDetector(
       child: Container(
         alignment: Alignment.center,
@@ -111,7 +110,7 @@ class _CollectViewState extends State<CollectView> {
     );
   }
 
-  _showDeleteDialog(Collect collect, int index) {
+  _showDeleteDialog(ListData collect, int index) {
     showDialog(
         context: context,
         barrierDismissible: true,
@@ -157,10 +156,8 @@ class _CollectViewState extends State<CollectView> {
   }
 
   _cancelCollect(int valueId, int index) {
-    Options options = Options();
-    options.headers["token"] = token;
     var parameters = {"type": 0, "valueId": valueId};
-    _mineService.addOrDeleteCollect(parameters, options, (onSuccess) {
+    _mineService.addOrDeleteCollect(parameters, (onSuccess) {
       setState(() {
         _collects.removeAt(index);
       });

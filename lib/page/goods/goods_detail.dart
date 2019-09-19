@@ -303,13 +303,11 @@ class _GoodsDetailState extends State<GoodsDetail> {
           "productId": _goodsDetail.specificationList[0].valueList[0].id,
           "number": _number
         };
-        Options options = Options();
-        options.headers["token"] = value;
         _goodsService.addCart(parameters, (value) {
           ToastUtil.showToast(Strings.ADD_CART_SUCCESS);
           Navigator.of(context).pop(); //隐藏弹出框
           eventBus.fire(RefreshEvent());
-        }, options: options);
+        }, );
       } else {
         NavigatorUtils.goLogin(context);
       }
@@ -317,23 +315,20 @@ class _GoodsDetailState extends State<GoodsDetail> {
   }
 
   _buy() {
-    SharedPreferencesUtils.getToken()
-      ..then((value) {
-        if (value != null) {
-          Options options = Options();
-          options.headers["token"] = value;
+        if (SharedPreferencesUtils.token != null) {
           parameters = {
             "goodsId": _goodsDetail.info.id,
             "productId": _goodsDetail.specificationList[0].valueList[0].id,
-            "number": _number
+            "number": _number,
+            "grouponRulesId":0,
+            "grouponLinkId":0
           };
-          _goodsService.buy(parameters, options, (success) {
+          _goodsService.buy(parameters, (success) {
             NavigatorUtils.goFillInOrder(context, success);
           }, (error) {});
         } else {
           NavigatorUtils.goLogin(context);
         }
-      });
   }
 
   _collection() {
@@ -349,11 +344,11 @@ class _GoodsDetailState extends State<GoodsDetail> {
 
   _addOrDeleteCollect() {
     Options options = Options();
-    options.headers["token"] = token;
+    options.headers["X-Litemall-Token"] = token;
     var parameters = {"type": 0, "valueId": _goodsDetail.info.id};
-    _mineService.addOrDeleteCollect(parameters, options, (onSuccess) {
+    _mineService.addOrDeleteCollect(parameters, (onSuccess) {
       setState(() {
-        _isCollection = onSuccess;
+        _isCollection = true;
       });
     }, (error) {
       ToastUtil.showToast(error);

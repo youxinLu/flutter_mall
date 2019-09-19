@@ -12,9 +12,9 @@ CouponListEntity _$CouponListEntityFromJson(Map<String, dynamic> json) {
       json['pages'] as int,
       json['limit'] as int,
       json['page'] as int,
-      (json['listData'] as List)
+      (json['list'] as List)
           ?.map((e) =>
-              e == null ? null : Coupon.fromJson(e as Map<String, dynamic>))
+              e == null ? null : ListData.fromJson(e as Map<String, dynamic>))
           ?.toList());
 }
 
@@ -24,11 +24,11 @@ Map<String, dynamic> _$CouponListEntityToJson(CouponListEntity instance) =>
       'pages': instance.pages,
       'limit': instance.limit,
       'page': instance.page,
-      'listData': instance.listData
+      'list': instance.list
     };
 
-Coupon _$CouponFromJson(Map<String, dynamic> json) {
-  return Coupon(
+ListData _$ListDataFromJson(Map<String, dynamic> json) {
+  return ListData(
       json['id'] as int,
       json['name'] as String,
       json['desc'] as String,
@@ -39,7 +39,7 @@ Coupon _$CouponFromJson(Map<String, dynamic> json) {
       json['endTime'] as String);
 }
 
-Map<String, dynamic> _$CouponToJson(Coupon instance) => <String, dynamic>{
+Map<String, dynamic> _$ListDataToJson(ListData instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'desc': instance.desc,

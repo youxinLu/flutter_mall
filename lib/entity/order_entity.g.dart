@@ -12,9 +12,9 @@ OrderEntity _$OrderEntityFromJson(Map<String, dynamic> json) {
       json['pages'] as int,
       json['limit'] as int,
       json['page'] as int,
-      (json['listData'] as List)
+      (json['list'] as List)
           ?.map((e) =>
-              e == null ? null : Order.fromJson(e as Map<String, dynamic>))
+              e == null ? null : ListData.fromJson(e as Map<String, dynamic>))
           ?.toList());
 }
 
@@ -24,24 +24,27 @@ Map<String, dynamic> _$OrderEntityToJson(OrderEntity instance) =>
       'pages': instance.pages,
       'limit': instance.limit,
       'page': instance.page,
-      'listData': instance.listData
+      'list': instance.list
     };
 
-Order _$OrderFromJson(Map<String, dynamic> json) {
-  return Order(
+ListData _$ListDataFromJson(Map<String, dynamic> json) {
+  return ListData(
       json['orderStatusText'] as String,
       json['isGroupin'] as bool,
       json['orderSn'] as String,
       (json['actualPrice'] as num)?.toDouble(),
       (json['goodsList'] as List)
           ?.map((e) =>
-              e == null ? null : Goods.fromJson(e as Map<String, dynamic>))
+              e == null ? null : GoodsList.fromJson(e as Map<String, dynamic>))
           ?.toList(),
       json['id'] as int,
-      json['handleOption'] as bool);
+      json['handleOption'] == null
+          ? null
+          : HandleOption.fromJson(
+              json['handleOption'] as Map<String, dynamic>));
 }
 
-Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
+Map<String, dynamic> _$ListDataToJson(ListData instance) => <String, dynamic>{
       'orderStatusText': instance.orderStatusText,
       'isGroupin': instance.isGroupin,
       'orderSn': instance.orderSn,
@@ -51,21 +54,43 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'handleOption': instance.handleOption
     };
 
-Goods _$GoodsFromJson(Map<String, dynamic> json) {
-  return Goods(
+GoodsList _$GoodsListFromJson(Map<String, dynamic> json) {
+  return GoodsList(
       json['number'] as int,
       json['picUrl'] as String,
+      (json['price'] as num)?.toDouble(),
       json['id'] as int,
       json['goodsName'] as String,
-      (json['price'] as num)?.toDouble(),
       (json['specifications'] as List)?.map((e) => e as String)?.toList());
 }
 
-Map<String, dynamic> _$GoodsToJson(Goods instance) => <String, dynamic>{
+Map<String, dynamic> _$GoodsListToJson(GoodsList instance) => <String, dynamic>{
       'number': instance.number,
       'picUrl': instance.picUrl,
+      'price': instance.price,
       'id': instance.id,
       'goodsName': instance.goodsName,
-      'price': instance.price,
       'specifications': instance.specifications
+    };
+
+HandleOption _$HandleOptionFromJson(Map<String, dynamic> json) {
+  return HandleOption(
+      json['cancel'] as bool,
+      json['delete'] as bool,
+      json['pay'] as bool,
+      json['comment'] as bool,
+      json['confirm'] as bool,
+      json['refund'] as bool,
+      json['rebuy'] as bool);
+}
+
+Map<String, dynamic> _$HandleOptionToJson(HandleOption instance) =>
+    <String, dynamic>{
+      'cancel': instance.cancel,
+      'delete': instance.delete,
+      'pay': instance.pay,
+      'comment': instance.comment,
+      'confirm': instance.confirm,
+      'refund': instance.refund,
+      'rebuy': instance.rebuy
     };

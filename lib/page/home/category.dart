@@ -7,13 +7,13 @@ import 'package:mall/constant/string.dart';
 import 'package:mall/widgets/cached_image.dart';
 
 class CategoryMenu extends StatelessWidget {
-  List<Categorie> categoryList;
+  List<Channel> categoryList;
 
   CategoryMenu(this.categoryList);
 
-  _goCategoryView(BuildContext context, Categorie categoryEntity) {
+  _goCategoryView(BuildContext context, Channel channel) {
     NavigatorUtils.goCategoryGoodsListPage(
-        context, categoryEntity.name, categoryEntity.id);
+        context, channel.name, channel.id);
   }
 
   @override
@@ -38,19 +38,19 @@ class CategoryMenu extends StatelessWidget {
     ));
   }
 
-  Widget _getGridViewItem(BuildContext context, Categorie categoryEntity) {
+  Widget _getGridViewItem(BuildContext context, Channel channel) {
     return Center(
       child: InkWell(
-        onTap: () => _goCategoryView(context, categoryEntity),
+        onTap: () => _goCategoryView(context, channel),
         child: Column(
           children: <Widget>[
             CachedImageView(ScreenUtil.instance.setWidth(60.0),
-                ScreenUtil.instance.setWidth(60.0), categoryEntity.iconUrl),
+                ScreenUtil.instance.setWidth(60.0), channel.iconUrl),
             Padding(
               padding: EdgeInsets.only(top: ScreenUtil.instance.setWidth(10.0)),
             ),
             Text(
-              categoryEntity.name,
+              channel.name,
               style: TextStyle(
                   fontSize: ScreenUtil.instance.setSp(26.0),
                   color: Colors.black87),

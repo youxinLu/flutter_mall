@@ -18,10 +18,10 @@ class CouponListEntity extends Object {
   @JsonKey(name: 'page')
   int page;
 
-  @JsonKey(name: 'listData')
-  List<Coupon> listData;
+  @JsonKey(name: 'list')
+  List<ListData> list;
 
-  CouponListEntity(this.total,this.pages,this.limit,this.page,this.listData,);
+  CouponListEntity(this.total,this.pages,this.limit,this.page,this.list,);
 
   factory CouponListEntity.fromJson(Map<String, dynamic> srcJson) => _$CouponListEntityFromJson(srcJson);
 
@@ -31,7 +31,7 @@ class CouponListEntity extends Object {
 
 
 @JsonSerializable()
-class Coupon extends Object {
+class ListData extends Object {
 
   @JsonKey(name: 'id')
   int id;
@@ -57,11 +57,11 @@ class Coupon extends Object {
   @JsonKey(name: 'endTime')
   String endTime;
 
-  Coupon(this.id,this.name,this.desc,this.tag,this.min,this.discount,this.startTime,this.endTime,);
+  ListData(this.id,this.name,this.desc,this.tag,this.min,this.discount,this.startTime,this.endTime,);
 
-  factory Coupon.fromJson(Map<String, dynamic> srcJson) => _$CouponFromJson(srcJson);
+  factory ListData.fromJson(Map<String, dynamic> srcJson) => _$ListDataFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$CouponToJson(this);
+  Map<String, dynamic> toJson() => _$ListDataToJson(this);
 
 }
 

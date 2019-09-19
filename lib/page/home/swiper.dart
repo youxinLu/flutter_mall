@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:mall/constant/string.dart';
 import 'package:mall/entity/home_entity.dart';
 import 'package:mall/utils/navigator_util.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/widgets/cached_image.dart';
 

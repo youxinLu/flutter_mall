@@ -6,9 +6,9 @@ import 'package:mall/service/user_service.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mall/entity/user_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:provider/provider.dart';
 import 'package:mall/utils/navigator_util.dart';
-import 'package:mall/model/user_info.dart';
+import 'package:mall/event/refresh_event.dart';
+import 'package:mall/utils/shared_preferences_util.dart';
 
 class LoginView extends StatefulWidget {
   @override
@@ -79,7 +79,7 @@ class _LoginViewState extends State<LoginView> {
                         child: TextFormField(
                           maxLines: 1,
                           maxLength: 12,
-                          obscureText:true,
+                          obscureText: true,
                           autovalidate: _autovalidator,
                           validator: __validatorPassWord,
                           decoration: InputDecoration(
@@ -162,16 +162,17 @@ class _LoginViewState extends State<LoginView> {
     if (registerFormKey.currentState.validate()) {
       registerFormKey.currentState.save();
       Map<String, dynamic> map = Map();
-      map.putIfAbsent("userName", () => _accountTextControl.text.toString());
-      map.putIfAbsent("passWord", () => _passwordTextControl.text.toString());
+      map.putIfAbsent("username", () => _accountTextControl.text.toString());
+      map.putIfAbsent("password", () => _passwordTextControl.text.toString());
       userService.login(map, (success) {
         print(success);
         userEntity = success;
         _saveUserInfo();
         _showToast(Strings.LOGIN_SUCESS);
+//        Provider.of<UserInfoModel>(context, listen: true)
+//            .updateInfo(userEntity);
+        eventBus.fire(RefreshEvent());
         Navigator.pop(context);
-        Provider.of<UserInfoModel>(context, listen: false)
-            .updateInfo(userEntity);
       }, (onFail) {
         print(onFail);
         _showToast(onFail);
@@ -196,6 +197,7 @@ class _LoginViewState extends State<LoginView> {
 
   _saveUserInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    SharedPreferencesUtils.token = userEntity.token;
     await sharedPreferences.setString(Strings.TOKEN, userEntity.token);
     await sharedPreferences.setString(
         Strings.HEAD_URL, userEntity.userInfo.avatarUrl);

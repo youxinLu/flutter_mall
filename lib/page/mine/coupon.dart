@@ -15,7 +15,7 @@ class CouponView extends StatefulWidget {
 
 class _CouponViewState extends State<CouponView> {
   MineService _mineService = MineService();
-  List<Coupon> _couponList = List();
+  List<ListData> _couponList = List();
   var token;
   var page = 1;
   var limit = 20;
@@ -32,10 +32,8 @@ class _CouponViewState extends State<CouponView> {
   }
 
   _getCouponData() {
-    Options options = Options();
-    options.headers["token"] = token;
     var parameters = {"page": page, "limit": limit};
-    _mineService.couponList(parameters, options, (onSuccess) {
+    _mineService.couponList(parameters, (onSuccess) {
       setState(() {
         _couponList = onSuccess;
       });
@@ -62,7 +60,7 @@ class _CouponViewState extends State<CouponView> {
     );
   }
 
-  Widget _couponItemView(Coupon coupon) {
+  Widget _couponItemView(ListData coupon) {
     return Container(
         height: ScreenUtil.instance.setHeight(190.0),
         margin: EdgeInsets.only(

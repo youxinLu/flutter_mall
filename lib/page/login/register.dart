@@ -134,8 +134,8 @@ class _RegisterViewState extends State<RegisterView> {
     if (registerFormKey.currentState.validate()) {
       registerFormKey.currentState.save();
       Map<String, dynamic> map = Map();
-      map.putIfAbsent("userName", () => _accountTextControl.text.toString());
-      map.putIfAbsent("passWord", () => _passwordTextControl.text.toString());
+      map.putIfAbsent("username", () => _accountTextControl.text.toString());
+      map.putIfAbsent("password", () => _passwordTextControl.text.toString());
       userService.register(map, (success) {
         print(success);
         NavigatorUtils.popRegister(context);

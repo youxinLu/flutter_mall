@@ -17,7 +17,7 @@ class FootprintView extends StatefulWidget {
 class _FootprintViewState extends State<FootprintView> {
   var _page = 1;
   var _limit = 10;
-  List<Footprint> _footprints = List();
+  List<ListData> _footprints = List();
   MineService _mineService = MineService();
   var token;
 
@@ -33,10 +33,9 @@ class _FootprintViewState extends State<FootprintView> {
   }
 
   _getFootprintData() {
-    Options options = Options();
-    options.headers["token"] = token;
+
     var parameters = {"page": _page, "limit": _limit};
-    _mineService.footPrint(parameters, options, (successList) {
+    _mineService.footPrint(parameters,  (successList) {
       setState(() {
         _footprints = successList;
       });
@@ -69,7 +68,7 @@ class _FootprintViewState extends State<FootprintView> {
     );
   }
 
-  Widget getGoodsItemView(Footprint footprint, int index) {
+  Widget getGoodsItemView(ListData footprint, int index) {
     return GestureDetector(
       child: Container(
         alignment: Alignment.center,
@@ -158,12 +157,11 @@ class _FootprintViewState extends State<FootprintView> {
   }
 
   _deleteFootprint(int id, int index) {
-    Options options = Options();
-    options.headers["token"] = token;
+
     var parameters = {
       "id": id,
     };
-    _mineService.deleteFootPrint(parameters, options, (onSuccess) {
+    _mineService.deleteFootPrint(parameters, (onSuccess) {
       setState(() {
         _footprints.removeAt(index);
       });

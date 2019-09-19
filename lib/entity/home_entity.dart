@@ -6,34 +6,34 @@ part 'home_entity.g.dart';
 @JsonSerializable()
 class HomeEntity extends Object {
 
-  @JsonKey(name: 'newGoods')
-  List<Goods> newGoods;
-
-  @JsonKey(name: 'brands')
-  List<Brand> brands;
-
-  @JsonKey(name: 'hotGoods')
-  List<Goods> hotGoods;
+  @JsonKey(name: 'newGoodsList')
+  List<Goods> newGoodsList;
 
   @JsonKey(name: 'couponList')
-  List<Coupon> couponList;
+  List<CouponList> couponList;
 
-  @JsonKey(name: 'floorGoods')
-  List<FloorGoods> floorGoods;
+  @JsonKey(name: 'channel')
+  List<Channel> channel;
 
-  @JsonKey(name: 'categories')
-  List<Categorie> categories;
+  @JsonKey(name: 'grouponList')
+  List<GrouponList> grouponList;
 
-  @JsonKey(name: 'projectSelections')
-  List<ProjectSelection> projectSelections;
+  @JsonKey(name: 'banner')
+  List<MallBanner> banner;
 
-  @JsonKey(name: 'groupons')
-  List<Groupon> groupons;
+  @JsonKey(name: 'brandList')
+  List<BrandList> brandList;
 
-  @JsonKey(name: 'banners')
-  List<MallBanner> banners;
+  @JsonKey(name: 'hotGoodsList')
+  List<Goods> hotGoodsList;
 
-  HomeEntity(this.newGoods,this.brands,this.hotGoods,this.couponList,this.floorGoods,this.categories,this.projectSelections,this.groupons,this.banners,);
+  @JsonKey(name: 'topicList')
+  List<TopicList> topicList;
+
+  @JsonKey(name: 'floorGoodsList')
+  List<FloorGoodsList> floorGoodsList;
+
+  HomeEntity(this.newGoodsList,this.couponList,this.channel,this.grouponList,this.banner,this.brandList,this.hotGoodsList,this.topicList,this.floorGoodsList,);
 
   factory HomeEntity.fromJson(Map<String, dynamic> srcJson) => _$HomeEntityFromJson(srcJson);
 
@@ -79,36 +79,7 @@ class Goods extends Object {
 
 
 @JsonSerializable()
-class Brand extends Object {
-
-  @JsonKey(name: 'id')
-  int id;
-
-  @JsonKey(name: 'name')
-  String name;
-
-  @JsonKey(name: 'desc')
-  String desc;
-
-  @JsonKey(name: 'picUrl')
-  String picUrl;
-
-  @JsonKey(name: 'floorPrice')
-  double floorPrice;
-
-  Brand(this.id,this.name,this.desc,this.picUrl,this.floorPrice,);
-
-  factory Brand.fromJson(Map<String, dynamic> srcJson) => _$BrandFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$BrandToJson(this);
-
-}
-
-
-
-
-@JsonSerializable()
-class Coupon extends Object {
+class CouponList extends Object {
 
   @JsonKey(name: 'id')
   int id;
@@ -131,41 +102,17 @@ class Coupon extends Object {
   @JsonKey(name: 'days')
   int days;
 
-  Coupon(this.id,this.name,this.desc,this.tag,this.discount,this.min,this.days,);
+  CouponList(this.id,this.name,this.desc,this.tag,this.discount,this.min,this.days,);
 
-  factory Coupon.fromJson(Map<String, dynamic> srcJson) => _$CouponFromJson(srcJson);
+  factory CouponList.fromJson(Map<String, dynamic> srcJson) => _$CouponListFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$CouponToJson(this);
+  Map<String, dynamic> toJson() => _$CouponListToJson(this);
 
 }
 
 
 @JsonSerializable()
-class FloorGoods extends Object {
-
-  @JsonKey(name: 'name')
-  String name;
-
-  @JsonKey(name: 'goodsList')
-  List<Goods> goodsList;
-
-  @JsonKey(name: 'id')
-  int id;
-
-  FloorGoods(this.name,this.goodsList,this.id,);
-
-  factory FloorGoods.fromJson(Map<String, dynamic> srcJson) => _$FloorGoodsFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$FloorGoodsToJson(this);
-
-}
-
-
-
-
-
-@JsonSerializable()
-class Categorie extends Object {
+class Channel extends Object {
 
   @JsonKey(name: 'id')
   int id;
@@ -176,47 +123,17 @@ class Categorie extends Object {
   @JsonKey(name: 'iconUrl')
   String iconUrl;
 
-  Categorie(this.id,this.name,this.iconUrl,);
+  Channel(this.id,this.name,this.iconUrl,);
 
-  factory Categorie.fromJson(Map<String, dynamic> srcJson) => _$CategorieFromJson(srcJson);
+  factory Channel.fromJson(Map<String, dynamic> srcJson) => _$ChannelFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$CategorieToJson(this);
-
-}
-
-
-@JsonSerializable()
-class ProjectSelection extends Object {
-
-  @JsonKey(name: 'id')
-  int id;
-
-  @JsonKey(name: 'title')
-  String title;
-
-  @JsonKey(name: 'subtitle')
-  String subtitle;
-
-  @JsonKey(name: 'price')
-  double price;
-
-  @JsonKey(name: 'readCount')
-  String readCount;
-
-  @JsonKey(name: 'picUrl')
-  String picUrl;
-
-  ProjectSelection(this.id,this.title,this.subtitle,this.price,this.readCount,this.picUrl,);
-
-  factory ProjectSelection.fromJson(Map<String, dynamic> srcJson) => _$ProjectSelectionFromJson(srcJson);
-
-  Map<String, dynamic> toJson() => _$ProjectSelectionToJson(this);
+  Map<String, dynamic> toJson() => _$ChannelToJson(this);
 
 }
 
 
 @JsonSerializable()
-class Groupon extends Object {
+class GrouponList extends Object {
 
   @JsonKey(name: 'id')
   int id;
@@ -245,11 +162,11 @@ class Groupon extends Object {
   @JsonKey(name: 'grouponMember')
   int grouponMember;
 
-  Groupon(this.id,this.name,this.brief,this.picUrl,this.counterPrice,this.retailPrice,this.grouponPrice,this.grouponDiscount,this.grouponMember,);
+  GrouponList(this.id,this.name,this.brief,this.picUrl,this.counterPrice,this.retailPrice,this.grouponPrice,this.grouponDiscount,this.grouponMember,);
 
-  factory Groupon.fromJson(Map<String, dynamic> srcJson) => _$GrouponFromJson(srcJson);
+  factory GrouponList.fromJson(Map<String, dynamic> srcJson) => _$GrouponListFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$GrouponToJson(this);
+  Map<String, dynamic> toJson() => _$GrouponListToJson(this);
 
 }
 
@@ -294,5 +211,123 @@ class MallBanner extends Object {
   Map<String, dynamic> toJson() => _$MallBannerToJson(this);
 
 }
+
+
+@JsonSerializable()
+class BrandList extends Object {
+
+  @JsonKey(name: 'id')
+  int id;
+
+  @JsonKey(name: 'name')
+  String name;
+
+  @JsonKey(name: 'desc')
+  String desc;
+
+  @JsonKey(name: 'picUrl')
+  String picUrl;
+
+  @JsonKey(name: 'floorPrice')
+  double floorPrice;
+
+  BrandList(this.id,this.name,this.desc,this.picUrl,this.floorPrice,);
+
+  factory BrandList.fromJson(Map<String, dynamic> srcJson) => _$BrandListFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$BrandListToJson(this);
+
+}
+
+
+@JsonSerializable()
+class HotGoodsList extends Object {
+
+  @JsonKey(name: 'id')
+  int id;
+
+  @JsonKey(name: 'name')
+  String name;
+
+  @JsonKey(name: 'brief')
+  String brief;
+
+  @JsonKey(name: 'picUrl')
+  String picUrl;
+
+  @JsonKey(name: 'isNew')
+  bool isNew;
+
+  @JsonKey(name: 'isHot')
+  bool isHot;
+
+  @JsonKey(name: 'counterPrice')
+  double counterPrice;
+
+  @JsonKey(name: 'retailPrice')
+  double retailPrice;
+
+  HotGoodsList(this.id,this.name,this.brief,this.picUrl,this.isNew,this.isHot,this.counterPrice,this.retailPrice,);
+
+  factory HotGoodsList.fromJson(Map<String, dynamic> srcJson) => _$HotGoodsListFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$HotGoodsListToJson(this);
+
+}
+
+
+@JsonSerializable()
+class TopicList extends Object {
+
+  @JsonKey(name: 'id')
+  int id;
+
+  @JsonKey(name: 'title')
+  String title;
+
+  @JsonKey(name: 'subtitle')
+  String subtitle;
+
+  @JsonKey(name: 'price')
+  double price;
+
+  @JsonKey(name: 'readCount')
+  String readCount;
+
+  @JsonKey(name: 'picUrl')
+  String picUrl;
+
+  TopicList(this.id,this.title,this.subtitle,this.price,this.readCount,this.picUrl,);
+
+  factory TopicList.fromJson(Map<String, dynamic> srcJson) => _$TopicListFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$TopicListToJson(this);
+
+}
+
+
+@JsonSerializable()
+class FloorGoodsList extends Object {
+
+  @JsonKey(name: 'name')
+  String name;
+
+  @JsonKey(name: 'goodsList')
+  List<Goods> goodsList;
+
+  @JsonKey(name: 'id')
+  int id;
+
+  FloorGoodsList(this.name,this.goodsList,this.id,);
+
+  factory FloorGoodsList.fromJson(Map<String, dynamic> srcJson) => _$FloorGoodsListFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$FloorGoodsListToJson(this);
+
+}
+
+
+
+
 
 

@@ -12,7 +12,7 @@ class ProjectSelectionRecommedEntity extends Object {
   @JsonKey(name: 'pages')
   int pages;
 
-  @JsonKey(name: 'listData')
+  @JsonKey(name: 'list')
   List<Recommed> recommed;
 
   @JsonKey(name: 'limit')

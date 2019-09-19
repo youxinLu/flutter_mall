@@ -39,7 +39,6 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   }
 
   _getFillInOrder() {
-    options.headers["token"] = token;
     var parameters = {
       "cartId": widget.cartId == 0 ? 0 : widget.cartId,
       "addressId": 0,
@@ -50,7 +49,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       setState(() {
         _fillInOrderEntity = success;
       });
-    }, (error) {}, options, parameters);
+    }, (error) {}, parameters);
   }
 
   @override
@@ -446,11 +445,13 @@ class _FillInOrderViewState extends State<FillInOrderView> {
       "cartId": 0,
       "addressId": _fillInOrderEntity.checkedAddress.id,
       "message": _controller.text,
-      "couponId": 0
+      "couponId": 0,
+      "grouponRulesId":0,
+      "grouponLinkId":0
     };
     _goodsService.submitOrder(options, parameters, (success) {
       print(success);
-      NavigatorUtils.submitOrderSuccessPop(context);
+     // NavigatorUtils.submitOrderSuccessPop(context);
     }, (error) {
       ToastUtil.showToast(error);
     });

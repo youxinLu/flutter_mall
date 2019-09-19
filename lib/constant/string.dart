@@ -25,7 +25,6 @@ class Strings {
   static const String ACCOUNT_RULE = "账号必须为长度为11的数字";
   static const String PASSWORD_RULE = "密码最少为6位";
   static const String NOW_REGISTER = "马上注册";
-  static const String TOKEN = "TOKEN";
   static const String NICK_NAME = "NICK_NAME";
   static const String HEAD_URL = "HEAD_URL";
   static const String REGISTER_SUCCESS = "注册成功";
@@ -141,4 +140,5 @@ class Strings {
   static const String RECEIVE_COUPON_SUCCESS = "领取优惠券成功";
   static const String PLEASE_LOGIN = "请先登录";
   static const String LOADING = "正在加载中...";
+  static const String TOKEN = "X-Litemall-Token";
 }
