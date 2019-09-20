@@ -16,7 +16,7 @@ class Api {
   static const String GOODS_CATEGORY_URL=BASE_URL+'/goods/category/list';//分类下的商品分类
   static const String GOODS_LIST_URL=BASE_URL+'/goods/list';//分类下的商品列表
   static const String GOODS_DETAILS_URL=BASE_URL+'/goods/detail';//商品详情
-  static const String REGISTER=BASE_URL+'/auth/appregister';//注册
+  static const String REGISTER=BASE_URL+'/auth/register';//注册
   static const String LOGIN=BASE_URL+'/auth/login';//登录
   static const String ADD_CART=BASE_URL+'/cart/add';//加入购物车
   static const String FAST_BUY=BASE_URL+'/cart/fastadd';//立即购买
@@ -33,7 +33,7 @@ class Api {
   static const String ADDRESS_DETAIL=BASE_URL+'/address/detail';//地址详情
   static const String ORDER=BASE_URL+'/order';//生成订单
   static const String FEED_BACK=BASE_URL+'/feedback/submit';//意见反馈
-  static const String MINE_COUPON_LIST=BASE_URL+'/coupon/allcoupon';//所有优惠券
+  static const String MINE_COUPON_LIST=BASE_URL+'/coupon/mylist';//所有优惠券
   static const String MINE_FOOTPRINT=BASE_URL+'/footprint/list';//足迹
   static const String MINE_FOOTPRINT_DELETE=BASE_URL+'/footprint/delete';//删除足迹
   static const String MINE_COLLECT=BASE_URL+ '/collect/list'; //收藏列表
@@ -48,5 +48,6 @@ class Api {
   static const String CATEGORY_LIST=BASE_URL+"/goods/category";//获取分类下的子类
   static const String BRAND_DETAIL=BASE_URL+"/brand/detail";//品牌制造商详情
   static const String RECEIVE_COUPON=BASE_URL+"/coupon/receive";//领取优惠券
+  static const String LOGIN_OUT=BASE_URL+"/auth/logout";//退出登录
 
 }

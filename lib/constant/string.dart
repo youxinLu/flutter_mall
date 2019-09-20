@@ -141,4 +141,6 @@ class Strings {
   static const String PLEASE_LOGIN = "请先登录";
   static const String LOADING = "正在加载中...";
   static const String TOKEN = "X-Litemall-Token";
+  static const String LOGIN_OUT = "退出登录";
+  static const String LOGIN_OUT_TIPS="是否确认退出当前账号";
 }

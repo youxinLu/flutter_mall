@@ -11,6 +11,7 @@ import 'package:mall/utils/toast_util.dart';
 import 'package:mall/event/refresh_event.dart';
 import 'package:mall/event/cart_number_event.dart';
 import 'package:mall/widgets/cached_image.dart';
+import 'package:mall/event/login_event.dart';
 
 class CartView extends StatefulWidget {
   @override
@@ -43,7 +44,7 @@ class _CartViewState extends State<CartView> {
 
   _getCartData(token) {
     Options options = Options();
- //   options.headers[Strings.TOKEN] = token;
+    //   options.headers[Strings.TOKEN] = token;
     _goodsService.queryCart((cartList) {
       setState(() {
         _isLogin = true;
@@ -59,6 +60,15 @@ class _CartViewState extends State<CartView> {
     eventBus
         .on<RefreshEvent>()
         .listen((RefreshEvent refreshEvent) => _getCartData(token));
+    loginEventBus.on<LoginEvent>().listen((LoginEvent loginEvent) {
+      if (loginEvent.isLogin) {
+        _getCartData(SharedPreferencesUtils.token);
+      } else {
+        setState(() {
+          _isLogin = false;
+        });
+      }
+    });
   }
 
   @override
@@ -70,104 +80,103 @@ class _CartViewState extends State<CartView> {
           centerTitle: true,
         ),
         body: _isLogin && _cartList != null
-              ? Container(
-                  child: _cartList.length != 0
-                      ? Stack(
-                          alignment: Alignment.bottomCenter,
-                          children: <Widget>[
-                            ListView.builder(
-                                itemCount: _cartList.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  print("_getCartItemView itemBuilder");
-                                  return _getCartItemView(index);
-                                }),
-                            Container(
-                              height: ScreenUtil.getInstance().setHeight(120.0),
-                              decoration: ShapeDecoration(
-                                  shape: Border(
-                                      top: BorderSide(
-                                          color: Colors.grey, width: 1.0))),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Checkbox(
-                                      value: _isAllCheck,
-                                      activeColor: Colors.deepOrangeAccent,
-                                      onChanged: (bool) {
-                                        _setCartItemCheck(bool);
-                                      }),
-                                  Container(
-                                    width: ScreenUtil.getInstance()
-                                        .setWidth(200.0),
-                                    child: Text(_isAllCheck
-                                        ? Strings.TOTAL_MONEY +
-                                            "${cartListEntity.cartTotal.checkedGoodsAmount}"
-                                        : Strings.TOTAL_MONEY +
-                                            "${_totalMoney}"),
-                                  ),
-                                  Expanded(
-                                      child: Container(
-                                    margin: EdgeInsets.only(
-                                        right: ScreenUtil.getInstance()
-                                            .setWidth(30.0)),
-                                    alignment: Alignment.centerRight,
-                                    child: RaisedButton(
-                                      onPressed: () {
-                                        _fillInOrder();
-                                      },
-                                      color: Colors.deepOrangeAccent,
-                                      child: Text(
-                                        Strings.SETTLEMENT,
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: ScreenUtil.getInstance()
-                                                .setSp(26.0)),
-                                      ),
+            ? Container(
+                child: _cartList.length != 0
+                    ? Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: <Widget>[
+                          ListView.builder(
+                              itemCount: _cartList.length,
+                              itemBuilder: (BuildContext context, int index) {
+                                print("_getCartItemView itemBuilder");
+                                return _getCartItemView(index);
+                              }),
+                          Container(
+                            height: ScreenUtil.getInstance().setHeight(120.0),
+                            decoration: ShapeDecoration(
+                                shape: Border(
+                                    top: BorderSide(
+                                        color: Colors.grey, width: 1.0))),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Checkbox(
+                                    value: _isAllCheck,
+                                    activeColor: Colors.deepOrangeAccent,
+                                    onChanged: (bool) {
+                                      _setCartItemCheck(bool);
+                                    }),
+                                Container(
+                                  width:
+                                      ScreenUtil.getInstance().setWidth(200.0),
+                                  child: Text(_isAllCheck
+                                      ? Strings.TOTAL_MONEY +
+                                          "${cartListEntity.cartTotal.checkedGoodsAmount}"
+                                      : Strings.TOTAL_MONEY + "${_totalMoney}"),
+                                ),
+                                Expanded(
+                                    child: Container(
+                                  margin: EdgeInsets.only(
+                                      right: ScreenUtil.getInstance()
+                                          .setWidth(30.0)),
+                                  alignment: Alignment.centerRight,
+                                  child: RaisedButton(
+                                    onPressed: () {
+                                      _fillInOrder();
+                                    },
+                                    color: Colors.deepOrangeAccent,
+                                    child: Text(
+                                      Strings.SETTLEMENT,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: ScreenUtil.getInstance()
+                                              .setSp(26.0)),
                                     ),
-                                  ))
-                                ],
-                              ),
+                                  ),
+                                ))
+                              ],
+                            ),
+                          )
+                        ],
+                      )
+                    : Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              "images/no_data.png",
+                              height: 80,
+                              width: 80,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 10.0),
+                            ),
+                            Text(
+                              Strings.NO_DATA_TEXT,
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  color: Colors.deepOrangeAccent),
                             )
                           ],
-                        )
-                      : Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset(
-                                "images/no_data.png",
-                                height: 80,
-                                width: 80,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 10.0),
-                              ),
-                              Text(
-                                Strings.NO_DATA_TEXT,
-                                style: TextStyle(
-                                    fontSize: 16.0,
-                                    color: Colors.deepOrangeAccent),
-                              )
-                            ],
-                          ),
                         ),
-                )
-              : Container(
-                  child: Center(
-                    child: RaisedButton(
-                      color: Colors.deepOrangeAccent,
-                      onPressed: () {
-                        NavigatorUtils.goLogin(context);
-                      },
-                      child: Text(
-                        Strings.LOGIN,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: ScreenUtil.getInstance().setSp(30.0)),
                       ),
+              )
+            : Container(
+                child: Center(
+                  child: RaisedButton(
+                    color: Colors.deepOrangeAccent,
+                    onPressed: () {
+                      NavigatorUtils.goLogin(context);
+                    },
+                    child: Text(
+                      Strings.LOGIN,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil.getInstance().setSp(30.0)),
                     ),
                   ),
-                ));
+                ),
+              ));
   }
 
   _fillInOrder() {
@@ -244,7 +253,7 @@ class _CartViewState extends State<CartView> {
 
   _updateCart(int index, int number) {
     Options options = Options();
-  //  options.headers[Strings.TOKEN] = token;
+    //  options.headers[Strings.TOKEN] = token;
     var parameters = {
       "productId": _cartList[index].productId,
       "goodsId": _cartList[index].goodsId,
@@ -275,7 +284,7 @@ class _CartViewState extends State<CartView> {
       _totalMoney = cartListEntity.cartTotal.goodsAmount;
     }, (error) {
       ToastUtil.showToast(error);
-    },  parameters);
+    }, parameters);
   }
 
   _deleteDialog(int index) {
@@ -322,7 +331,7 @@ class _CartViewState extends State<CartView> {
       Navigator.pop(context);
     }, (error) {
       ToastUtil.showToast(error);
-    },parameters);
+    }, parameters);
   }
 
   bool _checkedAll() {

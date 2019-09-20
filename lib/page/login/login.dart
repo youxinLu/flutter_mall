@@ -7,7 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mall/entity/user_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:mall/utils/navigator_util.dart';
-import 'package:mall/event/refresh_event.dart';
+import 'package:mall/event/login_event.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 
 class LoginView extends StatefulWidget {
@@ -171,7 +171,7 @@ class _LoginViewState extends State<LoginView> {
         _showToast(Strings.LOGIN_SUCESS);
 //        Provider.of<UserInfoModel>(context, listen: true)
 //            .updateInfo(userEntity);
-        eventBus.fire(RefreshEvent());
+        loginEventBus.fire(LoginEvent(true,url: userEntity.userInfo.avatarUrl,nickName: userEntity.userInfo.nickName));
         Navigator.pop(context);
       }, (onFail) {
         print(onFail);

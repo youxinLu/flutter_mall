@@ -7,6 +7,5 @@ class UserInfoModel with ChangeNotifier {
   updateInfo(UserEntity userEntity) {
     this.userEntity = userEntity;
     notifyListeners();
-    print("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
   }
 }
