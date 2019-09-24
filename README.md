@@ -22,6 +22,24 @@ Flutter_Mall功能
 * 订单列表、订单详情<br>
 * 地址、收藏、足迹、意见反馈<br>
 
+项目截图
+------------------
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_100618_com.example.mall.jpg)
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_101103_com.example.mall.jpg)<br> 
+![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)
+![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)<br> 
+![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)
+![详情](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_101134_com.example.mall.jpg)<br> 
+![下单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094224_com.example.mall.jpg) 
+![订单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094532_com.example.mall.jpg)<br> 
+
+项目结构
+------------------
+>lib
+>>api(接口地址)
+
+
+
 第三方框架
 
 flutter_swiper      轮播图<br> 
