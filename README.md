@@ -41,6 +41,9 @@ Flutter_Mall功能
 >>entity(实体类)
 >>event(事件)
 >>page(页面)
+>>widgets(通用组件)
+
+>page
 >>>category(分类)
 >>>goods(商品)
 >>>login(登录注册)
@@ -48,7 +51,6 @@ Flutter_Mall功能
 >>>splash(启动页)
 >>service(网络请求)
 >>utils(工具类)
->>widgets(通用组件)
 
 第三方框架
 -----------------
