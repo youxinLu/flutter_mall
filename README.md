@@ -1,7 +1,9 @@
 Flutter_Mall
 ==========
-Shop是一款Flutter开源在线商城应用程序，包含了商城首页、商品分类、购物车、搜索商品、商品详情、优惠券、我的订单、我的足迹、我的收藏、反馈等功能。
-
+Flutter_Mall是一款Flutter开源在线商城应用程序，是基于[litemall](https://github.com/linlinjava/litemall)基础上进行开发，litemall包含了Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端 + Vue用户移动端感兴趣的同学可以自行研究，Flutter_Mall基本上包含了litemall中小程序的功能。
+扫码体验安卓版本（iOS请自行下载项目进行体验）
+----------
+![下载地址](https://www.pgyer.com/app/qrcode/mESx)
 第三方框架
 
 flutter_swiper      轮播图<br> 
