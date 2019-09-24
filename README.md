@@ -73,15 +73,15 @@ Flutter_Mall功能
 
 Flutter_Mall环境搭建
 ----------------
-[Mac环境搭建](https://blog.csdn.net/zhangxiangliang2/article/details/75566412)
-[Windows环境搭建](https://blog.csdn.net/yyanjun/article/details/80682586）
+[Mac环境搭建](https://blog.csdn.net/zhangxiangliang2/article/details/75566412)<br>
+[Windows环境搭建](https://blog.csdn.net/yyanjun/article/details/80682586)
 
 Flutter学习资料
 ----------------
 [Flutter官方文档](https://flutter.io/docs/)<br>
 [Flutter中文官网](https://flutter-io.cn/)<br>
 [Flutter教程](http://www.flutterj.com/)<br>
-[flutter-go](https://github.com/alibaba/flutter-go)<br>juz
+[flutter-go](https://github.com/alibaba/flutter-go)<br>
 [dart](https://dart.dev/)
 
 赞赏
