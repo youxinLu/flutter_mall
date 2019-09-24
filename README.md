@@ -71,23 +71,25 @@ Flutter_Mall功能
 Flutter_Mall环境搭建
 ----------------
 [Mac环境搭建](https://blog.csdn.net/zhangxiangliang2/article/details/75566412)
-[Windows环境搭建]（https://blog.csdn.net/yyanjun/article/details/80682586）
+[Windows环境搭建](https://blog.csdn.net/yyanjun/article/details/80682586）
 
 Flutter学习资料
 ----------------
-[Flutter官方文档](https://flutter.io/docs/)
-[Flutter中文官网](https://flutter-io.cn/)
-[Flutter教程](http://www.flutterj.com/)
-[flutter-go](https://github.com/alibaba/flutter-go)
+[Flutter官方文档](https://flutter.io/docs/)<br>
+[Flutter中文官网](https://flutter-io.cn/)<br>
+[Flutter教程](http://www.flutterj.com/)<br>
+[flutter-go](https://github.com/alibaba/flutter-go)<br>juz
 [dart](https://dart.dev/)
 
 赞赏
 --------------------
-如果这个项目对您有帮助，
-如果这个库对您有很大帮助，您愿意支持这个项目的进一步开发和这个项目的持续维护。你可以扫描下面的二维码，让我喝一杯咖啡或啤酒。非常感谢您的捐赠。谢谢！
+因服务器是由个人维护，如果这个项目对您有帮助，您可以扫描下面二维码进行捐赠，谢谢。<br>
 
-因服务器是由个人维护，项目中的接口地址会不定时更换，赞赏的老铁加我微信备注，接口地址改了以后会及时通知大家<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142112.jpg)
 ![支付宝](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142121.jpg)<br> 
-微信<br>
+
+联系我
+--------------
+QQ：443765662<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
+
