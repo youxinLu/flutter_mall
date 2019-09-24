@@ -37,41 +37,55 @@ Flutter_Mall功能
 ------------------
 >lib
 >>api(接口地址)
-
-
-| 名称        | 作用         | 
-| ------------- |:-------------:| 
-| flutter_swipe     |轮播图 | 
-|  [dio](https://github.com/flutterchina/dio)  | 网络框架      |  
-|  星期三   | G1007    |   
-
+>>config(路由相关)
+>>entity(实体类)
+>>event(事件)
+>>page(页面)
+>>>category(分类)
+>>>goods(商品)
+>>>login(登录注册)
+>>>mine(我的)
+>>>splash(启动页)
+>>service(网络请求)
+>>utils(工具类)
+>>widgets(通用组件)
 
 第三方框架
+-----------------
+| 名称        | 作用         | 
+| ------------- |:-------------:| 
+| [flutter_swipe](https://github.com/best-flutter/flutter_swiper)     |轮播图 | 
+|  [dio](https://github.com/flutterchina/dio)  | 网络框架      |  
+|  [flutter_spinkit](https://github.com/jogboms/flutter_spinkit)   | 旋转组件    |   
+|  [event_bus](https://github.com/marcojakob/dart-event-bus)   | 事件通知    |   
+|  [flutter_html](https://github.com/Sub6Resources/flutter_html)   | html框架    |   
+|  [flutter_screenutil](https://pub.dev/packages/flutter_screenutil)   | 屏幕适配    |   
+|  [fluttertoast](https://pub.dev/packages/fluttertoast)   |  Toast   |   
+|  [shared_preferences](https://pub.dev/packages/shared_preferences)   | 本地数据缓存    |   
+|  [fluro](https://pub.dev/packages/fluro)   |  路由   |   
+|  [city_pickers](https://pub.dev/packages/city_pickers)   |  城市选择   |   
+|  [flutter_easyrefresh](https://pub.dev/packages/flutter_easyrefresh)   |  上拉加载和下拉刷新   |   
+|  [flutter_webview_plugin](https://pub.dev/packages/flutter_webview_plugin)   |  webview   |   
+|  [cached_network_image](https://pub.dev/packages/cached_network_image)   |  图片缓存   |   
 
-flutter_swiper      轮播图<br> 
-dio                 网络框架<br> 
-flutter_spinkit     旋转组件<br> 
-event_bus           事件通知<br> 
-flutter_html        html框架<br> 
-flutter_screenutil  屏幕适配<br> 
-fluttertoast        Toast<br> 
-shared_preferences  本地数据缓存 <br> 
-fluro               路由<br> 
-provider            状态管理<br> 
-city_pickers        城市选择<br> 
-flutter_easyrefresh 上拉加载和下拉刷新<br> 
-flutter_webview_plugin webview<br> 
-cached_network_image   图片缓存<br> 
+Flutter_Mall环境搭建
+----------------
+[Mac环境搭建](https://blog.csdn.net/zhangxiangliang2/article/details/75566412)
+[Windows环境搭建]（https://blog.csdn.net/yyanjun/article/details/80682586）
 
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092259_com.example.mall.jpg)<br> 
-![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)<br> 
-![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)<br> 
-![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)<br> 
-![详情](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092628_com.example.mall.jpg)<br> 
-![订单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094532_com.example.mall.jpg)<br> 
-下载地址<br> 
-![下载地址](https://www.pgyer.com/app/qrcode/mESx)
-<br>
+Flutter学习资料
+----------------
+[Flutter官方文档](https://flutter.io/docs/)
+[Flutter中文官网](https://flutter-io.cn/)
+[Flutter教程](http://www.flutterj.com/)
+[flutter-go](https://github.com/alibaba/flutter-go)
+[dart](https://dart.dev/)
+
+赞赏
+--------------------
+如果这个项目对您有帮助，
+如果这个库对您有很大帮助，您愿意支持这个项目的进一步开发和这个项目的持续维护。你可以扫描下面的二维码，让我喝一杯咖啡或啤酒。非常感谢您的捐赠。谢谢！
+
 因服务器是由个人维护，项目中的接口地址会不定时更换，赞赏的老铁加我微信备注，接口地址改了以后会及时通知大家<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142112.jpg)
 ![支付宝](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142121.jpg)<br> 
