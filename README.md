@@ -36,21 +36,21 @@ Flutter_Mall功能
 项目结构
 ------------------
 >lib
->>api(接口地址)
->>config(路由相关)
->>entity(实体类)
->>event(事件)
->>page(页面)
->>widgets(通用组件)
+>>api(接口地址)<br>
+>>config(路由相关)<br>
+>>entity(实体类)<br>
+>>event(事件)<br>
+>>page(页面)<br>
+>>widgets(通用组件)<br>
 
 >page
->>>category(分类)
->>>goods(商品)
->>>login(登录注册)
->>>mine(我的)
->>>splash(启动页)
->>service(网络请求)
->>utils(工具类)
+>>>category(分类)<br>
+>>>goods(商品)<br>
+>>>login(登录注册)<br>
+>>>mine(我的)<br>
+>>>splash(启动页)<br>
+>>service(网络请求)<br>
+>>utils(工具类)<br>
 
 第三方框架
 -----------------
