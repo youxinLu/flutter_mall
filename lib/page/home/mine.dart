@@ -229,6 +229,7 @@ class _MineViewState extends State<MineView> {
     _userService.loginOut((success) {
       loginEventBus.fire(LoginEvent(false));
     }, (error) {
+      loginEventBus.fire(LoginEvent(false));
       ToastUtil.showToast(error);
     });
     Navigator.pop(context);

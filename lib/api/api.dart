@@ -38,7 +38,7 @@ class Api {
   static const String MINE_FOOTPRINT_DELETE=BASE_URL+'/footprint/delete';//删除足迹
   static const String MINE_COLLECT=BASE_URL+ '/collect/list'; //收藏列表
   static const String SUBMIT_ORDER=BASE_URL+ '/order/submit';// 提交订单
-  static const String MINE_ORDERS=BASE_URL+'/order/app/mineorder';//我的订单
+  static const String MINE_ORDERS=BASE_URL+'/order/list';//我的订单
   static const String MINE_ORDER_DETAIL=BASE_URL+"/order/detail";//订单详情
   static const String MINE_ORDER_CANCEL=BASE_URL+"/order/cancel";//取消订单
   static const String MINE_ORDER_DELETE=BASE_URL+"/order/delete";//取消订单
