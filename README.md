@@ -1,6 +1,8 @@
 Flutter_Mall
 ==========
+
 Flutter_Mall是一款Flutter开源在线商城应用程序，是基于[litemall](https://github.com/linlinjava/litemall)基础上进行开发，litemall包含了Spring Boot后端 + Vue管理员前端 + 微信小程序用户前端 + Vue用户移动端感兴趣的同学可以自行研究，Flutter_Mall基本上包含了litemall中小程序的功能。<br>
+
 扫码体验安卓版本（iOS请自行下载项目进行体验）
 ----------
 ![下载地址](https://www.pgyer.com/app/qrcode/mESx)
