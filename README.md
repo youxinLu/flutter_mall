@@ -41,9 +41,6 @@ Flutter_Mall功能
 >>entity(实体类)<br>
 >>event(事件)<br>
 >>page(页面)<br>
->>widgets(通用组件)<br>
-
->page
 >>>category(分类)<br>
 >>>goods(商品)<br>
 >>>login(登录注册)<br>
@@ -51,6 +48,10 @@ Flutter_Mall功能
 >>>splash(启动页)<br>
 >>service(网络请求)<br>
 >>utils(工具类)<br>
+>>widgets(通用组件)<br>
+
+
+
 
 第三方框架
 -----------------
@@ -93,5 +94,6 @@ Flutter学习资料
 联系我
 --------------
 QQ：443765662<br>
+微信<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
 
