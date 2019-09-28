@@ -109,10 +109,8 @@ class _CartViewState extends State<CartView> {
                                 Container(
                                   width:
                                       ScreenUtil.getInstance().setWidth(200.0),
-                                  child: Text(_isAllCheck
-                                      ? Strings.TOTAL_MONEY +
-                                          "${cartListEntity.cartTotal.checkedGoodsAmount}"
-                                      : Strings.TOTAL_MONEY + "${_totalMoney}"),
+                                  child: Text(Strings.TOTAL_MONEY +
+                                      "${cartListEntity.cartTotal.checkedGoodsAmount}"),
                                 ),
                                 Expanded(
                                     child: Container(
@@ -227,22 +225,12 @@ class _CartViewState extends State<CartView> {
                 ],
               ),
               Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    "X${_cartList[index].number}",
-                    style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: ScreenUtil.getInstance().setSp(24.0)),
-                  ),
-                  Padding(
-                      padding: EdgeInsets.only(
-                          top: ScreenUtil.getInstance().setHeight(10.0))),
-                  CartNumberView(_cartList[index].number, (value) {
-                    _updateCart(index, value);
-                  }),
-                ],
+                  child: Container(
+                    padding: EdgeInsets.only(right: ScreenUtil.getInstance().setWidth(20.0)),
+                alignment: Alignment.centerRight,
+                child: CartNumberView(_cartList[index].number, (value) {
+                  _updateCart(index, value);
+                }),
               ))
             ],
           ),
