@@ -5,7 +5,7 @@ Flutter_Mall是一款Flutter开源在线商城应用程序，是基于[litemall]
 
 扫码体验安卓版本（iOS请自行下载源码进行编译）
 ----------
-![下载地址](https://www.pgyer.com/bFxX)<br>
+[下载地址](https://www.pgyer.com/bFxX)<br>
 
 Flutter_Mall功能
 ----------
