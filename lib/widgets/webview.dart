@@ -15,7 +15,7 @@ class WebViewPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: WebviewScaffold(
-        url: "http://www.baidu.com",
+        url: bannerDetailUrl,
         withZoom: false,
         withLocalStorage: true,
         withJavascript: true,

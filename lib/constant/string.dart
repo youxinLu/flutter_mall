@@ -25,7 +25,6 @@ class Strings {
   static const String ACCOUNT_RULE = "账号必须为长度为11的数字";
   static const String PASSWORD_RULE = "密码最少为6位";
   static const String NOW_REGISTER = "马上注册";
-  static const String TOKEN = "TOKEN";
   static const String NICK_NAME = "NICK_NAME";
   static const String HEAD_URL = "HEAD_URL";
   static const String REGISTER_SUCCESS = "注册成功";
@@ -99,7 +98,7 @@ class Strings {
   static const String MINE_CANCEL_COLLECT = "是否确定取消收藏此商品?";
   static const String MINE_ABOUT_US = "关于我们";
   static const String MINE_ABOUT_US_CONTENT =
-      "Tong Shop是一个企业级商城Flutter项目，通过学习Tong Shop项目可以让读者达到具有开发企业项目的实战能力";
+      "Flutter Mall是一个企业级商城Flutter项目，通过学习Flutter Mall项目可以让读者达到具有开发企业项目的实战能力";
   static const String MINE_ABOUT_AUTHOR_TITLE = "作者";
   static const String MINE_ABOUT_AUTHOR = "路由新";
   static const String MINE_ABOUT_EMAIL_TITLE = "邮箱";
@@ -109,7 +108,7 @@ class Strings {
   static const String MINE_ABOUT_WX_TITLE = "微信";
   static const String MINE_ABOUT_WX = "lizhenghua0126";
   static const String MINE_ORDER = "我的订单";
-  static const String MALL = "Tong Shop";
+  static const String MALL = "Mall";
   static const String MINE_ORDER_TAG_ONE = "无忧购";
   static const String MINE_ORDER_TAG_TWO = "七天无理由退换";
   static const String MINE_ORDER_TOTAL_GOODS = "共计";
@@ -141,4 +140,7 @@ class Strings {
   static const String RECEIVE_COUPON_SUCCESS = "领取优惠券成功";
   static const String PLEASE_LOGIN = "请先登录";
   static const String LOADING = "正在加载中...";
+  static const String TOKEN = "X-Litemall-Token";
+  static const String LOGIN_OUT = "退出登录";
+  static const String LOGIN_OUT_TIPS="是否确认退出当前账号";
 }

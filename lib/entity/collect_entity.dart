@@ -12,16 +12,16 @@ class CollectEntity extends Object {
   @JsonKey(name: 'pages')
   int pages;
 
-  @JsonKey(name: 'listData')
-  List<Collect> listData;
-
   @JsonKey(name: 'limit')
   int limit;
 
   @JsonKey(name: 'page')
   int page;
 
-  CollectEntity(this.total,this.pages,this.listData,this.limit,this.page,);
+  @JsonKey(name: 'list')
+  List<ListData> list;
+
+  CollectEntity(this.total,this.pages,this.limit,this.page,this.list,);
 
   factory CollectEntity.fromJson(Map<String, dynamic> srcJson) => _$CollectEntityFromJson(srcJson);
 
@@ -31,16 +31,10 @@ class CollectEntity extends Object {
 
 
 @JsonSerializable()
-class Collect extends Object {
+class ListData extends Object {
 
-  @JsonKey(name: 'id')
-  int id;
-
-  @JsonKey(name: 'type')
-  int type;
-
-  @JsonKey(name: 'bried')
-  String bried;
+  @JsonKey(name: 'brief')
+  String brief;
 
   @JsonKey(name: 'picUrl')
   String picUrl;
@@ -51,14 +45,20 @@ class Collect extends Object {
   @JsonKey(name: 'name')
   String name;
 
+  @JsonKey(name: 'id')
+  int id;
+
+  @JsonKey(name: 'type')
+  int type;
+
   @JsonKey(name: 'retailPrice')
   double retailPrice;
 
-  Collect (this.id,this.type,this.bried,this.picUrl,this.valueId,this.name,this.retailPrice,);
+  ListData(this.brief,this.picUrl,this.valueId,this.name,this.id,this.type,this.retailPrice,);
 
-  factory Collect.fromJson(Map<String, dynamic> srcJson) => _$CollectFromJson(srcJson);
+  factory ListData.fromJson(Map<String, dynamic> srcJson) => _$ListDataFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$CollectToJson(this);
+  Map<String, dynamic> toJson() => _$ListDataToJson(this);
 
 }
 

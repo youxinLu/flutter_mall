@@ -18,10 +18,10 @@ class FootprintEntity extends Object {
   @JsonKey(name: 'page')
   int page;
 
-  @JsonKey(name: 'listData')
-  List<Footprint> listData;
+  @JsonKey(name: 'list')
+  List<ListData> list;
 
-  FootprintEntity(this.total,this.pages,this.limit,this.page,this.listData,);
+  FootprintEntity(this.total,this.pages,this.limit,this.page,this.list,);
 
   factory FootprintEntity.fromJson(Map<String, dynamic> srcJson) => _$FootprintEntityFromJson(srcJson);
 
@@ -31,7 +31,7 @@ class FootprintEntity extends Object {
 
 
 @JsonSerializable()
-class Footprint extends Object {
+class ListData extends Object {
 
   @JsonKey(name: 'brief')
   String brief;
@@ -54,11 +54,11 @@ class Footprint extends Object {
   @JsonKey(name: 'retailPrice')
   double retailPrice;
 
-  Footprint(this.brief,this.picUrl,this.addTime,this.goodsId,this.name,this.id,this.retailPrice,);
+  ListData(this.brief,this.picUrl,this.addTime,this.goodsId,this.name,this.id,this.retailPrice,);
 
-  factory Footprint.fromJson(Map<String, dynamic> srcJson) => _$FootprintFromJson(srcJson);
+  factory ListData.fromJson(Map<String, dynamic> srcJson) => _$ListDataFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$FootprintToJson(this);
+  Map<String, dynamic> toJson() => _$ListDataToJson(this);
 
 }
 

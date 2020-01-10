@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:mall/constant/string.dart';
+import 'package:mall/utils/shared_preferences_util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 var dio;
@@ -23,11 +25,15 @@ class HttpUtil {
     );
     dio = new Dio(options);
     dio.interceptors
-        .add(InterceptorsWrapper(onRequest: (RequestOptions options) {
+        .add(InterceptorsWrapper(onRequest: (RequestOptions options) async {
       print("========================请求数据===================");
       print("url=${options.uri.toString()}");
       print("params=${options.data}");
-
+      dio.lock();
+     await SharedPreferencesUtils.getToken().then((token) {
+        options.headers[Strings.TOKEN] = token;
+      });
+      dio.unlock();
       return options;
     }, onResponse: (Response response) {
       print("========================请求数据===================");
@@ -39,10 +45,12 @@ class HttpUtil {
     }));
   }
 
-  Future get(String url, {Map<String, dynamic> parameters, Options options}) async {
+  Future get(String url,
+      {Map<String, dynamic> parameters, Options options}) async {
     Response response;
     if (parameters != null && options != null) {
-      response = await dio.get(url, queryParameters: parameters, options: options);
+      response =
+          await dio.get(url, queryParameters: parameters, options: options);
     } else if (parameters != null && options == null) {
       response = await dio.get(url, queryParameters: parameters);
     } else if (parameters == null && options != null) {
@@ -54,7 +62,7 @@ class HttpUtil {
   }
 
   Future post(String url,
-      {Map<String, dynamic> parameters,Options options}) async {
+      {Map<String, dynamic> parameters, Options options}) async {
     Response response;
     if (parameters != null && options != null) {
       response = await dio.post(url, data: parameters, options: options);

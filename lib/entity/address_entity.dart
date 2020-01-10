@@ -18,10 +18,10 @@ class AddressEntity extends Object {
   @JsonKey(name: 'page')
   int page;
 
-  @JsonKey(name: 'listData')
-  List<ListData> listData;
+  @JsonKey(name: 'list')
+  List<ListData> list;
 
-  AddressEntity(this.total,this.pages,this.limit,this.page,this.listData,);
+  AddressEntity(this.total,this.pages,this.limit,this.page,this.list,);
 
   factory AddressEntity.fromJson(Map<String, dynamic> srcJson) => _$AddressEntityFromJson(srcJson);
 

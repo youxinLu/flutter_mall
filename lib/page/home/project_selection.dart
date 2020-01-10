@@ -6,7 +6,7 @@ import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/widgets/cached_image.dart';
 
 class ProjectSelectionView extends StatefulWidget {
-  List<ProjectSelection> projectSelections;
+  List<TopicList> projectSelections;
 
   ProjectSelectionView(this.projectSelections);
 
@@ -28,7 +28,7 @@ class _ProjectSelectionViewState extends State<ProjectSelectionView> {
     );
   }
 
-  Widget _itemView(ProjectSelection projectSelections) {
+  Widget _itemView(TopicList projectSelections) {
     return Container(
       width: ScreenUtil.instance.setWidth(600.0),
       child: Card(

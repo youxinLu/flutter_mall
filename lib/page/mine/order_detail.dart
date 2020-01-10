@@ -24,21 +24,20 @@ class _OrderDetailState extends State<OrderDetail> {
   MineService _mineService = MineService();
   OrderDetailEntity _orderDetailEntity;
   Future _orderDetailFuture;
-  Options options = Options();
   var action;
   var parameters;
 
   @override
   void initState() {
     super.initState();
-    options.headers["token"] = widget.token;
+
     parameters = {"orderId": widget.orderId};
     _queryOrderDetail();
   }
 
   _queryOrderDetail() {
     _orderDetailFuture =
-        _mineService.queryOrderDetail(parameters, options, (success) {
+        _mineService.queryOrderDetail(parameters,(success) {
       _orderDetailEntity = success;
     }, (error) {});
   }
@@ -107,7 +106,7 @@ class _OrderDetailState extends State<OrderDetail> {
                       child: Container(
                           alignment: Alignment.centerRight,
                           child: Offstage(
-                            offstage: _orderDetailEntity.orderInfo.handleOption,
+                            offstage: _orderDetailEntity.orderInfo.handleOption.cancel,
                             child: Text(
                               Strings.MINE_ORDER_ALREADY_CANCEL,
                               style: TextStyle(
@@ -395,7 +394,7 @@ class _OrderDetailState extends State<OrderDetail> {
 
   _deleteOrder() {
     var parameters = {"orderId": widget.orderId};
-    _mineService.deleteOrder(parameters, options, (success) {
+    _mineService.deleteOrder(parameters, (success) {
       Navigator.of(context).pop(true);
     }, (error) {
       ToastUtil.showToast(error);
@@ -404,10 +403,10 @@ class _OrderDetailState extends State<OrderDetail> {
 
   _cancelOrder() {
     var parameters = {"orderId": widget.orderId};
-    _mineService.cancelOrder(parameters, options, (success) {
+    _mineService.cancelOrder(parameters,  (success) {
       ToastUtil.showToast(Strings.MINE_ORDER_CANCEL_SUCCESS);
       setState(() {
-        _orderDetailEntity.orderInfo.handleOption = false;
+        _orderDetailEntity.orderInfo.handleOption.cancel = false;
       });
     }, (error) {
       ToastUtil.showToast(error);

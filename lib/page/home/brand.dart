@@ -6,7 +6,7 @@ import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/widgets/cached_image.dart';
 
 class BrandView extends StatefulWidget {
-  List<Brand> brands;
+  List<BrandList> brands;
 
   BrandView(this.brands);
 
@@ -28,11 +28,11 @@ class _BrandViewState extends State<BrandView> {
     );
   }
 
-  _goBrandDetail(Brand brand) {
+  _goBrandDetail(BrandList brand) {
     NavigatorUtils.goBrandDetail(context, brand.name, brand.id);
   }
 
-  Widget _itemView(Brand brand) {
+  Widget _itemView(BrandList brand) {
     return Card(
       child: Container(
         child: InkWell(

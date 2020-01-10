@@ -15,11 +15,11 @@ typedef OnSuccess<T>(T banners);
 typedef OnFail(String message);
 
 class MineService {
-  Future feedback(Map<String, dynamic> parameters, Options options,
+  Future feedback(Map<String, dynamic> parameters,
       OnSuccess onSuccess, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .post(Api.FEED_BACK, parameters: parameters, options: options);
+          .post(Api.FEED_BACK, parameters: parameters, );
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
       } else {
@@ -31,15 +31,15 @@ class MineService {
     }
   }
 
-  Future couponList(Map<String, dynamic> parameters, Options options,
+  Future couponList(Map<String, dynamic> parameters,
       OnSuccessList onSuccessList, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_COUPON_LIST, parameters: parameters, options: options);
+          .get(Api.MINE_COUPON_LIST, parameters: parameters, );
       if (response['errno'] == 0) {
         CouponListEntity couponListEntity =
             CouponListEntity.fromJson(response["data"]);
-        onSuccessList(couponListEntity.listData);
+        onSuccessList(couponListEntity.list);
       } else {
         onFail(response['errmsg']);
       }
@@ -49,15 +49,15 @@ class MineService {
     }
   }
 
-  Future footPrint(Map<String, dynamic> parameters, Options options,
+  Future footPrint(Map<String, dynamic> parameters,
       OnSuccessList onSuccessList, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_FOOTPRINT, parameters: parameters, options: options);
+          .get(Api.MINE_FOOTPRINT, parameters: parameters,);
       if (response['errno'] == 0) {
         FootprintEntity footprintEntity =
             FootprintEntity.fromJson(response["data"]);
-        onSuccessList(footprintEntity.listData);
+        onSuccessList(footprintEntity.list);
       } else {
         onFail(response['errmsg']);
       }
@@ -67,11 +67,11 @@ class MineService {
     }
   }
 
-  Future deleteFootPrint(Map<String, dynamic> parameters, Options options,
+  Future deleteFootPrint(Map<String, dynamic> parameters,
       OnSuccess onSuccess, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance.post(Api.MINE_FOOTPRINT_DELETE,
-          parameters: parameters, options: options);
+          parameters: parameters, );
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
       } else {
@@ -83,13 +83,13 @@ class MineService {
     }
   }
 
-  Future addOrDeleteCollect(Map<String, dynamic> parameters, Options options,
+  Future addOrDeleteCollect(Map<String, dynamic> parameters,
       OnSuccess onSuccess, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance.post(Api.COLLECT_ADD_DELETE,
-          parameters: parameters, options: options);
+          parameters: parameters,);
       if (response['errno'] == 0) {
-        onSuccess(response["data"]);
+        onSuccess(response["errmsg"]);
       } else {
         onFail(response['errmsg']);
       }
@@ -99,14 +99,14 @@ class MineService {
     }
   }
 
-  Future queryCollect(Map<String, dynamic> parameters, Options options,
+  Future queryCollect(Map<String, dynamic> parameters,
       OnSuccessList onSuccessList, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_COLLECT, parameters: parameters, options: options);
+          .get(Api.MINE_COLLECT, parameters: parameters, );
       if (response['errno'] == 0) {
         CollectEntity collectEntity = CollectEntity.fromJson(response["data"]);
-        onSuccessList(collectEntity.listData);
+        onSuccessList(collectEntity.list);
       } else {
         onFail(response['errmsg']);
       }
@@ -116,14 +116,14 @@ class MineService {
     }
   }
 
-  Future queryOrder(Map<String, dynamic> parameters, Options options,
+  Future queryOrder(Map<String, dynamic> parameters,
       OnSuccess onSuccess, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_ORDERS, parameters: parameters, options: options);
+          .get(Api.MINE_ORDERS, parameters: parameters, );
       if (response['errno'] == 0) {
         OrderEntity orderEntity = OrderEntity.fromJson(response["data"]);
-        onSuccess(orderEntity.listData);
+        onSuccess(orderEntity.list);
       } else {
         onFail(response['errmsg']);
       }
@@ -135,11 +135,11 @@ class MineService {
 
 
 
-  Future deleteOrder(Map<String, dynamic> parameters, Options options,
+  Future deleteOrder(Map<String, dynamic> parameters,
     OnSuccess onSuccess, OnFail onFail) async {
   try {
     var response = await HttpUtil.instance
-        .post(Api.MINE_ORDER_DELETE, parameters: parameters, options: options);
+        .post(Api.MINE_ORDER_DELETE, parameters: parameters, );
     if (response["errno"] == 0) {
       onSuccess(Strings.SUCCESS);
     } else {
@@ -151,11 +151,11 @@ class MineService {
   }
 }
 
-  Future cancelOrder(Map<String, dynamic> parameters, Options options,
+  Future cancelOrder(Map<String, dynamic> parameters,
     OnSuccess onSuccess, OnFail onFail) async {
   try {
     var response = await HttpUtil.instance
-        .post(Api.MINE_ORDER_CANCEL, parameters: parameters, options: options);
+        .post(Api.MINE_ORDER_CANCEL, parameters: parameters, );
     if (response["errno"] == 0) {
       onSuccess(Strings.SUCCESS);
     } else {
@@ -166,11 +166,11 @@ class MineService {
     onFail(Strings.SERVER_EXCEPTION);
   }
 }
-  Future queryOrderDetail(Map<String, dynamic> parameters, Options options,
+  Future queryOrderDetail(Map<String, dynamic> parameters,
       OnSuccess onSuccess, OnFail onFail) async {
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_ORDER_DETAIL, parameters: parameters, options: options);
+          .get(Api.MINE_ORDER_DETAIL, parameters: parameters,);
       if (response['errno'] == 0) {
         OrderDetailEntity orderDetailEntity =
         OrderDetailEntity.fromJson(response["data"]);

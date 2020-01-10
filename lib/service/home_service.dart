@@ -162,7 +162,7 @@ class HomeService {
       OnFail onFail) async {
     try {
       var response =
-          await HttpUtil.instance.get(Api.RECEIVE_COUPON, parameters: parameters);
+          await HttpUtil.instance.post(Api.RECEIVE_COUPON, parameters: parameters);
       if (response['errno'] == 0) {
         onSuccess(Strings.SUCCESS);
       } else {

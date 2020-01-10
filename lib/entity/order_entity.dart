@@ -18,10 +18,10 @@ class OrderEntity extends Object {
   @JsonKey(name: 'page')
   int page;
 
-  @JsonKey(name: 'listData')
-  List<Order> listData;
+  @JsonKey(name: 'list')
+  List<ListData> list;
 
-  OrderEntity(this.total,this.pages,this.limit,this.page,this.listData,);
+  OrderEntity(this.total,this.pages,this.limit,this.page,this.list,);
 
   factory OrderEntity.fromJson(Map<String, dynamic> srcJson) => _$OrderEntityFromJson(srcJson);
 
@@ -31,7 +31,7 @@ class OrderEntity extends Object {
 
 
 @JsonSerializable()
-class Order extends Object {
+class ListData extends Object {
 
   @JsonKey(name: 'orderStatusText')
   String orderStatusText;
@@ -46,25 +46,25 @@ class Order extends Object {
   double actualPrice;
 
   @JsonKey(name: 'goodsList')
-  List<Goods> goodsList;
+  List<GoodsList> goodsList;
 
   @JsonKey(name: 'id')
   int id;
 
   @JsonKey(name: 'handleOption')
-  bool handleOption;
+  HandleOption handleOption;
 
-  Order(this.orderStatusText,this.isGroupin,this.orderSn,this.actualPrice,this.goodsList,this.id,this.handleOption);
+  ListData(this.orderStatusText,this.isGroupin,this.orderSn,this.actualPrice,this.goodsList,this.id,this.handleOption,);
 
-  factory Order.fromJson(Map<String, dynamic> srcJson) => _$OrderFromJson(srcJson);
+  factory ListData.fromJson(Map<String, dynamic> srcJson) => _$ListDataFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$OrderToJson(this);
+  Map<String, dynamic> toJson() => _$ListDataToJson(this);
 
 }
 
 
 @JsonSerializable()
-class Goods extends Object {
+class GoodsList extends Object {
 
   @JsonKey(name: 'number')
   int number;
@@ -72,23 +72,56 @@ class Goods extends Object {
   @JsonKey(name: 'picUrl')
   String picUrl;
 
+  @JsonKey(name: 'price')
+  double price;
+
   @JsonKey(name: 'id')
   int id;
 
   @JsonKey(name: 'goodsName')
   String goodsName;
 
-  @JsonKey(name: 'price')
-  double price;
-
   @JsonKey(name: 'specifications')
   List<String> specifications;
 
-  Goods (this.number,this.picUrl,this.id,this.goodsName,this.price,this.specifications,);
+  GoodsList(this.number,this.picUrl,this.price,this.id,this.goodsName,this.specifications,);
 
-  factory Goods.fromJson(Map<String, dynamic> srcJson) => _$GoodsFromJson(srcJson);
+  factory GoodsList.fromJson(Map<String, dynamic> srcJson) => _$GoodsListFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$GoodsToJson(this);
+  Map<String, dynamic> toJson() => _$GoodsListToJson(this);
+
+}
+
+
+@JsonSerializable()
+class HandleOption extends Object {
+
+  @JsonKey(name: 'cancel')
+  bool cancel;
+
+  @JsonKey(name: 'delete')
+  bool delete;
+
+  @JsonKey(name: 'pay')
+  bool pay;
+
+  @JsonKey(name: 'comment')
+  bool comment;
+
+  @JsonKey(name: 'confirm')
+  bool confirm;
+
+  @JsonKey(name: 'refund')
+  bool refund;
+
+  @JsonKey(name: 'rebuy')
+  bool rebuy;
+
+  HandleOption(this.cancel,this.delete,this.pay,this.comment,this.confirm,this.refund,this.rebuy,);
+
+  factory HandleOption.fromJson(Map<String, dynamic> srcJson) => _$HandleOptionFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$HandleOptionToJson(this);
 
 }
 

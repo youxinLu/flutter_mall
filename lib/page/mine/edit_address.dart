@@ -63,9 +63,8 @@ class _EditAddressViewState extends State<EditAddressView> {
   }
 
   _queryAddressDetail(var token) {
-    options.headers["token"] = token;
     var parameters = {"id": _addressId};
-    _addressService.addressDetail(options, parameters, (addressDetail) {
+    _addressService.addressDetail(parameters, (addressDetail) {
       setState(() {
         _addressData = addressDetail;
         _areaId = _addressData.areaCode;
@@ -319,9 +318,8 @@ class _EditAddressViewState extends State<EditAddressView> {
   }
 
   _deleteAddress() {
-    options.headers["token"] = token;
     var parameters = {"id": _addressData.id};
-    _addressService.deleteAddress(options, parameters, (onSuccess) {
+    _addressService.deleteAddress( parameters, (onSuccess) {
       ToastUtil.showToast(Strings.ADDRESS_DELETE_SUCCESS);
       Navigator.pop(context);
     }, (onFail) {
@@ -331,7 +329,6 @@ class _EditAddressViewState extends State<EditAddressView> {
 
   _submit() {
     if (_judgeAddressBody()) {
-      options.headers["token"] = token;
       var parameters = {
         "addressDetail": _addressDetailController.text.toString(),
         "areaCode": _areaId,
@@ -343,7 +340,7 @@ class _EditAddressViewState extends State<EditAddressView> {
         "province": _provinceName,
         "tel": _phoneController.text.toString(),
       };
-      _addressService.addAddress(options, parameters, (success) {
+      _addressService.addAddress( parameters, (success) {
         ToastUtil.showToast(Strings.SUBMIT_SUCCESS);
         Navigator.of(context).pop(true);
       }, (error) {

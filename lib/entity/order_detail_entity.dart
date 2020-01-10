@@ -58,13 +58,46 @@ class OrderInfo extends Object {
   double freightPrice;
 
   @JsonKey(name: 'handleOption')
-  bool handleOption;
+  HandleOption handleOption;
 
   OrderInfo(this.consignee,this.address,this.addTime,this.orderSn,this.actualPrice,this.mobile,this.orderStatusText,this.goodsPrice,this.couponPrice,this.id,this.freightPrice,this.handleOption,);
 
   factory OrderInfo.fromJson(Map<String, dynamic> srcJson) => _$OrderInfoFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$OrderInfoToJson(this);
+
+}
+
+
+@JsonSerializable()
+class HandleOption extends Object {
+
+  @JsonKey(name: 'cancel')
+  bool cancel;
+
+  @JsonKey(name: 'delete')
+  bool delete;
+
+  @JsonKey(name: 'pay')
+  bool pay;
+
+  @JsonKey(name: 'comment')
+  bool comment;
+
+  @JsonKey(name: 'confirm')
+  bool confirm;
+
+  @JsonKey(name: 'refund')
+  bool refund;
+
+  @JsonKey(name: 'rebuy')
+  bool rebuy;
+
+  HandleOption(this.cancel,this.delete,this.pay,this.comment,this.confirm,this.refund,this.rebuy,);
+
+  factory HandleOption.fromJson(Map<String, dynamic> srcJson) => _$HandleOptionFromJson(srcJson);
+
+  Map<String, dynamic> toJson() => _$HandleOptionToJson(this);
 
 }
 

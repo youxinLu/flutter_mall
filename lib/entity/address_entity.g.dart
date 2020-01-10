@@ -12,7 +12,7 @@ AddressEntity _$AddressEntityFromJson(Map<String, dynamic> json) {
       json['pages'] as int,
       json['limit'] as int,
       json['page'] as int,
-      (json['listData'] as List)
+      (json['list'] as List)
           ?.map((e) =>
               e == null ? null : ListData.fromJson(e as Map<String, dynamic>))
           ?.toList());
@@ -24,7 +24,7 @@ Map<String, dynamic> _$AddressEntityToJson(AddressEntity instance) =>
       'pages': instance.pages,
       'limit': instance.limit,
       'page': instance.page,
-      'listData': instance.listData
+      'list': instance.list
     };
 
 ListData _$ListDataFromJson(Map<String, dynamic> json) {

@@ -11,7 +11,7 @@ ProjectSelectionRecommedEntity _$ProjectSelectionRecommedEntityFromJson(
   return ProjectSelectionRecommedEntity(
       json['total'] as int,
       json['pages'] as int,
-      (json['listData'] as List)
+      (json['list'] as List)
           ?.map((e) =>
               e == null ? null : Recommed.fromJson(e as Map<String, dynamic>))
           ?.toList(),
@@ -24,7 +24,7 @@ Map<String, dynamic> _$ProjectSelectionRecommedEntityToJson(
     <String, dynamic>{
       'total': instance.total,
       'pages': instance.pages,
-      'listData': instance.recommed,
+      'list': instance.recommed,
       'limit': instance.limit,
       'page': instance.page
     };

@@ -130,25 +130,32 @@ class _RegisterViewState extends State<RegisterView> {
     return null;
   }
 
+  _showToast(String message) {
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 1,
+        backgroundColor: Colors.deepOrangeAccent,
+        textColor: Colors.white,
+        fontSize: ScreenUtil.instance.setSp(28.0));
+  }
+
   _register() {
     if (registerFormKey.currentState.validate()) {
       registerFormKey.currentState.save();
       Map<String, dynamic> map = Map();
-      map.putIfAbsent("userName", () => _accountTextControl.text.toString());
-      map.putIfAbsent("passWord", () => _passwordTextControl.text.toString());
+      map.putIfAbsent("username", () => _accountTextControl.text.toString());
+      map.putIfAbsent("password", () => _passwordTextControl.text.toString());
+      map.putIfAbsent("mobile", () => _accountTextControl.text.toString());
+      map.putIfAbsent("code", () => "8888"); //测试验证码写死8888
       userService.register(map, (success) {
         print(success);
+        _showToast(Strings.REGISTER_SUCCESS);
         NavigatorUtils.popRegister(context);
       }, (onFail) {
         print(onFail);
-        Fluttertoast.showToast(
-            msg: onFail,
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.CENTER,
-            timeInSecForIos: 1,
-            backgroundColor: Colors.deepOrangeAccent,
-            textColor: Colors.white,
-            fontSize: ScreenUtil.instance.setSp(28.0));
+        _showToast(onFail);
       });
     } else {
       setState(() {

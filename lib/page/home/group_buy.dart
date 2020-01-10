@@ -6,7 +6,7 @@ import 'package:mall/widgets/cached_image.dart';
 
 
 class GroupBuyView extends StatelessWidget {
-  List<Groupon> groupEntitys;
+  List<GrouponList> groupEntitys;
 
   GroupBuyView(this.groupEntitys);
 
@@ -21,7 +21,7 @@ class GroupBuyView extends StatelessWidget {
         });
   }
 
-  Widget _getGroupBuyItem(Groupon groupBuyEntity) {
+  Widget _getGroupBuyItem(GrouponList groupBuyEntity) {
     return Container(
       height: ScreenUtil.instance.setHeight(200.0),
       child: Card(

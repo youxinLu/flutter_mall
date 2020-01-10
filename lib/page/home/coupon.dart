@@ -7,7 +7,7 @@ import 'package:mall/utils/toast_util.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
 
 class CouponView extends StatelessWidget {
-  List<Coupon> couponList;
+  List<CouponList> couponList;
 
   CouponView(this.couponList);
 
@@ -25,7 +25,7 @@ class CouponView extends StatelessWidget {
             }));
   }
 
-  Widget _getCouponView(Coupon couponEntity) {
+  Widget _getCouponView(CouponList couponEntity) {
     return Container(
         height: ScreenUtil.instance.setHeight(200.0),
         child: InkWell(
