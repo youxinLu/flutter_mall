@@ -33,8 +33,8 @@ dependencies:
   provider: ^3.0.0+1
   city_pickers: ^0.1.23
   flutter_easyrefresh: ^2.0.3
-  flutter_webview_plugin: ^0.3.7
-  cached_network_image: ^1.1.1
+  flutter_webview_plugin: ^0.3.10+1
+  cached_network_image: ^2.0.0
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2

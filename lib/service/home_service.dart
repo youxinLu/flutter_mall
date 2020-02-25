@@ -20,6 +20,7 @@ class HomeService {
     try {
       var responseList = [];
       var response = await HttpUtil.instance.get(Api.BANNER_URL);
+
       if (response['errno'] == 0) {
         responseList = response['data'];
         print(responseList);
