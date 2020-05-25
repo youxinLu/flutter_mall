@@ -99,7 +99,5 @@ QQ：443765662<br>
 微信<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
 
-License
-------------
-MIT License  Copyright (c) 2019 youxinLu
+
 
