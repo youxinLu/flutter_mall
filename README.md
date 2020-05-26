@@ -99,5 +99,9 @@ QQ：443765662<br>
 微信<br>
 ![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
 
+注意
+--------
+近期将会调整开源协议，先此项目不能用于商业行为，违者必究
+
 
 
