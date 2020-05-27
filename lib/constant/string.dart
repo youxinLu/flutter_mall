@@ -142,5 +142,7 @@ class Strings {
   static const String LOADING = "正在加载中...";
   static const String TOKEN = "X-Litemall-Token";
   static const String LOGIN_OUT = "退出登录";
-  static const String LOGIN_OUT_TIPS="是否确认退出当前账号";
+  static const String LOGIN_OUT_TIPS = "是否确认退出当前账号";
+  static const String SUBMIT_ORDER_SUCCESS = "订单提交成功";
+  static const String REFRESH_CART = "REFRESH_CART";
 }

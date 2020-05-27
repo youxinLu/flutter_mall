@@ -11,7 +11,8 @@ import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/utils/fluro_convert_utils.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/cached_image.dart';
-
+import 'package:event_bus/event_bus.dart';
+import 'package:mall/event/refresh_event.dart';
 class FillInOrderView extends StatefulWidget {
   var cartId;
 
@@ -28,7 +29,7 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   var token;
   Future future;
   Options options = Options();
-
+  EventBus eventBus=EventBus();
   @override
   void initState() {
     super.initState();
@@ -444,14 +445,16 @@ class _FillInOrderViewState extends State<FillInOrderView> {
     var parameters = {
       "cartId": 0,
       "addressId": _fillInOrderEntity.checkedAddress.id,
-      "message": _controller.text,
+      "message": _controller.text == null ? "" : _controller.text,
       "couponId": 0,
-      "grouponRulesId":0,
-      "grouponLinkId":0
+      "grouponRulesId": 0,
+      "grouponLinkId": 0
     };
     _goodsService.submitOrder(options, parameters, (success) {
       print(success);
-     // NavigatorUtils.submitOrderSuccessPop(context);
+      eventBus.fire(RefreshEvent());
+      ToastUtil.showToast(Strings.SUBMIT_ORDER_SUCCESS);
+      NavigatorUtils.submitOrderSuccessPop(context);
     }, (error) {
       ToastUtil.showToast(error);
     });
