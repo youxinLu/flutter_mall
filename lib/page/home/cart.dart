@@ -179,6 +179,9 @@ class _CartViewState extends State<CartView> {
 
   _fillInOrder() {
     NavigatorUtils.goFillInOrder(context, 0);
+//    Navigator.push(context, MaterialPageRoute(builder: (context) {
+//      return TestWidaget();
+//    })).then((value) => print(value));
   }
 
   Widget _getCartItemView(int index) {
@@ -226,7 +229,8 @@ class _CartViewState extends State<CartView> {
               ),
               Expanded(
                   child: Container(
-                    padding: EdgeInsets.only(right: ScreenUtil.getInstance().setWidth(20.0)),
+                padding: EdgeInsets.only(
+                    right: ScreenUtil.getInstance().setWidth(20.0)),
                 alignment: Alignment.centerRight,
                 child: CartNumberView(_cartList[index].number, (value) {
                   _updateCart(index, value);

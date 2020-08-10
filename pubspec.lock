@@ -105,7 +105,7 @@ packages:
       name: city_pickers
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.1.23"
+    version: "0.1.30"
   clock:
     dependency: transitive
     description:
@@ -262,7 +262,7 @@ packages:
       name: flutter_webview_plugin
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.10+1"
+    version: "0.3.11"
   fluttertoast:
     dependency: "direct main"
     description:

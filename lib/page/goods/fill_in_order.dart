@@ -13,6 +13,7 @@ import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/cached_image.dart';
 import 'package:event_bus/event_bus.dart';
 import 'package:mall/event/refresh_event.dart';
+
 class FillInOrderView extends StatefulWidget {
   var cartId;
 
@@ -29,7 +30,8 @@ class _FillInOrderViewState extends State<FillInOrderView> {
   var token;
   Future future;
   Options options = Options();
-  EventBus eventBus=EventBus();
+  EventBus eventBus = EventBus();
+
   @override
   void initState() {
     super.initState();
@@ -412,7 +414,15 @@ class _FillInOrderViewState extends State<FillInOrderView> {
             )
           : InkWell(
               onTap: () {
-                NavigatorUtils.goAddress(context);
+                NavigatorUtils.goAddress(context).then((value) {
+                  print(value.toString());
+                  Map<String, dynamic> srcJson = new Map();
+                  srcJson = FluroConvertUtil.stringToMap(value);
+                  setState(() {
+                    _fillInOrderEntity.checkedAddress =
+                        CheckedAddress.fromJson(srcJson);
+                  });
+                });
               },
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,

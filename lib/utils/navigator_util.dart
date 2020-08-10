@@ -47,8 +47,8 @@ class NavigatorUtils {
         transition: TransitionType.inFromRight);
   }
 
-  static Future goAddress(BuildContext context) {
-    return Application.router.navigateTo(context, Routers.address,
+  static Future goAddress(BuildContext context) async {
+    return await Application.router.navigateTo(context, Routers.address,
         transition: TransitionType.inFromRight);
   }
 
