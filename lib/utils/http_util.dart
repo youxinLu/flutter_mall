@@ -32,6 +32,7 @@ class HttpUtil {
       dio.lock();
      await SharedPreferencesUtils.getToken().then((token) {
         options.headers[Strings.TOKEN] = token;
+        print("X-Litemall-Token=${options.headers[Strings.TOKEN]}");
       });
       dio.unlock();
       return options;

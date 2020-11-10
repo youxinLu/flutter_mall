@@ -24,7 +24,7 @@ class Routers {
   static String webView = "/webView";
   static String brandDetail = "/brandDetail";
 
-  static void configureRoutes(Router router) {
+  static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(handlerFunc:
         (BuildContext context, Map<String, List<String>> parameters) {
       print("handler not find");

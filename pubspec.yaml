@@ -29,7 +29,7 @@ dependencies:
   flutter_screenutil: ^0.5.3
   fluttertoast: ^3.1.0
   shared_preferences: ^0.5.3+4
-  fluro: "^1.6.3"
+  fluro: "^1.7.7"
   provider: ^3.0.0+1
   city_pickers: ^0.1.30
   flutter_easyrefresh: ^2.0.3

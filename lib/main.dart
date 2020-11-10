@@ -14,7 +14,7 @@ void main() {
 
 class MallApp extends StatelessWidget {
   MallApp() {
-    final router = Router();
+    final router = FluroRouter();
     Routers.configureRoutes(router);
     Application.router = router;
   }

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mall/utils/navigator_util.dart';
 import 'package:mall/service/mine_service.dart';
 import 'package:mall/utils/shared_preferences_util.dart';
-import 'package:dio/dio.dart';
 import 'package:mall/utils/toast_util.dart';
 import 'package:mall/widgets/empty_view.dart';
 
