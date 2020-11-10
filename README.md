@@ -9,9 +9,12 @@ Flutter_Mall是一款Flutter开源在线商城应用程序，是基于[litemall]
 [下载地址](https://www.pgyer.com/bFxX)<br>
 因蒲公英下载方式改变，现在下载方式改为密码下载，打开网址以后输入密码123456<br>
 
+扫码体验Flutter_Mall_Plus 安卓版本（iOS请自行下载源码进行编译）
 ----------
-Flutter_Mall 已经重构完成，整体采用MVVM，页面上也进行了优化，需要体验的可以扫码下载
+Flutter_Mall 已经重构完成，整体采用MVVM，页面上也进行了优化
 ![扫码下载](https://www.pgyer.com/app/qrcode/FNiG)<br>
+[下载地址](https://www.pgyer.com/bFxX)<br>
+
 Flutter_Mall功能
 ----------
 * 首页<br>
