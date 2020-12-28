@@ -1,25 +1,35 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:mall/constant/string.dart';
 
-class SharedPreferencesUtils {
-  static String token = "";
+class SharedPreferencesUtil {
+  SharedPreferencesUtil._();
 
-  static Future getToken() async {
-    if (token == null || token.isEmpty) {
-      SharedPreferences sharedPreferences =
-          await SharedPreferences.getInstance();
-      token = sharedPreferences.getString(Strings.TOKEN) ?? null;
+  static SharedPreferencesUtil _instance;
+  SharedPreferences sharedPreferences;
+
+  static SharedPreferencesUtil getInstance() {
+    if (_instance == null) {
+      _instance = SharedPreferencesUtil._();
     }
-    return token;
+    return _instance;
   }
 
-  static Future getImageHead() async {
+  Future setBool(String tag, bool isFirst) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.get(Strings.HEAD_URL);
+    return sharedPreferences.setBool(tag, isFirst);
   }
 
-  static Future getUserName() async {
+  Future getBool(String tag) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    return sharedPreferences.get(Strings.NICK_NAME);
+    return sharedPreferences.getBool(tag);
+  }
+
+  Future getString(String tag) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.getString(tag);
+  }
+
+  Future<bool> clear() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    return sharedPreferences.clear();
   }
 }

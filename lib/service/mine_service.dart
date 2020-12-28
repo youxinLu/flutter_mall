@@ -1,186 +1,390 @@
+import 'package:mall/constant/app_strings.dart';
+import 'package:mall/constant/app_urls.dart';
+import 'package:mall/model/address_detail_entity.dart';
+import 'package:mall/model/address_entity.dart';
+import 'package:mall/model/collection_entity.dart';
+import 'package:mall/model/coupon_entity.dart';
+import 'package:mall/model/foot_print_entity.dart';
+import 'package:mall/model/json_result.dart';
+import 'package:mall/model/order_detail_entity.dart';
+import 'package:mall/model/order_list_entity.dart';
 import 'package:mall/utils/http_util.dart';
-import 'package:mall/api/api.dart';
-import 'package:mall/constant/string.dart';
-import 'package:dio/dio.dart';
-import 'package:mall/entity/coupon_list_entity.dart';
-import 'package:mall/entity/footprint_entity.dart';
-import 'package:mall/entity/collect_entity.dart';
-import 'package:mall/entity/order_entity.dart';
-import 'package:mall/entity/order_detail_entity.dart';
-
-typedef OnSuccessList<T>(List<T> banners);
-
-typedef OnSuccess<T>(T banners);
-
-typedef OnFail(String message);
 
 class MineService {
-  Future feedback(Map<String, dynamic> parameters,
-      OnSuccess onSuccess, OnFail onFail) async {
+  //收藏或者取消收藏
+  Future<JsonResult<dynamic>> addOrDeleteCollect(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
+    try {
+      var response = await HttpUtil.instance.post(
+        AppUrls.COLLECT_ADD_DELETE,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0 ) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //查询收藏
+  Future<JsonResult<CollectionEntity>> queryCollect(
+      Map<String, dynamic> parameters) async {
+    JsonResult<CollectionEntity> jsonResult = JsonResult<CollectionEntity>();
     try {
       var response = await HttpUtil.instance
-          .post(Api.FEED_BACK, parameters: parameters, );
-      if (response['errno'] == 0) {
-        onSuccess(Strings.SUCCESS);
+          .get(AppUrls.MINE_COLLECT, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        CollectionEntity collectEntity =
+            CollectionEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = collectEntity;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future couponList(Map<String, dynamic> parameters,
-      OnSuccessList onSuccessList, OnFail onFail) async {
+  //获取地址列表
+  Future<JsonResult<AddressEntity>> getAddressList() async {
+    JsonResult<AddressEntity> jsonResult = JsonResult<AddressEntity>();
+    try {
+      var response = await HttpUtil.instance.get(
+        AppUrls.ADDRESS_LIST,
+      );
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        AddressEntity addressEntity =
+            AddressEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = addressEntity;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //查询地址详情
+  Future<JsonResult<AddressDetailEntity>> queryAddressDetail(
+      Map<String, dynamic> parameters) async {
+    JsonResult<AddressDetailEntity> jsonResult =
+        JsonResult<AddressDetailEntity>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_COUPON_LIST, parameters: parameters, );
-      if (response['errno'] == 0) {
-        CouponListEntity couponListEntity =
-            CouponListEntity.fromJson(response["data"]);
-        onSuccessList(couponListEntity.list);
+          .get(AppUrls.ADDRESS_DETAIL, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        AddressDetailEntity addressDetailEntity =
+            AddressDetailEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = addressDetailEntity;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future footPrint(Map<String, dynamic> parameters,
-      OnSuccessList onSuccessList, OnFail onFail) async {
+  //删除地址
+  Future<JsonResult<dynamic>> deleteAddress(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_FOOTPRINT, parameters: parameters,);
-      if (response['errno'] == 0) {
-        FootprintEntity footprintEntity =
-            FootprintEntity.fromJson(response["data"]);
-        onSuccessList(footprintEntity.list);
+          .get(AppUrls.ADDRESS_DELETE, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        jsonResult.isSuccess = true;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future deleteFootPrint(Map<String, dynamic> parameters,
-      OnSuccess onSuccess, OnFail onFail) async {
-    try {
-      var response = await HttpUtil.instance.post(Api.MINE_FOOTPRINT_DELETE,
-          parameters: parameters, );
-      if (response['errno'] == 0) {
-        onSuccess(Strings.SUCCESS);
-      } else {
-        onFail(response['errmsg']);
-      }
-    } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
-    }
-  }
-
-  Future addOrDeleteCollect(Map<String, dynamic> parameters,
-      OnSuccess onSuccess, OnFail onFail) async {
-    try {
-      var response = await HttpUtil.instance.post(Api.COLLECT_ADD_DELETE,
-          parameters: parameters,);
-      if (response['errno'] == 0) {
-        onSuccess(response["errmsg"]);
-      } else {
-        onFail(response['errmsg']);
-      }
-    } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
-    }
-  }
-
-  Future queryCollect(Map<String, dynamic> parameters,
-      OnSuccessList onSuccessList, OnFail onFail) async {
+  //添加地址
+  Future<JsonResult<dynamic>> addAddress(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_COLLECT, parameters: parameters, );
-      if (response['errno'] == 0) {
-        CollectEntity collectEntity = CollectEntity.fromJson(response["data"]);
-        onSuccessList(collectEntity.list);
+          .post(AppUrls.ADDRESS_SAVE, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        jsonResult.isSuccess = true;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future queryOrder(Map<String, dynamic> parameters,
-      OnSuccess onSuccess, OnFail onFail) async {
+  //我的优惠券
+  Future<JsonResult<CouponEntity>> queryCoupon(
+      Map<String, dynamic> parameters) async {
+    JsonResult<CouponEntity> jsonResult = JsonResult<CouponEntity>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_ORDERS, parameters: parameters, );
-      if (response['errno'] == 0) {
-        OrderEntity orderEntity = OrderEntity.fromJson(response["data"]);
-        onSuccess(orderEntity.list);
+          .get(AppUrls.MINE_COUPON_LIST, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        CouponEntity addressDetailEntity =
+            CouponEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = addressDetailEntity;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-
-
-  Future deleteOrder(Map<String, dynamic> parameters,
-    OnSuccess onSuccess, OnFail onFail) async {
-  try {
-    var response = await HttpUtil.instance
-        .post(Api.MINE_ORDER_DELETE, parameters: parameters, );
-    if (response["errno"] == 0) {
-      onSuccess(Strings.SUCCESS);
-    } else {
-      onFail(response["errmsg"]);
-    }
-  } catch (e) {
-    print(e);
-    onFail(Strings.SERVER_EXCEPTION);
-  }
-}
-
-  Future cancelOrder(Map<String, dynamic> parameters,
-    OnSuccess onSuccess, OnFail onFail) async {
-  try {
-    var response = await HttpUtil.instance
-        .post(Api.MINE_ORDER_CANCEL, parameters: parameters, );
-    if (response["errno"] == 0) {
-      onSuccess(Strings.SUCCESS);
-    } else {
-      onFail(response["errmsg"]);
-    }
-  } catch (e) {
-    print(e);
-    onFail(Strings.SERVER_EXCEPTION);
-  }
-}
-  Future queryOrderDetail(Map<String, dynamic> parameters,
-      OnSuccess onSuccess, OnFail onFail) async {
+  //领取优惠券
+  Future<JsonResult<dynamic>> receiveCoupon(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.MINE_ORDER_DETAIL, parameters: parameters,);
-      if (response['errno'] == 0) {
+          .post(AppUrls.RECEIVE_COUPON, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //反馈
+  Future<JsonResult<dynamic>> feedback(Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
+    try {
+      var response = await HttpUtil.instance.post(
+        AppUrls.FEED_BACK,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //足迹
+  Future<JsonResult<dynamic>> queryFootPrint(
+      Map<String, dynamic> parameters) async {
+    JsonResult<FootPrintEntity> jsonResult = JsonResult<FootPrintEntity>();
+    try {
+      var response = await HttpUtil.instance.get(
+        AppUrls.MINE_FOOTPRINT,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        FootPrintEntity footPrintEntity =
+            FootPrintEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = footPrintEntity;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //删除足迹
+  Future<JsonResult<dynamic>> deleteFootPrint(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
+    try {
+      var response = await HttpUtil.instance.post(
+        AppUrls.MINE_FOOTPRINT_DELETE,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //查询订单
+  Future<JsonResult<OrderListEntity>> queryOrder(
+      Map<String, dynamic> parameters) async {
+    JsonResult<OrderListEntity> jsonResult = JsonResult<OrderListEntity>();
+    try {
+      var response = await HttpUtil.instance.get(
+        AppUrls.MINE_ORDERS,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        jsonResult.isSuccess = true;
+        OrderListEntity orderListEntity =
+            OrderListEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.data = orderListEntity;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //删除订单
+  Future<JsonResult<dynamic>> deleteOrder(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
+    try {
+      var response = await HttpUtil.instance.post(
+        AppUrls.MINE_ORDER_DELETE,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+  //取消订单
+  Future<JsonResult<dynamic>> cancelOrder(
+      Map<String, dynamic> parameters) async {
+    JsonResult<dynamic> jsonResult = JsonResult<dynamic>();
+    try {
+      var response = await HttpUtil.instance.post(
+        AppUrls.MINE_ORDER_CANCEL,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0) {
+        jsonResult.isSuccess = true;
+      } else {
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
+      }
+    } catch (e) {
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
+    }
+    return jsonResult;
+  }
+
+//查询订单详情
+  Future<JsonResult<OrderDetailEntity>> queryOrderDetail(
+      Map<String, dynamic> parameters) async {
+    JsonResult<OrderDetailEntity> jsonResult = JsonResult<OrderDetailEntity>();
+    try {
+      var response = await HttpUtil.instance.get(
+        AppUrls.MINE_ORDER_DETAIL,
+        parameters: parameters,
+      );
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
         OrderDetailEntity orderDetailEntity =
-        OrderDetailEntity.fromJson(response["data"]);
-        onSuccess(orderDetailEntity);
+            OrderDetailEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = orderDetailEntity;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
+
+
 }

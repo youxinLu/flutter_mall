@@ -1,71 +1,89 @@
+import 'package:mall/constant/app_strings.dart';
+import 'package:mall/constant/app_urls.dart';
+import 'package:mall/model/category_entity.dart';
+import 'package:mall/model/category_goods_entity.dart';
+import 'package:mall/model/category_title_entity.dart';
+import 'package:mall/model/json_result.dart';
+import 'package:mall/service/http_result_listener.dart';
 import 'package:mall/utils/http_util.dart';
-import 'package:mall/api/api.dart';
-import 'package:mall/entity/first_level_category.dart';
-import 'package:mall/entity/sub_category_entity.dart';
-import 'package:mall/constant/string.dart';
-import 'package:mall/entity/category_title_entity.dart';
-
-typedef OnSuccessList<T>(List<T> banners);
-
-typedef OnFail(String message);
-
-typedef OnSuccess<T>(T data);
 
 class CategoryService {
-  Future getCategoryData(OnSuccessList onSuccessList, {OnFail onFail}) async {
+  //获取一级分类
+  Future<JsonResult<CategoryList>> getCategoryData() async {
+    JsonResult<CategoryList> jsonResult = JsonResult<CategoryList>();
     try {
       var responseList = [];
-      var response = await HttpUtil.instance.get(Api.HOME_FIRST_CATEGORY);
-      if (response['errno'] == 0) {
-        responseList = response['data'];
-        FirstLevelListCategory firstLevelListCategory =
-            FirstLevelListCategory.fromJson(responseList);
-        onSuccessList(firstLevelListCategory.firstLevelCategory);
+      var response = await HttpUtil.instance.get(AppUrls.HOME_FIRST_CATEGORY);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        responseList = response[AppStrings.DATA];
+        CategoryList categoryList = CategoryList.fromJson(responseList);
+        jsonResult.isSuccess = true;
+        jsonResult.data = categoryList;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future getSubCategoryData(
-      Map<String, dynamic> parameters, OnSuccessList onSuccessList,
-      {OnFail onFail}) async {
+  //获取二级分类
+  Future<JsonResult<CategoryList>> getSubCategoryData(
+      Map<String, dynamic> parameters) async {
+    JsonResult<CategoryList> jsonResult = JsonResult<CategoryList>();
     try {
       var responseList = [];
       var response = await HttpUtil.instance
-          .get(Api.HOME_SECOND_CATEGORY, parameters: parameters);
-      if (response['errno'] == 0) {
-        responseList = response['data'];
-        SubCategoryListEntity subCategoryListEntity =
-            SubCategoryListEntity.fromJson(responseList);
-        onSuccessList(subCategoryListEntity.subCategoryEntitys);
+          .get(AppUrls.HOME_SECOND_CATEGORY, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
+        responseList = response[AppStrings.DATA];
+        CategoryList categoryList = CategoryList.fromJson(responseList);
+        jsonResult.isSuccess = true;
+        jsonResult.data = categoryList;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 
-  Future getCategoryTitle(Map<String, dynamic> parameters, OnSuccess onSuccess,
-      OnFail onFail) async {
+  //获取分类标题
+  Future<JsonResult<CategoryTitleEntity>> getCategoryTitle(
+      Map<String, dynamic> parameters) async {
+    JsonResult<CategoryTitleEntity> jsonResult =
+        JsonResult<CategoryTitleEntity>();
     try {
       var response = await HttpUtil.instance
-          .get(Api.CATEGORY_LIST, parameters: parameters);
-      if (response['errno'] == 0) {
+          .get(AppUrls.CATEGORY_LIST, parameters: parameters);
+      if (response[AppStrings.ERR_NO] == 0 &&
+          response[AppStrings.DATA] != null) {
         CategoryTitleEntity categoryTitleEntity =
-            CategoryTitleEntity.fromJson(response["data"]);
-        onSuccess(categoryTitleEntity);
+            CategoryTitleEntity.fromJson(response[AppStrings.DATA]);
+        jsonResult.isSuccess = true;
+        jsonResult.data = categoryTitleEntity;
       } else {
-        onFail(response['errmsg']);
+        jsonResult.isSuccess = false;
+        jsonResult.message = response[AppStrings.ERR_MSG] != null
+            ? response[AppStrings.ERR_MSG]
+            : AppStrings.SERVER_EXCEPTION;
       }
     } catch (e) {
-      print(e);
-      onFail(Strings.SERVER_EXCEPTION);
+      jsonResult.isSuccess = false;
+      jsonResult.message = AppStrings.SERVER_EXCEPTION;
     }
+    return jsonResult;
   }
 }
