@@ -32,14 +32,14 @@ Flutter_Mall功能
 
 项目截图
 ------------------
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_100618_com.example.mall.jpg)
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_101103_com.example.mall.jpg)<br> 
-![分类](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_092324_com.example.mall.jpg)
-![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094525_com.example.mall.jpg)<br> 
-![我的](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094553_com.example.mall.jpg)
-![详情](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190924_101134_com.example.mall.jpg)<br> 
-![下单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094224_com.example.mall.jpg) 
-![订单](https://github.com/youxinLu/mall/blob/master/screenshots/Screenshot_20190903_094532_com.example.mall.jpg)<br> 
+![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fe929318918d1557fd6448eb2f0b2e70508fce2%2F5fe929311aae50908d4b466184f65a1e5e49319a?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=F4bWd6XFA43zv09l1PDfPWvf1YfuMJG6Rx3oxnQxnsQ%3D&x-oss-signature-version=OSS2)
+![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fe929319a0e6d7f8f7240928bc54b9126f186cb%2F5fe929319fd7b3251e374ccbb22bf9e2605315f6?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=dVsiWhvPW%2Bzmye%2BfKElJeu1yisSCc5pwNRxvZNipa2c%3D&x-oss-signature-version=OSS2)<br> 
+![分类](https://bj29.cn-beijing.data.alicloudccp.com/5fe9292f3a1df7f86a8948499f4bdcf1aff8edf0%2F5fe9292f88468f7dfef8478e9fac6c897289a0bb?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=a08eZARs%2FCItYUT9ESUcRPD5TL5b%2FL1PoHxeeYhuPvY%3D&x-oss-signature-version=OSS2)
+![购物车](https://bj29.cn-beijing.data.alicloudccp.com/5fe929309e59fccf49a14176991169ef603402c7%2F5fe92930d859e038702d42f4a3995954aaf65893?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=INyXYHSL03SxTYFaPNo8t5JB2bhw%2FSGpLfQAofgYKRU%3D&x-oss-signature-version=OSS2)<br> 
+![我的](https://bj29.cn-beijing.data.alicloudccp.com/5fe929315639fbffaf054be4a8c41aa94d3af17b%2F5fe9293169068bc3e1cc4c6299d54d94add5ef94?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=T497qcTgY2UG2VboSSonepjXmzZ%2F7wIDDUmH6qg6cUE%3D&x-oss-signature-version=OSS2)
+![详情](https://bj29.cn-beijing.data.alicloudccp.com/5fe9293102af07cad18948ed978e1c0a90bec52e%2F5fe929316c3d143b13734a28959943a753bf66cb?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=eb7LNju47bPnjWJtc2lTLhEREv%2FF8%2FjkB2wQGar3GCY%3D&x-oss-signature-version=OSS2)<br> 
+![下单](https://bj29.cn-beijing.data.alicloudccp.com/5fe9293032fdf1a482644dd78aa924b81f0c7709%2F5fe92930c4a4fee83ba845e79466c3259d687174?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=S4ugZngUV4nphYbF9NzlEk7YtqXWdkIgXrJOXzFg0lI%3D&x-oss-signature-version=OSS2) 
+![订单](https://bj29.cn-beijing.data.alicloudccp.com/5fe92931908469e6c9f341d5a2f780bec6a98b17%2F5fe92931e3fda89911de4d6b80c497018ca913e4?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=Zvjhh5KD2WVggKtqUmMM2M0dkFh78UCQESpiemHdlmo%3D&x-oss-signature-version=OSS2)<br> 
 
 项目结构
 ------------------
@@ -96,14 +96,14 @@ Flutter学习资料
 --------------------
 因服务器是由个人维护，如果这个项目对您有帮助，您可以扫描下面二维码进行捐赠，谢谢。<br>
 
-![微信](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142112.jpg)
-![支付宝](https://github.com/youxinLu/mall/blob/master/screenshots/微信图片_20190905142121.jpg)<br> 
+![微信](https://bj29.cn-beijing.data.alicloudccp.com/5fe92931d111986af709492a8b69268312b4607e%2F5fe9293121f9571a18964022a81e73a88569e6b4?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=%2BDNu3Jv3mWp%2FwP4on%2FrG4hIKXzs4%2FAeRYXf7gtlQLhk%3D&x-oss-signature-version=OSS2)
+![支付宝](https://bj29.cn-beijing.data.alicloudccp.com/5fe929315201ad437c064613a69a34f2ffa9d228%2F5fe92931aa94e7c068cf40e19dbd931b0f741478?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=rIMjLo6ThbVejAAPZG5oYEX%2BsXDL31fX%2BjG8dPDotMI%3D&x-oss-signature-version=OSS2)<br> 
 
 联系我
 --------------
 QQ：443765662<br>
 微信<br>
-![微信](https://github.com/youxinLu/mall/blob/master/screenshots/QQ截图20190905142302.png)
+![微信](https://bj29.cn-beijing.data.alicloudccp.com/5fe9292fb9afa6123fc543fba989665f61ec0ae5%2F5fe9292fc83aee8df95d428b8215100abf604644?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=vFVGKBbqmxaARwHakoOkia9am3QFyJEH0hu48SMEOeo%3D&x-oss-signature-version=OSS2)
 
 注意
 --------
