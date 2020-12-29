@@ -29,22 +29,22 @@ Flutter_Mall功能
 
 项目截图
 ------------------
-![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fea78670b860c18158947feb63f9a0c5134e934%2F5fea786787964ec1ee524048a9d4224a0a391a9b?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203647&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=lZwLi2HqcuWQ2Ar8NGf7YeR23SpRTsmTcsavGdLxBPI%3D&x-oss-signature-version=OSS2)
-![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fea78cd843be439be2e456dadcca92f2fedb50c%2F5fea78cd5a457c241d5e4a82beed78c7106ceae7?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202769&x-oss-signature=xfvX0sVvWpP3nTjmmic%2Beb01EczCvL5cGsU54y7kqg0%3D&x-oss-signature-version=OSS2)<br> 
-![分类](https://bj29.cn-beijing.data.alicloudccp.com/5fea78f6dd93b4bf6d304d7a926a674e03c906cc%2F5fea78f6ca13e4f8f59643a68857df6e716384c2?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202811&x-oss-signature=FJTSEDnB0oMCEFcPTZOhyd0mWW8ZVqb5M8Nc%2FsVhAzA%3D&x-oss-signature-version=OSS2)
-![分类商品列表](https://bj29.cn-beijing.data.alicloudccp.com/5fea791d2ab37d3e98044bbcb58d2e9448c56e23%2F5fea791da7db0ac85a5e44a589b85166b1b10b43?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202849&x-oss-signature=6VTLN3XcvzvVR5YviCcNWqDDWMPC3zKIGkU71LcsnLQ%3D&x-oss-signature-version=OSS2)<br> 
-![分类商品列表](https://bj29.cn-beijing.data.alicloudccp.com/5fea7993803196c6ea06478084a53e186c0a1f4b%2F5fea79937e81a99b356347b08a0a38143d248bd3?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202967&x-oss-signature=H0rm7H5UPVQIPYXIPKmQEPb2muA4iKrwwLXh8BNJ9%2Bs%3D&x-oss-signature-version=OSS2)
-![购物车](https://bj29.cn-beijing.data.alicloudccp.com/5fea794b97083893b6144d68af8d9ac60618f8c0%2F5fea794b4ab0360167ed494da2376a4db93664ad?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202895&x-oss-signature=S42A2s10iL%2FWAPQethkZGyqwjnYZjmx6kIgJFQtO6zk%3D&x-oss-signature-version=OSS2)<br> 
-![我的](https://bj29.cn-beijing.data.alicloudccp.com/5fea79699a54219abb804b67990109904abf79b7%2F5fea7969e33fc1ad026c4fa2a367b9c756e23f97?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202925&x-oss-signature=3GWWfa9WHls0wOKBx6xZ02%2FyMA26ios4YpRiD489iwc%3D&x-oss-signature-version=OSS2)
-![商品详情](https://bj29.cn-beijing.data.alicloudccp.com/5fea79d04b65e29035704d1e88535ee0bf772d84%2F5fea79d0cd3ff657c4dc47269de87a9d8cdbe4b0?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203029&x-oss-signature=MM4tmBgBLvyAvVCEqqtl0AzQjW1xpcB%2FVJhEMHWt1LA%3D&x-oss-signature-version=OSS2)<br> 
-![商品详情](https://bj29.cn-beijing.data.alicloudccp.com/5fea79d3f106eaaf62964a30b9e000dfcb32d9c2%2F5fea79d37b3eb832cb5c41ba865562b8e9db15c9?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203032&x-oss-signature=o7Xwvxl8a0AYkxMeq61gtP7r8BdtnzKJ%2FDHyFcLe6l8%3D&x-oss-signature-version=OSS2)
-![下单](https://bj29.cn-beijing.data.alicloudccp.com/5fea7a75bc11203bb74a4aae8fbcdc35ab84ea88%2F5fea7a754d5bb5cb4f0e4465a376dacb7c2889f6?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203194&x-oss-signature=X5nVh3L9WtDnvr8C%2Fdcw676ihK8EYlTSAmBqPMmYb%2Fg%3D&x-oss-signature-version=OSS2) <br> 
-![我的收藏](https://bj29.cn-beijing.data.alicloudccp.com/5fea7abc8ea6c8834df04fcd8cc89c70534affde%2F5fea7abc43d09cf6c0854209963a08d7f26496fc?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203265&x-oss-signature=b4fkbddu7QM0tfnBRYDN%2BCMYGs8GUY%2B38Tj7XuMNlYA%3D&x-oss-signature-version=OSS2)
-![我的订单](https://bj29.cn-beijing.data.alicloudccp.com/5fea7ae36b0f4a6aca874170ae47dfd9a1df2e02%2F5fea7ae322b4dccfc27249f78eacde7287ed1959?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203303&x-oss-signature=PUjmLS9z6QOgL%2BknNtBlKnqSWg6a%2BkIqB89Y7A3jfOU%3D&x-oss-signature-version=OSS2)<br> 
-![订单详情](https://bj29.cn-beijing.data.alicloudccp.com/5fea7b7731d56f2be7744dde80bfbce8d09b8995%2F5fea7b7720d0cd2896634509949ee13583d485ed?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203451&x-oss-signature=%2B173saxBdg8btYlsvGl%2FT%2B3h1fT20bm0Wtj%2FDv1eLxc%3D&x-oss-signature-version=OSS2)
-![地址管理](https://bj29.cn-beijing.data.alicloudccp.com/5fea7b04bd40651c4a4d4d4eb7d7e7fd12e2342e%2F5fea7b0414ca9cca5041417494de6f2acdc8531e?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203337&x-oss-signature=vwN%2FkmGEX8YMrManUemzXHdK5x3n%2B7%2F4enGN2OgT7FE%3D&x-oss-signature-version=OSS2)<br> 
-![添加地址](https://bj29.cn-beijing.data.alicloudccp.com/5fea7b072a1428cf1bbe4f4fa3c3e593dd84fd82%2F5fea7b07d9b802e7bec1487091e0116639a2b7b2?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203340&x-oss-signature=apwnWUyWOZ3FNaBuXNHHHUVkd541rtyZKXDZlEJqYmg%3D&x-oss-signature-version=OSS2)
-![我的收藏](https://bj29.cn-beijing.data.alicloudccp.com/5fea7b43cb72dbefa1ed4b998de8563b7ea53668%2F5fea7b43d3f34037814648d3b6f71e60deaf5abd?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203399&x-oss-signature=4m%2BOpxYwOAwTJlnVYNiywHrQ42KIIrDFYhk5EFu%2FyJM%3D&x-oss-signature-version=OSS2)<br> 
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-12-38.jpg)
+![首页](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-28-45.jpg)<br> 
+![分类](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-39.jpg)
+![分类商品列表](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-55.jpg)
+![分类商品列表](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-30.jpg)
+![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-17-25.jpg)
+![我的](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-19-37.jpg)
+![商品详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-14-26.jpg)
+![商品详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-14-32.jpg)
+![下单](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-15-50.jpg)
+![我的收藏](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-20-58.jpg)
+![我的订单](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-21-28.jpg)
+![订单详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-20.jpg)
+![地址管理](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-31.jpg)
+![添加地址](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-40.jpg)
+![我的收藏](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-21-52.jpg)
 
 项目结构
 ------------------
