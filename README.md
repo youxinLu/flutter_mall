@@ -29,7 +29,7 @@ Flutter_Mall功能
 
 项目截图
 ------------------
-![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fea78670b860c18158947feb63f9a0c5134e934%2F5fea786787964ec1ee524048a9d4224a0a391a9b?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202667&x-oss-signature=uU0PAOOTWF4GeQNpOqNQuqcgE1W8QXoKDnVjT%2B7B75k%3D&x-oss-signature-version=OSS2)
+![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fea78670b860c18158947feb63f9a0c5134e934%2F5fea786787964ec1ee524048a9d4224a0a391a9b?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609203647&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=lZwLi2HqcuWQ2Ar8NGf7YeR23SpRTsmTcsavGdLxBPI%3D&x-oss-signature-version=OSS2)
 ![首页](https://bj29.cn-beijing.data.alicloudccp.com/5fea78cd843be439be2e456dadcca92f2fedb50c%2F5fea78cd5a457c241d5e4a82beed78c7106ceae7?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202769&x-oss-signature=xfvX0sVvWpP3nTjmmic%2Beb01EczCvL5cGsU54y7kqg0%3D&x-oss-signature-version=OSS2)<br> 
 ![分类](https://bj29.cn-beijing.data.alicloudccp.com/5fea78f6dd93b4bf6d304d7a926a674e03c906cc%2F5fea78f6ca13e4f8f59643a68857df6e716384c2?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202811&x-oss-signature=FJTSEDnB0oMCEFcPTZOhyd0mWW8ZVqb5M8Nc%2FsVhAzA%3D&x-oss-signature-version=OSS2)
 ![分类商品列表](https://bj29.cn-beijing.data.alicloudccp.com/5fea791d2ab37d3e98044bbcb58d2e9448c56e23%2F5fea791da7db0ac85a5e44a589b85166b1b10b43?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609202849&x-oss-signature=6VTLN3XcvzvVR5YviCcNWqDDWMPC3zKIGkU71LcsnLQ%3D&x-oss-signature-version=OSS2)<br> 
