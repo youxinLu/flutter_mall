@@ -29,23 +29,23 @@ Flutter_Mall功能
 
 项目截图
 ------------------
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-12-38.jpg)
-![首页](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-28-45.jpg)<br> 
-![分类](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-39.jpg)
-![分类商品列表](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-55.jpg)
-![分类商品列表](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-13-30.jpg)
-![购物车](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-17-25.jpg)
-![我的](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-19-37.jpg)
-![商品详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-14-26.jpg)
-![商品详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-14-32.jpg)
-![下单](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-15-50.jpg)
-![我的收藏](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-20-58.jpg)
-![我的订单](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-21-28.jpg)
-![订单详情](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-20.jpg)
-![地址管理](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-31.jpg)
-![添加地址](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-29-40.jpg)
-![我的收藏](https://github.com/youxinLu/mall/blob/master/screenshots/2020-12-28-08-21-52.jpg)
-
+![首页](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-12-38.jpg)
+![首页](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-28-45.jpg)<br> 
+![分类](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-13-39.jpg)
+![分类商品列表](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-13-55.jpg)<br> 
+![分类商品列表](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-13-30.jpg)
+![购物车](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-17-25.jpg)<br> 
+![我的](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-19-37.jpg)
+![商品详情](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-14-26.jpg)<br> 
+![商品详情](https://github.com/youxinLu/mall/raw/master/screenshots/2020-12-28-08-14-32.jpg)
+![下单](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-15-50.jpg)<br> 
+![我的收藏](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-20-58.jpg)
+![我的订单](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-21-28.jpg)<br> 
+![订单详情](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-29-20.jpg)
+![地址管理](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-29-31.jpg)<br> 
+![添加地址](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-29-40.jpg)
+![我的收藏](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/2020-12-28-08-21-52.jpg)
+        
 项目结构
 ------------------
 lib<br>
@@ -111,14 +111,14 @@ Flutter学习资料
 --------------------
 因服务器是由个人维护，如果这个项目对您有帮助，您可以扫描下面二维码进行捐赠，谢谢。<br>
 
-![微信](https://bj29.cn-beijing.data.alicloudccp.com/5fe92931d111986af709492a8b69268312b4607e%2F5fe9293121f9571a18964022a81e73a88569e6b4?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=%2BDNu3Jv3mWp%2FwP4on%2FrG4hIKXzs4%2FAeRYXf7gtlQLhk%3D&x-oss-signature-version=OSS2)
-![支付宝](https://bj29.cn-beijing.data.alicloudccp.com/5fe929315201ad437c064613a69a34f2ffa9d228%2F5fe92931aa94e7c068cf40e19dbd931b0f741478?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=rIMjLo6ThbVejAAPZG5oYEX%2BsXDL31fX%2BjG8dPDotMI%3D&x-oss-signature-version=OSS2)<br> 
+![微信](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/微信图片_20190905142112.jpg)
+![支付宝](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/微信图片_20190905142121.jpg)<br> 
 
 联系我
 --------------
 QQ：443765662<br>
 微信<br>
-![微信](https://bj29.cn-beijing.data.alicloudccp.com/5fe9292fb9afa6123fc543fba989665f61ec0ae5%2F5fe9292fc83aee8df95d428b8215100abf604644?x-oss-access-key-id=LTAIsE5mAn2F493Q&x-oss-expires=1609117036&x-oss-process=image%2Fresize%2Cw_1920%2Fformat%2Cjpeg&x-oss-signature=vFVGKBbqmxaARwHakoOkia9am3QFyJEH0hu48SMEOeo%3D&x-oss-signature-version=OSS2)
+![微信](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/QQ截图20190905142302.png)
 
 注意
 --------
