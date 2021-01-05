@@ -120,9 +120,7 @@ QQ：443765662<br>
 微信<br>
 ![微信](https://raw.githubusercontent.com/youxinLu/flutter_mall/master/screenshots/QQ截图20190905142302.png)
 
-注意
---------
-该项目仅用于个人学习使用，如将此项目用于商业行为，请与我取得联系，否则将保留追诉权。
+
 
 
 
