@@ -31,7 +31,7 @@ class _TabMinePageState extends State<TabMinePage> {
       return Stack(children: [
         Container(
             height: ScreenUtil().setHeight(AppDimens.DIMENS_600) +
-                MediaQuery.of(context).padding.top,
+                MediaQuery.maybeOf(context).padding.top,
             decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [AppColors.COLOR_FFB24E, AppColors.COLOR_FF5722]),
