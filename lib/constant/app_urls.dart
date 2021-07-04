@@ -1,7 +1,7 @@
 
 class AppUrls{
 //  static const String BASE_URL='http://192.168.190.98:8082/wx'; //测试服务
-  static const String BASE_URL = 'http://120.25.226.11:8080/mall-app/wx';//线上服务
+  static const String BASE_URL = 'http://192.168.50.206:8080/wx';//线上服务
   static const String HOME_URL=BASE_URL+'/home/index';//首页数据
   static const String BANNER_URL = BASE_URL + '/home/banner'; //获取首页banner图
   static const String CATEGORY_URL = BASE_URL + '/home/categories'; //获取首页分类

@@ -44,7 +44,7 @@ class MallApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: DevicePreview.of(context).locale,
+      locale: DevicePreview.locale(context),
       // <--- /!\ Add the locale
       builder: DevicePreview.appBuilder,
       // <--- /!\ Add the builder
